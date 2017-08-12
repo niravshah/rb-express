@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="fragment" content="!">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <%- include head/meta.ejs%>
     <title>Raise Better</title>
-    <base href="/">
+    <base href="/login">
 
     <%- include head/ga.ejs%>
     <%- include head/styles.ejs%>
@@ -14,6 +11,65 @@
 </head>
 <body>
 <%- include header.ejs%>
+
+
+<!-- Login -->
+<section id="login" class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2 class="uppercase heading_space">Login</h2>
+            </div>
+        </div>
+        <div class="row" id="messageSection">
+            <div *ngIf="messages.length > 0" class="col-md-12 text-center">
+                <ul class="messages">
+                    <li class="{{m.type}}" *ngFor="let m of messages">{{m.text}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="profile-login">
+                    <div class="agent-p-form">
+                        <form action="#" class="callus clearfix" #f="ngForm" (ngSubmit)="login(f.value, f.valid)" novalidate>
+                            <div *ngIf="error" class="error">
+                                <p class="error">{{error}}</p>
+                            </div>
+                            <div class="single-query form-group col-sm-12">
+                                <input type="text" class="no-tt keyword-input" placeholder="username" name="username"
+                                       [(ngModel)]="loginForm.username" #username="ngModel" required>
+                                <small class="error" [hidden]="username.valid || (username.pristine && !f.submitted)">
+                                    Username is required.
+                                </small>
+                            </div>
+                            <div class="single-query form-group  col-sm-12">
+                                <input type="password" class="no-tt keyword-input" placeholder="password" name="password"
+                                       [(ngModel)]="loginForm.password" #password="ngModel" required>
+                                <small class="error" [hidden]="password.valid || (password.pristine && !f.submitted)">
+                                    Password is required.
+                                </small>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 pb20">
+                                    <div class="col-sm-6 text-left">
+                                        <a href="#" class="lost-pass">Lost your password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-sm-12">
+                                <input type="submit" value="submit now" class="btn-slide border_radius">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login end -->
+
+
 
 <%- include footer.ejs %>
 <%- include scripts/all.ejs%>
