@@ -134,38 +134,7 @@
 </div>
 <!--Slider ends-->
 
-<!--Header-->
-<div id="mainMenuBarAnchor"></div>
-<header class="white_header">
-    <nav class="navbar navbar-default bootsnav">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <a class="navbar-brand" href="/">
-                            <img src="/images/logo.png" class="logo" alt="" style="width:200px;">
-                            <img src="/images/made-in-britain.jpg" class="mib" alt="Made In Britain">
-                        </a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbar-menu">
-                        <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
-                            <li *ngIf="isLogin()"><a [routerLink]="['home']">Home</a></li>
-                            <li *ngIf="isLogin()"><a (click)='logout()'>Logout</a></li>
-                            <li *ngIf="!isLogin()"><a [routerLink]="['login']">Login</a></li>
-                            <li *ngIf="!isLogin()"><a [routerLink]="['signup']">Sign Up</a></li>
-                            <li><a (click)="openContactModal()" href="#">Contact Us</a></li>
-                            <li><a [routerLink]="['blog']">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
-<!--Header Ends-->
+<%- include header.ejs%>
 
 <!--Signup Form-->
 <button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
@@ -449,6 +418,9 @@
 <%- include footer.ejs %>
 
 
+<script src="https://unpkg.com/vue"></script>
+<script src="/vue/mixins/jwt.js"></script>
+
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <script src="/js/jquery-2.1.4.js"></script>
@@ -461,6 +433,9 @@
 <script src="/js/revolution.extension.layeranimation.min.js"></script>
 <script src="/js/revolution.extension.navigation.min.js"></script>
 <script src="/js/revolution.extension.slideanims.min.js"></script>
+<script src="/js/jwtHelper.js"></script>
+
+
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
 <!--<script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>-->
@@ -471,6 +446,8 @@
 
 <script src="/js/custom.js"></script>
 <script src="/js/functions.js"></script>
+
+<script src="/vue/header.js"></script>
 
 </body>
 </html>
