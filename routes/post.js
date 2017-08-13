@@ -12,17 +12,15 @@ const Account = require('../models/account');
 const Activities = require('../models/activity');
 
 const utils = require('./utils');
-const mailgun = require('./mailgun');
-const mailer = require('./nodemailer');
 const postmark = require('./postmark');
 
 module.exports = function (passport) {
 
-  router.get('/api/posts', (req, res) => {
+  router.get('/api/posts', function(req,res){
     res.json([post1, post2]);
   });
 
-  router.get('/api/posts/:id/activities', (req, res) => {
+  router.get('/api/posts/:id/activities', function(req, res){
 
     Post.findOne({sid: req.params.id}).exec(function (err, post) {
       if (err) {
@@ -41,7 +39,7 @@ module.exports = function (passport) {
   });
 
 
-  router.get('/api/posts/:id', (req, res) => {
+  router.get('/api/posts/:id', function(req, res){
 
     if (req.params.id === 'undefined') {
       res.json(post1);
@@ -64,7 +62,7 @@ module.exports = function (passport) {
     });
   });
 
-  router.patch('/api/posts/:id', (req, res) => {
+  router.patch('/api/posts/:id', function(req, res){
     Post.findOneAndUpdate({sid: req.params.id}, req.body, {new: true}, function (err, post) {
       if (err) {
         res.status(500).json({message: "Error saving post", error: err})
@@ -74,7 +72,7 @@ module.exports = function (passport) {
     });
   });
 
-  router.patch('/api/posts/:id/status', (req, res) => {
+  router.patch('/api/posts/:id/status', function(req, res){
     Post.findOneAndUpdate({sid: req.params.id}, req.body, {new: true}, function (err, post) {
       if (err) {
         res.status(500).json({message: "Error saving post", error: err})
@@ -85,7 +83,7 @@ module.exports = function (passport) {
   });
 
 
-  router.patch('/api/posts/:id/author', (req, res) => {
+  router.patch('/api/posts/:id/author', function(req, res){
     Post.find({sid: req.params.id}).populate('author', 'sid').exec(function (err, post) {
       if (err) {
         res.status(500).json({message: "Error saving post", error: err})
@@ -102,7 +100,7 @@ module.exports = function (passport) {
     });
   });
 
-  router.patch('/api/posts/:id/account', (req, res) => {
+  router.patch('/api/posts/:id/account', function(req, res){
     Post.find({sid: req.params.id}).populate('account', 'sid').exec(function (err, post) {
       if (err) {
         res.status(500).json({message: "Error saving post", error: err})
@@ -122,7 +120,7 @@ module.exports = function (passport) {
 
   router.get('/api/user/:id/posts', passport.authenticate('jwt', {
     failWithError: true
-  }), (req, res, next) => {
+  }), function(req, res, next) {
 
     Post.find({
       author: req.user
@@ -139,12 +137,12 @@ module.exports = function (passport) {
       }
 
     });
-  }, (err, req, res, next) => {
+  }, function(err, req, res, next) {
     res.status(403).json({'message': err, 'status': err.status});
   });
 
 
-  router.post('/api/posts', (req, res) => {
+  router.post('/api/posts', function(req, res){
     console.log('POST /posts', req.body);
 
     User.findOne({
@@ -183,7 +181,6 @@ module.exports = function (passport) {
                   error: err
                 })
               } else {
-                mailgun.emailLogonDetails(user, password, req.body.mobile);
                 utils.createPost(user, req.body.title, req.body.amount, req.body.currency, function (err, post) {
                   if (err) {
                     res.status(500).json({'message': err})
