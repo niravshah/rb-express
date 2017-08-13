@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%- include head/meta.ejs%>
+    <%- include head/meta.ejs %>
 
     <title>Raise Better</title>
     <base href="/">
 
-    <%- include head/ga.ejs%>
-    <%- include head/styles.ejs%>
+    <%- include head/ga.ejs %>
+    <%- include head/styles.ejs %>
 
 </head>
 <body>
@@ -102,11 +102,11 @@
 </div>
 <!--Slider ends-->
 
-<%- include header.ejs%>
+<%- include header.ejs %>
 
 <!--Signup Form-->
 <button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
-<div class="tp_overlay">
+<div id="signupForm" class="tp_overlay">
     <div class="topbar clearfix">
         <ul class="breadcrumb_top">
             <li><a><i class="icon-icons179"></i>Sign Up</a></li>
@@ -114,7 +114,7 @@
         </ul>
     </div>
 
-    <form class="callus top10 clearfix centered" #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+    <form class="callus top10 clearfix centered" novalidate>
         <h2 class="text-uppercase t_white bottom40 text-center">Low Fees. Instant Payments.</h2>
 
         <div class="row">
@@ -126,12 +126,13 @@
                     <div class="input-group">
                         <input type="text" class="keyword-input t_yellow"
                                style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"
-                               value="5000" name="amount" [(ngModel)]="overlayForm.amount" #amount="ngModel" required>
+                               value="5000"
+                               name="amount" v-model="overlayForm.amount" v-validate="'required'">
                         <span class="input-group-addon"
                               style="font-family: 'roboto_condensedbold';font-size: 20px;">GBP</span>
                     </div>
-                    <small class="error" [hidden]="amount.valid || (amount.pristine && !f.submitted)">
-                        Amount is required.
+                    <small class="error" v-show="errors.has('amount')">
+                        {{ errors.first('amount')}}
                     </small>
                 </div>
             </div>
@@ -144,10 +145,9 @@
             <div class="col-md-12">
                 <div class="single-query bottom15">
                     <input type="text" class="keyword-input lowercase" placeholder="Title of your Fundraiser"
-                           name="title"
-                           [(ngModel)]="overlayForm.title" #title="ngModel" required>
-                    <small class="error" [hidden]="title.valid || (title.pristine && !f.submitted)">
-                        Title is required.
+                           name="title" v-model="overlayForm.title" v-validate="'required'">
+                    <small class="error" v-show="errors.has('title')">
+                        {{ errors.first('title') }}
                     </small>
 
                 </div>
@@ -159,19 +159,19 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%" name="fname"
-                           [(ngModel)]="overlayForm.fname" #fname="ngModel" required>
-                    <small class="error" [hidden]="fname.valid || (fname.pristine && !f.submitted)">
-                        Name is required.
+                    <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%"
+                           name="fname" v-model="overlayForm.fname" v-validate="'required'">
+                    <small class="error" v-show="errors.has('fname')">
+                        {{ errors.first('fname') }}
                     </small>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%" name="lname"
-                           [(ngModel)]="overlayForm.lname" #lname="ngModel" required>
-                    <small class="error" [hidden]="lname.valid || (lname.pristine && !f.submitted)">
-                        Last Name is required.
+                    <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%"
+                           name="lname" v-model="overlayForm.lname" v-validate="'required'">
+                    <small class="error" v-show="errors.has('lname')">
+                        {{ errors.first('lname') }}
                     </small>
                 </div>
             </div>
@@ -182,11 +182,10 @@
             </div>
             <div class="col-md-12">
                 <div class="bottom15" style="width: 100%">
-                    <input type="email" class="keyword-input" placeholder="Email" style="width: 100%" name="email"
-                           [(ngModel)]="overlayForm.email" #email="ngModel" required
-                           pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-                    <small class="error" [hidden]="email.valid || (email.pristine && !f.submitted)">
-                        Email is not valid.
+                    <input type="email" class="keyword-input" placeholder="Email" style="width: 100%"
+                           name="email" v-model="overlayForm.email" v-validate="'required|email'">
+                    <small class="error" v-show="errors.has('email')">
+                        {{ errors.first('email') }}
                     </small>
                 </div>
             </div>
@@ -197,17 +196,15 @@
             </div>
             <div class="col-md-12">
                 <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input"
-                           style="width: 100%" name="mobile"
-                           [(ngModel)]="overlayForm.mobile" #mobile="ngModel" placeholder="07222 555555" required
-                           pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$">
-                    <small class="error" [hidden]="mobile.valid || (mobile.pristine && !f.submitted)">
-                        Phone number is not valid (Ex. 07222 555555, 07222555555)
+                    <input type="text" class="keyword-input" style="width: 100%"
+                           name="mobile" v-model="overlayForm.mobile"
+                           v-validate="{'required':true,'regex':/^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/}">
+                    <small class="error" v-show="errors.has('mobile')">
+                        Phone number is not valid (Ex. 07222555555)
                     </small>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 text-right form-group top30">
                 <button type="submit" class="border_radius btn-yellow text-uppercase">Start Fundraising Now</button>
@@ -386,10 +383,11 @@
 <%- include footer.ejs %>
 
 
-<%- include scripts/all.ejs%>
+<%- include scripts/all.ejs %>
 
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
+<script src="/vue/index/signupForm.js"></script>
 
 </body>
 </html>
