@@ -3,12 +3,11 @@
 <head>
     <%- include head/meta.ejs %>
 
-    <title>Raise Better</title>
+    <title><%= title%></title>
     <base href="/">
 
     <%- include head/ga.ejs %>
     <%- include head/styles.ejs %>
-
 </head>
 <body>
 
@@ -214,7 +213,7 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h2 class="uppercase">Keep more of what you raise</h2>
-                    <p class="pt20">For every £500 you raise you can get up to £25 more with Raise Better.</p>
+                    <p class="pt20">For every £<%= amount_raised%> you raise you can get up to £<%= amount_saved%> more with Raise Better.</p>
                 </div>
             </div>
             <div class="row">
@@ -224,7 +223,7 @@
                             <p class="pt10">Money Raised</p>
                             <h3>£500</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£{{rb_total}}</h2>
+                            <h2>£<%= rb_total %></h2>
                             <img class="pt20" style="width: auto;" src="/images/logo.png">
                             <div class="img-info">
                                 <h3 class="pb5">Raise Better</h3>
@@ -243,7 +242,7 @@
                             <p class="pt10">Money Raised</p>
                             <h3>£500</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£{{jg_total}}</h2>
+                            <h2>£<%= jg_total %></h2>
                             <img class="pt20" style="width: auto;" src="/images/justgiving-logo.jpg">
                             <div class="img-info">
                                 <h3 class="pb5">Just Giving</h3>
@@ -262,7 +261,7 @@
                             <p class="pt10">Money Raised</p>
                             <h3>£500</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£{{gfm_total}}</h2>
+                            <h2>£<%= gfm_total %></h2>
                             <img class="pt10" style="width: auto;" src="/images/gfm-logo.png">
                             <div class="img-info">
                                 <h3 class="pb10">Go Fund Me</h3>
@@ -297,26 +296,26 @@
                         <tr class="text-center">
                             <td class="text-left" colspan="2">Platform Fees</td>
                             <td>2%</td>
-                            <td class="br">£{{rb_pf}}</td>
+                            <td class="br">£<%= rb_pf %></td>
                             <td>5%</td>
-                            <td class="br">£{{jg_pf}}</td>
+                            <td class="br">£<%= jg_pf %></td>
                             <td>5%</td>
-                            <td>£{{gfm_pf}}</td>
+                            <td>£<%= gfm_pf %></td>
                         </tr>
                         <tr class="text-center">
                             <td class="text-left" colspan="2">Payment Processor Fees</td>
                             <td>1.4% + 20p</td>
-                            <td class="br">£{{rb_cpf}}</td>
+                            <td class="br">£<%= rb_cpf %></td>
                             <td>1.25%</td>
-                            <td class="br">£{{jg_cpf}}</td>
+                            <td class="br">£<%= jg_cpf %></td>
                             <td>3.5% + 20p</td>
-                            <td>£{{gfm_cpf}}</td>
+                            <td>£<%= gfm_cpf %></td>
                         </tr>
                         <tr style="font-size:14px;" class="text-center">
                             <td class="text-left" colspan="2">What You Keep</td>
-                            <td class="br" colspan="2">£{{rb_total}}</td>
-                            <td class="br" colspan="2">£{{jg_total}}</td>
-                            <td colspan="2">£{{gfm_total}}</td>
+                            <td class="br" colspan="2">£<%= rb_total %></td>
+                            <td class="br" colspan="2">£<%= jg_total %></td>
+                            <td colspan="2">£<%= gfm_total %></td>
                         </tr>
                         </tbody>
                     </table>
