@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('routes/api/stripe')(process.env.STRIPE_KEY);
 
 const unirest = require('unirest');
 const utils = require('./utils');
 
-const Post = require('../models/post');
-const Account = require('../models/account');
+const Post = require('../../models/post');
+const Account = require('../../models/account');
 
 module.exports = function (passport) {
 

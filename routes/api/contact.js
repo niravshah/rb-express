@@ -3,7 +3,7 @@ const router = express.Router();
 const mailgun = require('./mailgun');
 const utils = require('./utils');
 
-const User = require('../models/user');
+const User = require('../../models/user');
 
 module.exports = function (passport) {
 

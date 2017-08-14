@@ -3,13 +3,13 @@ const router = express.Router();
 
 var generatePassword = require('password-generator');
 
-const post1 = require('../data/post1');
-const post2 = require('../data/post2');
+const post1 = require('../../data/post1');
+const post2 = require('../../data/post2');
 
-const Post = require('../models/post');
-const User = require('../models/user');
-const Account = require('../models/account');
-const Activities = require('../models/activity');
+const Post = require('../../models/post');
+const User = require('../../models/user');
+const Account = require('../../models/account');
+const Activities = require('../../models/activity');
 
 const utils = require('./utils');
 const postmark = require('./postmark');

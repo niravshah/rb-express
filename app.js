@@ -18,7 +18,7 @@ initPassport(passport);
 
 var index = require('./routes/index');
 var login = require('./routes/login');
-var posts = require('./routes/post')(passport);
+var posts = require('./routes/api/post')(passport);
 
 
 // view engine setup

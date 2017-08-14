@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const post1 = require('../data/post1');
-const post2 = require('../data/post2');
+const post1 = require('../../data/post1');
+const post2 = require('../../data/post2');
 
 
 module.exports = function (passport) {

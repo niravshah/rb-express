@@ -1,12 +1,12 @@
-const Post = require('../models/post');
-const User = require('../models/user');
-const Account = require('../models/account');
-const Customer = require('../models/customer');
-const Charge = require('../models/charge');
-const Activity = require('../models/activity');
-const Query = require('../models/query');
+const Post = require('../../models/post');
+const User = require('../../models/user');
+const Account = require('../../models/account');
+const Customer = require('../../models/customer');
+const Charge = require('../../models/charge');
+const Activity = require('../../models/activity');
+const Query = require('../../models/query');
 
-const PhoneVerification = require('../models/phone-verification');
+const PhoneVerification = require('../../models/phone-verification');
 
 var bcrypt = require('bcrypt');
 const saltRounds = 10;

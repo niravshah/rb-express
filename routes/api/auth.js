@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const util = require('./utils');
 const generatePassword = require('password-generator');
-const User = require('../models/user');
+const User = require('../../models/user');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;

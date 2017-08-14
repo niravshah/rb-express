@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const utils = require('./utils');
 
-const PV = require('../models/phone-verification');
-const User = require('../models/user');
+const PV = require('../../models/phone-verification');
+const User = require('../../models/user');
 
 module.exports = function (passport) {
 
