@@ -27,4 +27,16 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/login', function (req, res) {
+    res.render('login')
+});
+
+router.get('/first-login', function (req, res) {
+    res.render('first-login');
+});
+
+router.get('/home', function (req, res) {
+    res.render('home');
+});
+
 module.exports = router;
