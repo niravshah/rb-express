@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
-    <%- include head/meta.ejs %>
+    <%- include partials/meta.ejs %>
 
     <title><%= title%></title>
     <base href="/">
 
-    <%- include head/ga.ejs %>
-    <%- include head/styles.ejs %>
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
 </head>
 <body>
 
@@ -101,7 +101,7 @@
 </div>
 <!--Slider ends-->
 
-<%- include header.ejs %>
+<%- include partials/header.ejs %>
 
 <!--Signup Form-->
 <button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
@@ -372,14 +372,14 @@
 </section>
 <!--RB Difference ends-->
 
-<%- include footer.ejs %>
+<%- include partials/footer.ejs %>
 
 
-<%- include scripts/all.ejs %>
+<%- include partials/scripts.ejs %>
 
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
-<script src="/vue/index/signupForm.js"></script>
+<script src="/vue/index.js"></script>
 
 </body>
 </html>

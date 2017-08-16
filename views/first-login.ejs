@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
-    <%- include head/meta.ejs%>
+    <%- include partials/meta.ejs %>
     <title>Raise Better</title>
     <base href="/login">
 
-    <%- include head/ga.ejs%>
-    <%- include head/styles.ejs%>
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
 
 </head>
 <body>
-<%- include header.ejs%>
+<%- include partials/header.ejs %>
 
 <!-- First Login -->
 <section id="login" class="padding">
@@ -23,13 +23,7 @@
                 </p>
             </div>
         </div>
-        <div class="row" id="messageSection">
-            <div v-if="messages.length > 0" class="col-md-12 text-center">
-                <ul class="messages">
-                    <li :class="m.type" v-for="m in messages">{{m.text}}</li>
-                </ul>
-            </div>
-        </div>
+        <%- include partials/messages.ejs %>
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="profile-login">
@@ -43,7 +37,8 @@
                                 </small>
                             </div>
                             <div class="single-query form-group col-sm-12">
-                                <input type="text" class="no-tt keyword-input" placeholder="Login Code (sent to your email)"
+                                <input type="text" class="no-tt keyword-input"
+                                       placeholder="Login Code (sent to your email)"
                                        name="password" v-model="password" v-validate="'required'">
                                 <small class="error" v-show="errors.has('password')">
                                     {{ errors.first('password')}}
@@ -65,7 +60,8 @@
                                 </div>
                             </div>
                             <div class=" col-sm-12">
-                                <input v-bind:disabled="!isValid" type="submit" value="Login" class="btn-slide border_radius">
+                                <input v-bind:disabled="!isValid" type="submit" value="Login"
+                                       class="btn-slide border_radius">
                             </div>
                         </form>
                     </div>
@@ -76,12 +72,12 @@
 </section>
 <!-- First Login end -->
 
-<%- include footer.ejs %>
-<%- include scripts/all.ejs%>
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
 
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
-<script src="/vue/first-login/firstLogin.js"></script>
+<script src="/vue/first-login.js"></script>
 
 </body>
 </html>
