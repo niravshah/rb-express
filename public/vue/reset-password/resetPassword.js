@@ -1,4 +1,4 @@
-var vFirstLogin = new Vue({
+var vResetPassword = new Vue({
     el: '#login',
     data: {
         messages: [],

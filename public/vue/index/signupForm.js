@@ -24,7 +24,8 @@ var vSignupForm = new Vue({
             if (!this.errors.any()) {
                 console.log(this.$data);
                 this.$http.post('/api/posts', this.$data).then(function(res){
-                    console.log(res);
+                    // console.log(res);
+                    document.location.href = '/first-login'
                 },function (err) {
                     console.log('Error',err);
                 })
