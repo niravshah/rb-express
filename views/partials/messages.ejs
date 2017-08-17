@@ -1,7 +1,7 @@
 <div class="row" id="messageSection">
     <div v-if="messages.length > 0" class="col-md-12 text-center">
         <ul class="messages">
-            <li :class="m.type" v-for="m in messages">{{m.text}}</li>
+            <li :class="m.type" v-for="m in messages">{{m.message}}</li>
         </ul>
     </div>
 </div>

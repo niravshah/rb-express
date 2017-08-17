@@ -9,17 +9,19 @@ var app = express();
 
 require('dotenv').config();
 
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL);
+
+
 var passport = require('passport');
 app.use(passport.initialize());
 
 var initPassport = require('./passport/init');
 initPassport(passport);
 
-
 var index = require('./routes/index');
-var login = require('./routes/login');
 var posts = require('./routes/api/post')(passport);
-
+var login = require('./routes/api/auth')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,10 +35,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use(index);
 app.use(login);
 app.use(posts);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

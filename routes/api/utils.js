@@ -93,7 +93,7 @@ module.exports = {
 
         // callback(null, {message: "success"});
         twilio.messages.create({
-                from: config.TWILIO_PHONE_NUMBER,
+                from: process.env.TWILIO_PHONE_NUMBER,
                 to: mobile,
                 body: message
             },

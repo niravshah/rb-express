@@ -32,7 +32,12 @@ var vSignup = new Vue({
                     document.location.href = '/first-login'
                 }, function (err) {
                     // console.log('Error', err);
-                    this.messages.push({type: 'error', message: err.message});
+                    if(err.status == 404){
+                        this.messages.push({type:'error',message:'Page Not Found: ' + err.url});
+                    }else{
+                        this.messages.push({type:'error',message:err.message});
+                    }
+
                 })
             }
         }

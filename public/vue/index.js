@@ -23,11 +23,12 @@ var vSignupForm = new Vue({
         onSubmit: function () {
             if (!this.errors.any()) {
                 console.log(this.$data);
-                this.$http.post('/api/posts', this.$data).then(function(res){
+                this.$http.post('/api/posts', this.$data).then(function (res) {
                     // console.log(res);
                     document.location.href = '/first-login'
-                },function (err) {
-                    console.log('Error',err);
+                }, function (err) {
+                    document.location.href = '/info?message=' + err.body.message;
+                    console.log('Error', err);
                 })
             }
         }

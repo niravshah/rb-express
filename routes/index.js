@@ -43,4 +43,8 @@ router.get('/sign-up', function (req, res) {
     res.render('signup');
 });
 
+router.get('/info', function (req, res) {
+    res.render('info',{message:req.query.message});
+});
+
 module.exports = router;

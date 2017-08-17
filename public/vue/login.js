@@ -37,8 +37,13 @@ var vLogin = new Vue({
                         this.messages.push({type:'error',message:'Username or password incorrect'});
                     }
                 }, function (err) {
-                    console.log('Error', err);
-                    this.messages.push({type:'error',message:err.message});
+                    // console.log('Error', err);
+                    if(err.status == 404){
+                        this.messages.push({type:'error',message:'Page Not Found: ' + err.url});
+                    }else{
+                        this.messages.push({type:'error',message:err.message});
+                    }
+
                 })
             }
         }
