@@ -29,8 +29,8 @@ module.exports = function (passport) {
                 isResetPassword: false
             }, {new: true}, function (err, user) {
                 if (err) {
-                    res.status(403).json({'message': 'Error executing first login updates.'});
-                } else {
+                    res.status(403).json({'message': 'Error executing password reset.'});
+                } else if (user) {
                     req.user = user;
                     var token = jwt.sign({email: req.user.email, sid: req.user.sid}, 'shhhhh');
                     res.status(200).json({
@@ -39,6 +39,8 @@ module.exports = function (passport) {
                         'sid': req.user.sid,
                         'token': token
                     });
+                } else {
+                    res.status(403).json({'message': 'Error executing password reset.'});
                 }
             });
         } else {
