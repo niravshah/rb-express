@@ -1,6 +1,6 @@
 <!--Header-->
 <div id="mainMenuBarAnchor"></div>
-<header class="white_header">
+<header class="white_header" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <nav class="navbar navbar-default bootsnav">
         <div class="container">
             <div class="row">
@@ -21,8 +21,7 @@
                             <li v-if="loggedIn"><a href="/logout">Logout</a></li>
                             <li v-if="!loggedIn"><a href="/login">Login</a></li>
                             <li v-if="!loggedIn"><a href="/sign-up">Sign Up</a></li>
-                            <li><a>Contact Us</a></li>
-
+                            <li><a href="#" v-on:click="openContactModal">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,3 +30,79 @@
     </nav>
 </header>
 <!--Header Ends-->
+<div id="contactModalContainer" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="modal-overlay closed" id="modal-overlay"></div>
+
+    <div class="modal closed" id="contact-modal">
+        <button v-on:click="close()" class="close-button" id="close-button"><i class="fa fa-close"></i></button>
+        <div class="modal-guts">
+            <h2 class="uppercase">How can we help?</h2>
+            <div class="row pt20 pb20" id="modal-guts-messageSection">
+                <div v-if="messages.length > 0" class="col-md-12 text-center">
+                    <ul class="messages">
+                        <li :class="m.type" v-for="m of messages">{{m.message}}</li>
+                    </ul>
+                </div>
+            </div>
+            <form id="contactForm" class="callus clearfix pt40" v-on:submit.prevent="onSubmit" novalidate>
+                <div v-if="!loggedIn" class="row bottom15">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="" style="width: 100%">
+                            <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%"
+                                   name="fname" v-model="fname" v-validate="'required'">
+                            <small class="error" v-show="errors.has('fname')">
+                                {{ errors.first('fname')}}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="" style="width: 100%">
+                            <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%"
+                                   name="lname" v-model="lname">
+                            <small class="error" v-show="errors.has('lname')">
+                                {{ errors.first('lname')}}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="!loggedIn" class="row bottom15">
+                    <div class="col-md-12">
+                        <div class="" style="width: 100%">
+                            <input type="email" class="keyword-input" placeholder="Email" style="width: 100%"
+                                   name="email" v-model="email" v-validate="'required|email'">
+                            <small class="error" v-show="errors.has('email')">
+                                {{ errors.first('email')}}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="!loggedIn" class="row bottom15">
+                    <div class="col-md-12">
+                        <div class="" style="width: 100%">
+                            <input type="text" class="keyword-input"
+                                   style="width: 100%" name="mobile" v-model="mobile"
+                                   v-validate="'required'">
+                            <small class="error" v-show="errors.has('mobile')">
+                                {{ errors.first('mobile')}}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom15">
+                    <div class="col-md-12">
+                        <div class="" style="width: 100%">
+                            <textarea v-model="query" v-validate="'required'" name="query"
+                                      placeholder="Your Query"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center form-group pt20">
+                        <button type="submit" class="border_radius btn-yellow text-uppercase">Contact Us</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
