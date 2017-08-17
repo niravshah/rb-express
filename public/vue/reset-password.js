@@ -21,9 +21,9 @@ var vResetPassword = new Vue({
 
                 const body = {password: this.password, repeatPassword: this.repeatPassword};
 
-                this.$http.post(url, body, headers).then(function (res) {
+                this.$http.post(url, body, {headers: headers}).then(function (res) {
                     console.log(res);
-                    const token = res.token;
+                    const token = res.body.token;
                     if (token) {
                         localStorage.setItem('token', token);
                         document.location.href = '/home'
@@ -33,10 +33,10 @@ var vResetPassword = new Vue({
                     }
                 }, function (err) {
                     // console.log('Error', err);
-                    if(err.status == 404){
-                        this.messages.push({type:'error',message:'Page Not Found: ' + err.url});
-                    }else{
-                        this.messages.push({type:'error',message:err.message});
+                    if (err.status == 404) {
+                        this.messages.push({type: 'error', message: 'Page Not Found: ' + err.url});
+                    } else {
+                        this.messages.push({type: 'error', message: err.body.message});
                     }
 
                 })

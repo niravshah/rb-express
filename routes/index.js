@@ -44,7 +44,11 @@ router.get('/sign-up', function (req, res) {
 });
 
 router.get('/info', function (req, res) {
-    res.render('info',{message:req.query.message});
+    res.render('info', {message: req.query.message});
+});
+
+router.get('/reset-password', function (req, res) {
+    res.render('reset-password');
 });
 
 module.exports = router;

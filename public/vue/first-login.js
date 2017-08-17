@@ -22,16 +22,16 @@ var vFirstLogin = new Vue({
                 const body = {username: this.username, password: this.password, mobileCode: this.code};
 
                 this.$http.post(url, body).then(function (res) {
-                    console.log(res);
-                    const token = res.token;
+                    // console.log(res);
+                    const token = res.body.token;
                     if (token) {
-                        const email = res.email;
+                        const email = res.body.email;
                         localStorage.setItem('token', token);
                         localStorage.setItem('currentUser', JSON.stringify({
                             email: email,
                             username: this.username,
                             token: token,
-                            sid: res.sid
+                            sid: res.body.sid
                         }));
                         document.location.href = '/reset-password'
                         // this.router.navigate(['reset-password']);

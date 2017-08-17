@@ -23,8 +23,8 @@ module.exports = function (passport) {
         failWithError: true
     }), function (req, res, next) {
 
-        if (req.body.password === req.body.repeat) {
-            User.findOneAndUpdate({sid: req.user.sid}, {
+        if (req.body.password === req.body.repeatPassword) {
+            User.findOneAndUpdate({sid: req.user.sid, isResetPassword: true}, {
                 password: bcrypt.hashSync(req.body.password, saltRounds),
                 isResetPassword: false
             }, {new: true}, function (err, user) {
