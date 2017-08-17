@@ -1,7 +1,7 @@
 //LOADER
 $(window).on("load", function () {
   "use strict";
-  $(".loader").fadeOut(800);
+  $(".loader").fadeOut(1200);
 
 });
 
