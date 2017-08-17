@@ -14,6 +14,11 @@ var vHeader = new Vue({
             const modalOverlay = document.querySelector('#modal-overlay');
             modal.classList.toggle('closed');
             modalOverlay.classList.toggle('closed');
+        },
+        logout: function () {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('token');
+            document.location.href = '/';
         }
     }
 });
