@@ -3,7 +3,7 @@
 <head>
     <%- include partials/meta.ejs %>
 
-    <title><%= title%></title>
+    <title><%= title %></title>
     <base href="/">
 
     <%- include partials/ga.ejs %>
@@ -199,7 +199,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 text-right form-group top30">
-                <button v-bind:disabled="!isValid" type="submit" class="border_radius btn-yellow text-uppercase">Start Fundraising Now</button>
+                <button v-bind:disabled="!isValid" type="submit" class="border_radius btn-yellow text-uppercase">Start
+                    Fundraising Now
+                </button>
             </div>
         </div>
     </form>
@@ -213,7 +215,8 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h2 class="uppercase">Keep more of what you raise</h2>
-                    <p class="pt20">For every £<%= amount_raised%> you raise you can get up to £<%= amount_saved%> more with Raise Better.</p>
+                    <p class="pt20">For every £<%= amount_raised %> you raise you can get up to £<%= amount_saved %>
+                        more with Raise Better.</p>
                 </div>
             </div>
             <div class="row">
@@ -371,7 +374,7 @@
     </div>
 </section>
 <!--RB Difference ends-->
-
+<%- include partials/cookie-ribbon.ejs %>
 <%- include partials/footer.ejs %>
 
 
@@ -380,6 +383,7 @@
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
 <script src="/vue/index.js"></script>
+<script src="/vue/cookie-ribbon.js"></script>
 
 </body>
 </html>

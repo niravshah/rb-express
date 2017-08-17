@@ -210,3 +210,32 @@ button[disabled]:hover {
     background-color: #cccccc;
     color: #666666;
 }
+
+#cookie-ribbon span:hover {
+    cursor: pointer;
+}
+
+#cookie-ribbon {
+    width: 100%;
+    position: fixed;
+    bottom: -40px;
+    z-index: 999;
+    padding: 10px 20px;
+    background-color: rgba(31, 63, 129, 0.75);
+    color: white;
+    box-shadow: 0px -2px 0px rgba(136, 136, 136, 0.55);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-name: divup;
+    animation-fill-mode: forwards;
+}
+
+@keyframes divup {
+    from {
+        bottom: -40px;
+    }
+    to {
+        bottom: 0px;
+    }
+}

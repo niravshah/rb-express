@@ -1,0 +1,75 @@
+<div class="modal-overlay closed" id="modal-overlay"></div>
+
+<div class="modal closed" id="modal">
+    <button (click)="close()" class="close-button" id="close-button"><i class="fa fa-close"></i></button>
+    <div class="modal-guts">
+        <h2 class="uppercase">How can we help?</h2>
+        <div class="row pt20 pb20" id="messageSection">
+            <div *ngIf="messages.length > 0" class="col-md-12 text-center">
+                <ul class="messages">
+                    <li class="{{m.type}}" *ngFor="let m of messages">{{m.text}}</li>
+                </ul>
+            </div>
+        </div>
+        <form id="contactForm" class="callus clearfix pt40" #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+            <div *ngIf="!loggedIn" class="row bottom15">
+                <div  class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="" style="width: 100%">
+                        <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%" name="fname"
+                               [(ngModel)]="contactForm.fname" #fname="ngModel" required>
+                        <small class="error" [hidden]="fname.valid || (fname.pristine && !f.submitted)">
+                            Name is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <div class="" style="width: 100%">
+                        <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%" name="lname"
+                               [(ngModel)]="contactForm.lname" #lname="ngModel" required>
+                        <small class="error" [hidden]="lname.valid || (lname.pristine && !f.submitted)">
+                            Last Name is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!loggedIn" class="row bottom15">
+                <div class="col-md-12">
+                    <div class="" style="width: 100%">
+                        <input type="email" class="keyword-input" placeholder="Email" style="width: 100%" name="email"
+                               [(ngModel)]="contactForm.email" #email="ngModel" required
+                               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <small class="error" [hidden]="email.valid || (email.pristine && !f.submitted)">
+                            Email is not valid.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!loggedIn" class="row bottom15">
+                <div class="col-md-12">
+                    <div class="" style="width: 100%">
+                        <input type="text" class="keyword-input"
+                               style="width: 100%" name="mobile"
+                               [(ngModel)]="contactForm.mobile" #mobile="ngModel" placeholder="Mobile Number" required
+                               pattern="^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$">
+                        <small class="error" [hidden]="mobile.valid || (mobile.pristine && !f.submitted)">
+                            Phone number is not valid (Ex. 07222 555555, 07222555555)
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="row bottom15">
+                <div class="col-md-12">
+                    <div class="" style="width: 100%">
+                        <textarea [(ngModel)]="contactForm.query" name="query" placeholder="Your Query"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center form-group pt20">
+                    <button type="submit" class="border_radius btn-yellow text-uppercase">Contact Us</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
