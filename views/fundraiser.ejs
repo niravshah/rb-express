@@ -26,7 +26,17 @@
     </div>
 </section>
 <!-- Page Banner End -->
-
+<% if(post.status != 'live'){ %>
+<section id="not-live">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>This fundraiser is not <span>LIVE</span> yet and hence can not accept any donations</p>
+            </div>
+        </div>
+    </div>
+</section>
+<% } %>
 
 <section id="property" class="pt20 pb20">
     <div class="container property-details">
@@ -50,21 +60,20 @@
             <aside class="col-md-4 col-xs-12">
                 <div class="row" id="donateRow" style="background: white">
                     <div class="col-md-12">
+                        <% if(post.status == 'live'){ %>
                         <a id="donateBtn" v-on:click="scrollTop()"
-                           class="border_radius btn-yellow text-uppercase <%= postStatusClass(post.status) %> "
+                           class="border_radius btn-yellow text-uppercase"
                            ga-on="'click'" ga-event-category="<%= post.sid %>"
                            ga-event-action="'post-donate-btn'" attr.ga-event-label="userSid">
                             Donate Now
                         </a>
                         <a id="donateBtn2" v-on:click="scrollTop()"
-                           class="border_radius btn-yellow btn-fb-blue text-uppercase <%= postStatusClass(post.status) %>"
+                           class="border_radius btn-yellow btn-fb-blue text-uppercase"
                            ga-on="'click'" ga-event-category="<%= post.sid %>"
                            ga-event-action="'post-share-btn'" ga-event-label="userSid">
                             <i class="fa fa-facebook" aria-hidden="true"></i> Share Now
                         </a>
-                        <p class="text-center pt10 <%= postStatusHideClass(post.status) %>" style="color:darkred">
-                            This post is not Live
-                        </p>
+                        <% } %>
                     </div>
                 </div>
                 <div class="row pt20 pb20 bb1p">

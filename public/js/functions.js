@@ -9,7 +9,9 @@ $(window).on("load", function () {
 // JavaScript Document
 jQuery(function ($) {
     "use strict";
-    $("#donateRow").sticky({topSpacing: 100, zIndex: 999});
+
+    $("#donateRow").sticky({topSpacing: 84, zIndex: 999});
+    $("#not-live").sticky({topSpacing: 84, zIndex: 999});
 
     // +++++ open for Search section
     $(".toggler").on("click", function () {

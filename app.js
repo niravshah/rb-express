@@ -78,12 +78,5 @@ app.locals.formatDate = function (date) {
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
 };
 
-app.locals.postStatusClass = function (status) {
-    return status === 'live' ? 'live' : 'disabled'
-};
-
-app.locals.postStatusHideClass = function (status) {
-    return status === 'live' ? 'hidden' : 'show'
-};
 
 module.exports = app;
