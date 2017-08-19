@@ -54,7 +54,6 @@ var jwtMixin = {
             }
             return this.b64DecodeUnicode(output);
         },
-
         b64decode: function (str) {
             var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
             var output = '';
@@ -81,6 +80,21 @@ var jwtMixin = {
             return decodeURIComponent(Array.prototype.map.call(this.b64decode(str), function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
+        },
+        isLoggedIn: function () {
+            return this.tokenValid();
+        },
+        loggedInUser: function() {
+            return localStorage.getItem('currentUser');
+        },
+        loggedInUserSid: function() {
+            return JSON.parse(localStorage.getItem('currentUser')).sid;
+        },
+        loggedInUserEmail: function() {
+            return JSON.parse(localStorage.getItem('currentUser')).email;
+        },
+        loggedInJwt: function() {
+            return localStorage.getItem('token');
         }
     }
 };

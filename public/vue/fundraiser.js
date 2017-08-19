@@ -1,10 +1,10 @@
 var vFundraiser = new Vue({
     el: '#property',
+    mixins: [jwtMixin],
     data: {
         messages: []
     },
     created: function () {
-
         $(".loader").fadeOut(400);
     },
     computed: {},
@@ -14,6 +14,14 @@ var vFundraiser = new Vue({
                 scrollTop: 200
             }, 700);
 
+        },
+        isAuthorLogin: function () {
+            if (this.isLoggedIn()) {
+                return $("meta[name='author-sid']").attr("content") == this.loggedInUserSid();
+            }
+            else {
+                return false
+            }
         }
     },
     filters: {
