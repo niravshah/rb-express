@@ -345,7 +345,7 @@ button[disabled]:hover {
     padding: 10px;
 }
 
-
+/* START - Loader */
 
 .sk-wave {
     margin: 40px auto;
@@ -390,6 +390,10 @@ button[disabled]:hover {
         -webkit-transform: scaleY(1);
         transform: scaleY(1); } }
 
+/* END - Loader */
+
+/* START - Home Page */
+
 ul.time-left{
     line-height: 44px;
 }
@@ -399,7 +403,59 @@ ul.time-left li{
     margin:0px 10px !important;
 }
 
+/* END - Home Page */
+
 .property_item .price .tag.pull-left{
     left:0;
     right:auto;
 }
+
+/* START - Fundraiser Page */
+#donateBtn {
+    width: 100%;
+    text-align: center;
+}
+
+#donateBtn2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+#loggedInMenu .btn {
+    padding: 10px 10px;
+    background-color: #3b5998;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+#loggedInMenu .btn:first-child {
+    width:180px;
+}
+
+#loggedInMenu .btn-live {
+    background-color: #ffd119;
+    color: black;
+    text-transform: uppercase;
+    width: 220px;
+    /*width:80% !important;*/
+}
+
+#loggedInMenu .btn-invite {
+    background-color: #3b5998;
+    color: #ffffff;
+    text-transform: uppercase;
+    width: 240px !important;
+}
+
+#editBtn .dropdown-menu a {
+    padding: 5px 10px;
+    display: block;
+}
+
+#editBtn .dropdown-menu a:hover {
+    background-color: #0f3e68;
+    color: white;
+}
+
+/* END - Fundraiser Page */

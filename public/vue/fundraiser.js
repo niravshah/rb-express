@@ -4,9 +4,18 @@ var vFundraiser = new Vue({
         messages: []
     },
     created: function () {
+
+        $(".loader").fadeOut(400);
     },
     computed: {},
-    methods: {},
+    methods: {
+        scrollTop: function () {
+            $('html, body').animate({
+                scrollTop: 200
+            }, 700);
+
+        }
+    },
     filters: {
         percentcalc: function (value, total) {
             if (value !== 0 && total !== 0) {

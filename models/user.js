@@ -19,7 +19,7 @@ module.exports = mongoose.model('User', {
   isResetPassword: {type: Boolean, default:true},
   firstLogin: {type: Boolean, default:true},
   bio: {type: String, default: ''},
-  avatar: {type: String, default: '/assets/images/avatar.jpg'}
+  avatar: {type: String, default: '/images/avatar.jpg'}
 });
 
 

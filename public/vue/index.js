@@ -8,6 +8,9 @@ var vSignupForm = new Vue({
         email: 'n@n.co',
         mobile: '07596162765'
     },
+    created: function () {
+        $(".loader").fadeOut(400);
+    },
     computed: {
         isValid: function () {
             return !this.errors.any()

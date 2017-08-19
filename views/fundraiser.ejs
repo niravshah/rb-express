@@ -38,50 +38,51 @@
                         <%= titlecase(post.author.fname) %> <%= titlecase(post.author.lname) %></span>
                     <span><i class=" icon-calendar"></i> <%= formatDate(post.created) %></span>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row" id="donateRow">
-                    <a id="donateBtn" v-on:click="scrollTop()"
-                       class="border_radius btn-yellow text-uppercase <%= postStatusClass(post.status) %> "
-                       ga-on="'click'" ga-event-category="<%= post.sid %>"
-                       ga-event-action="'post-donate-btn'" attr.ga-event-label="userSid">
-                        Donate Now
-                    </a>
-                    <a id="donateBtn2" v-on:click="scrollTop()"
-                       class="border_radius btn-yellow btn-fb-blue text-uppercase <%= postStatusClass(post.status) %>"
-                       ga-on="'click'" ga-event-category="<%= post.sid %>"
-                       ga-event-action="'post-share-btn'" ga-event-label="userSid">
-                        <i class="fa fa-facebook" aria-hidden="true"></i> Share Now
-                    </a>
-                    <p class="text-center pt10 <%= postStatusHideClass(post.status) %>" style="color:darkred">
-                        This post is not Live
-                    </p>
+
+                <div class="row top30"><img style="max-width: 100%" src="<%= post.image %>" alt="<%= post.title %>"/>
                 </div>
+                <div class="row top30" innerHtml="<%= post.story %>"></div>
+
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 listing1">
-                <div class="row"><img style="max-width: 100%" src="<%=post.image%>" alt="image"/></div>
-                <div class="row top30" innerHtml="<%=post.story%>"></div>
-            </div>
-            <!--aside class="col-md-4 col-xs-12 ">
-                <div class="row pb20 bb1p">
+            <aside class="col-md-4 col-xs-12">
+                <div class="row" id="donateRow" style="background: white">
+                    <div class="col-md-12">
+                        <a id="donateBtn" v-on:click="scrollTop()"
+                           class="border_radius btn-yellow text-uppercase <%= postStatusClass(post.status) %> "
+                           ga-on="'click'" ga-event-category="<%= post.sid %>"
+                           ga-event-action="'post-donate-btn'" attr.ga-event-label="userSid">
+                            Donate Now
+                        </a>
+                        <a id="donateBtn2" v-on:click="scrollTop()"
+                           class="border_radius btn-yellow btn-fb-blue text-uppercase <%= postStatusClass(post.status) %>"
+                           ga-on="'click'" ga-event-category="<%= post.sid %>"
+                           ga-event-action="'post-share-btn'" ga-event-label="userSid">
+                            <i class="fa fa-facebook" aria-hidden="true"></i> Share Now
+                        </a>
+                        <p class="text-center pt10 <%= postStatusHideClass(post.status) %>" style="color:darkred">
+                            This post is not Live
+                        </p>
+                    </div>
+                </div>
+                <div class="row pt20 pb20 bb1p">
                     <div class="col-sm-4">
                         <div class="agent_wrap">
                             <div class="image">
-                                <img [src]="post.author.avatar" alt="image"/>
+                                <img src="<%= post.author.avatar %>"
+                                     alt="<%= post.author.fname %> <%= post.author.lname %>"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="agent_wrap">
-                            <h3>{{'<%= post.author.fname %>'| titlecase }}{{ '<%= post.author.lname %>' | titlecase }}</h3>
+                            <h3><%= titlecase(post.author.fname) %> <%= titlecase(post.author.lname) %></h3>
                             <p class="bottom30"><%= post.author.bio %></p>
                         </div>
                     </div>
                 </div>
 
-                <div *ngIf="isAuthorLogin()" id="loggedInMenu" class="bb1p row pb20">
+
+                <div id="loggedInMenu" class="bb1p row pb20">
                     <div class="col-md-12">
                         <div id="editBtn" class="row">
                             <div class="col-md-12 col-sm-12 pt10 pb10 text-center">
@@ -97,38 +98,40 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu p10">
-                                        <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
-                                           [attr.ga-event-action]="'post-edit-btn'"
-                                           [attr.ga-event-label]="userSid"
-                                           class="dropdown-item" (click)="scrollTop()" [routerLink]="'edit'">Edit
+                                        <a ga-on="'click'" ga-event-category="post.sid"
+                                           ga-event-action="'post-edit-btn'"
+                                           ga-event-label="userSid"
+                                           class="dropdown-item" v-on:click="scrollTop()">Edit
                                             Fundraiser</a>
-                                        <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
-                                           [attr.ga-event-action]="'post-edit-author-btn'"
-                                           [attr.ga-event-label]="userSid"
-                                           class="dropdown-item" (click)="scrollTop()" [routerLink]="'edit-author'">Edit
+                                        <a ga-on="'click'" ga-event-category="post.sid"
+                                           ga-event-action="'post-edit-author-btn'"
+                                           ga-event-label="userSid"
+                                           class="dropdown-item" v-on:click="scrollTop()">Edit
                                             Author</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div *ngIf="!isPostLive()" id="goLiveBtn" class="row">
+                        <% if(post.status != 'live'){ %>
+                        <div id="goLiveBtn" class="row">
                             <div class="col-md-12 col-sm-12 pb10 text-center">
-                                <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
-                                   [attr.ga-event-action]="'post-go-live-btn'"
-                                   [attr.ga-event-label]="userSid"
-                                   (click)="scrollTop()" type="button" class="btn btn-live"
-                                   [routerLink]="'setup-payments'">
+                                <a ga-on="'click'" ga-event-category=post.sid
+                                   ga-event-action="'post-go-live-btn'"
+                                   ga-event-label="userSid"
+                                   v-on:click="scrollTop()" type="button" class="btn btn-live">
                                     <span class="fa fa-bolt"></span>
                                     Go Live!
                                 </a>
                             </div>
                         </div>
+                        <% } %>
+                        <% if(post.status == 'live'){ %>
                         <div id="personalInviteBtn" class="row">
                             <div class="col-md-12 col-sm-12 pb10 text-center">
-                                <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
-                                   [attr.ga-event-action]="'post-personal-invite-btn'"
-                                   [attr.ga-event-label]="userSid"
-                                   (click)="scrollTop()" type="button" class="btn btn-invite" [routerLink]="'invite'">
+                                <a ga-on="'click'" ga-event-category="post.sid"
+                                   ga-event-action="'post-personal-invite-btn'"
+                                   ga-event-label="userSid"
+                                   v-on:click="scrollTop()" type="button" class="btn btn-invite">
                                     <span class="fa fa-envelope"></span>
                                     Send Personalized Invites
                                 </a>
@@ -139,8 +142,14 @@
                                 <app-stripe-connect-status></app-stripe-connect-status>
                             </div>
                         </div>
+                        <%}%>
                     </div>
                 </div>
+            </aside>
+        </div>
+        <!--<div class="row">-->
+        <!--aside class="col-md-4 col-xs-12 ">
+
 
                 <div class="text-center row top30 bb1p">
                     <div class="col-sm-12 bottom15">
@@ -163,7 +172,7 @@
                     <app-activity-feed></app-activity-feed>
                 </div>
             </aside-->
-        </div>
+        <!--</div>-->
     </div>
 </section>
 
