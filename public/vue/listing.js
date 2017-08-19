@@ -24,7 +24,9 @@ var vListing = new Vue({
     },
     filters: {
         currency: function (value, currency) {
-            return currency + value;
+            if (currency == 'GBP') return '£' + value;
+            else return currency + value;
+
         },
         titlecase: function (str) {
             return str.replace(/\w\S*/g, function (txt) {

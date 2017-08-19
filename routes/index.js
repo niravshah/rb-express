@@ -51,4 +51,8 @@ router.get('/reset-password', function (req, res) {
     res.render('reset-password');
 });
 
+router.get('/fundraisers/:id', function (req, res) {
+    res.render('fundraiser');
+});
+
 module.exports = router;
