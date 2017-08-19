@@ -389,3 +389,17 @@ button[disabled]:hover {
     20% {
         -webkit-transform: scaleY(1);
         transform: scaleY(1); } }
+
+ul.time-left{
+    line-height: 44px;
+}
+
+ul.time-left li{
+    width:auto !important;
+    margin:0px 10px !important;
+}
+
+.property_item .price .tag.pull-left{
+    left:0;
+    right:auto;
+}

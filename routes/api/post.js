@@ -118,7 +118,7 @@ module.exports = function (passport) {
     });
 
 
-    router.get('/api/user/:id/posts', passport.authenticate('jwt', {
+    router.get('/api/user/posts', passport.authenticate('jwt', {
         failWithError: true
     }), function (req, res, next) {
 

@@ -8,7 +8,7 @@ var postSchema = mongoose.model('Post',{
   featured: {type:Boolean, default:false},
   title: {type:String, default:''},
   subTitle: {type:String, default:''},
-  image: {type:String, default:'/assets/images/home1-banner0.jpg'},
+  image: {type:String, default:'/images/home1-banner0.jpg'},
   supporters: {type:Number, default:0},
   created: {type:Date, default:Date.now()},
   target: {type:Number, default:0},

@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%- include partials/meta.ejs%>
+    <%- include partials/meta.ejs %>
     <title>Raise Better</title>
     <base href="/login">
 
-    <%- include partials/ga.ejs%>
-    <%- include partials/styles.ejs%>
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
 
 </head>
 <body>
-<%- include partials/header.ejs%>
+<%- include partials/header.ejs %>
+
+<%- include partials/listing.ejs %>
 
 <%- include partials/footer.ejs %>
-<%- include partials/scripts.ejs%>
+<%- include partials/scripts.ejs %>
 
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
+<script src="/vue/listing.js"></script>
 
 </body>
 </html>
