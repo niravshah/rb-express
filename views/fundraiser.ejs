@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <%- include partials/meta.ejs %>
     <title>Raise Better</title>
@@ -13,12 +13,168 @@
 <%- include partials/header.ejs %>
 <%- include partials/loader.ejs %>
 
+<!-- Page Banner Start-->
+<section class="page-banner padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page Banner End -->
+
+
+<section id="property" class="pt20 pb20">
+    <div class="container property-details">
+        <div class="row bottom30">
+            <div class="col-md-8 listing1">
+                <div class="row">
+                    <h2 class="text-uppercase"><%= post.title %></h2>
+                    <p><%= post.subTitle %></p>
+                </div>
+                <div class="row top15 post_meta">
+                    <span><i class="icon-user"></i>
+                        <%= titlecase(post.author.fname) %> <%= titlecase(post.author.lname) %></span>
+                    <span><i class=" icon-calendar"></i> <%= formatDate(post.created) %></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row" id="donateRow">
+                    <a id="donateBtn" v-on:click="scrollTop()"
+                       class="border_radius btn-yellow text-uppercase <%= postStatusClass(post.status) %> "
+                       ga-on="'click'" ga-event-category="<%= post.sid %>"
+                       ga-event-action="'post-donate-btn'" attr.ga-event-label="userSid">
+                        Donate Now
+                    </a>
+                    <a id="donateBtn2" v-on:click="scrollTop()"
+                       class="border_radius btn-yellow btn-fb-blue text-uppercase <%= postStatusClass(post.status) %>"
+                       ga-on="'click'" ga-event-category="<%= post.sid %>"
+                       ga-event-action="'post-share-btn'" ga-event-label="userSid">
+                        <i class="fa fa-facebook" aria-hidden="true"></i> Share Now
+                    </a>
+                    <p class="text-center pt10 <%= postStatusHideClass(post.status) %>" style="color:darkred">
+                        This post is not Live
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 listing1">
+                <div class="row"><img style="max-width: 100%" src="<%=post.image%>" alt="image"/></div>
+                <div class="row top30" innerHtml="<%=post.story%>"></div>
+            </div>
+            <!--aside class="col-md-4 col-xs-12 ">
+                <div class="row pb20 bb1p">
+                    <div class="col-sm-4">
+                        <div class="agent_wrap">
+                            <div class="image">
+                                <img [src]="post.author.avatar" alt="image"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="agent_wrap">
+                            <h3>{{'<%= post.author.fname %>'| titlecase }}{{ '<%= post.author.lname %>' | titlecase }}</h3>
+                            <p class="bottom30"><%= post.author.bio %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="isAuthorLogin()" id="loggedInMenu" class="bb1p row pb20">
+                    <div class="col-md-12">
+                        <div id="editBtn" class="row">
+                            <div class="col-md-12 col-sm-12 pt10 pb10 text-center">
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" type="button" class="btn btn-primary">
+                                        <span class="fa fa-edit"></span>
+                                        Edit Details
+                                    </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <span class="fa fa-chevron-down"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu p10">
+                                        <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
+                                           [attr.ga-event-action]="'post-edit-btn'"
+                                           [attr.ga-event-label]="userSid"
+                                           class="dropdown-item" (click)="scrollTop()" [routerLink]="'edit'">Edit
+                                            Fundraiser</a>
+                                        <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
+                                           [attr.ga-event-action]="'post-edit-author-btn'"
+                                           [attr.ga-event-label]="userSid"
+                                           class="dropdown-item" (click)="scrollTop()" [routerLink]="'edit-author'">Edit
+                                            Author</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!isPostLive()" id="goLiveBtn" class="row">
+                            <div class="col-md-12 col-sm-12 pb10 text-center">
+                                <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
+                                   [attr.ga-event-action]="'post-go-live-btn'"
+                                   [attr.ga-event-label]="userSid"
+                                   (click)="scrollTop()" type="button" class="btn btn-live"
+                                   [routerLink]="'setup-payments'">
+                                    <span class="fa fa-bolt"></span>
+                                    Go Live!
+                                </a>
+                            </div>
+                        </div>
+                        <div id="personalInviteBtn" class="row">
+                            <div class="col-md-12 col-sm-12 pb10 text-center">
+                                <a [attr.ga-on]="'click'" [attr.ga-event-category]=[post.sid]
+                                   [attr.ga-event-action]="'post-personal-invite-btn'"
+                                   [attr.ga-event-label]="userSid"
+                                   (click)="scrollTop()" type="button" class="btn btn-invite" [routerLink]="'invite'">
+                                    <span class="fa fa-envelope"></span>
+                                    Send Personalized Invites
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row pt10">
+                            <div class="col-md-12 col-sm-12">
+                                <app-stripe-connect-status></app-stripe-connect-status>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center row top30 bb1p">
+                    <div class="col-sm-12 bottom15">
+                        <div :class="'c100 p' + post.target | percentcalc(post.collected) + 'green'" style="margin: 0 auto">
+                            <span>{{post.target | percentcalc(post.collected)}}%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row text-center">
+                            <h3 class="pb10">Collected {{post.collected | currency(post.currency)}}</h3>
+                            <p>Target {{post.target | currency(post.currency)}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top30">
+                    <app-activity-feed></app-activity-feed>
+                </div>
+            </aside-->
+        </div>
+    </div>
+</section>
+
+
+<%- include partials/cookie-ribbon.ejs %>
 <%- include partials/footer.ejs %>
 <%- include partials/scripts.ejs %>
 
 <script src="/vue/mixins/jwt.js"></script>
 <script src="/vue/header.js"></script>
-
+<script src="/vue/fundraiser.js"></script>
 
 </body>
 </html>

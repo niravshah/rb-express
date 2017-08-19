@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const Post = require('../models/post');
+
 router.get('/', function (req, res, next) {
 
     var amount_raised = 500;
@@ -52,7 +54,16 @@ router.get('/reset-password', function (req, res) {
 });
 
 router.get('/fundraisers/:id', function (req, res) {
-    res.render('fundraiser');
+    Post.find({
+        sid: req.params.id
+    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+        if (err) {
+            res.render('error', {message: err.message});
+
+        } else {
+            res.render('fundraiser', {post: posts[0]});
+        }
+    });
 });
 
 module.exports = router;

@@ -10,7 +10,8 @@ var app = express();
 require('dotenv').config();
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL);
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_URL, {useMongoClient: true});
 
 
 var passport = require('passport');
@@ -56,5 +57,33 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
+app.locals.titlecase = function (str) {
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+};
+
+app.locals.formatDate = function (date) {
+    var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+};
+
+app.locals.postStatusClass = function (status) {
+    return status === 'live' ? 'live' : 'disabled'
+};
+
+app.locals.postStatusHideClass = function (status) {
+    return status === 'live' ? 'hidden' : 'show'
+};
 
 module.exports = app;
