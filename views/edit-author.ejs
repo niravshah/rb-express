@@ -1,3 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <%- include partials/meta.ejs %>
+    <title>Raise Better</title>
+    <base href="/fundraisers/<%= post.sid %>/edit-author">
+
+    <meta name="post-sid" content="<%= post.sid %>">
+    <meta name="author-sid" content="<%= post.author.sid %>">
+
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
+
+</head>
+<body>
+<%- include partials/header.ejs %>
+<%- include partials/loader.ejs %>
+
+<!-- Page Banner Start-->
+<section class="page-banner padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="property" class="bg_edit" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div class="container property-details">
         <div class="row pb20 pt20">
@@ -87,3 +115,15 @@
 
     </div>
 </div>
+
+
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
+
+<script src="/vue/mixins/jwt.js"></script>
+<script src="/vue/header.js"></script>
+<script src="/vue/fundraiser.js"></script>
+
+</body>
+</html>
+
