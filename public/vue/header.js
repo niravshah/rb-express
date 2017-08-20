@@ -1,12 +1,11 @@
 var vHeader = new Vue({
     el: 'header',
-    mixins: [jwtMixin],
     data: {
-        loggedIn: false,
+        loggedIn: false
     },
     created: function () {
         // console.log('Header',this.tokenValid());
-        this.loggedIn = this.tokenValid();
+        this.loggedIn = Vue.tokenValid();
     },
     methods: {
         openContactModal: function () {
@@ -25,7 +24,6 @@ var vHeader = new Vue({
 
 var vContactModal = new Vue({
     el: '#contactModalContainer',
-    mixins: [jwtMixin],
     data: {
         loggedIn: false,
         messages: [],
@@ -36,8 +34,7 @@ var vContactModal = new Vue({
         mobile: ''
     },
     created: function () {
-        // console.log('Header',this.tokenValid());
-        this.loggedIn = this.tokenValid();
+        this.loggedIn = Vue.tokenValid();
     },
     methods: {
         close: function () {

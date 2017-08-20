@@ -1,7 +1,6 @@
 
 var vFundraiser = new Vue({
     el: '#funraiserController',
-    mixins: [jwtMixin],
     data: {
         messages: []
     },
@@ -17,8 +16,8 @@ var vFundraiser = new Vue({
 
         },
         isAuthorLogin: function () {
-            if (this.isLoggedIn()) {
-                return $("meta[name='author-sid']").attr("content") == this.loggedInUserSid();
+            if (Vue.isLoggedIn()) {
+                return $("meta[name='author-sid']").attr("content") == Vue.loggedInUserSid();
             }
             else {
                 return false
