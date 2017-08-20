@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
 
 var app = express();
 
@@ -79,4 +80,10 @@ app.locals.formatDate = function (date) {
 };
 
 
-module.exports = app;
+var port = process.env.PORT || '8091';
+app.set('port', port);
+
+var server = http.createServer(app);
+server.listen(port, function () {
+    console.log('API running on localhost: ' + port)
+});
