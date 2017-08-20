@@ -11,99 +11,18 @@
 </head>
 <body>
 <%- include partials/loader.ejs %>
-<!--Slider-->
-<div class="rev_slider_wrapper">
-    <div id="rev_overlaped" class="rev_slider" data-version="5.0">
-        <ul>
-            <!-- SLIDE -->
-            <li data-transition="fade">
-                <img src="/images/home1-banner2.png" alt="" data-bgposition="center center" data-bgfit="cover"
-                     class="rev-slidebg">
-            </li>
-            <div class="tp-static-layers">
-                <div class="tp-caption tp-static-layer"
-                     id="slide-37-layer-1"
-                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
-                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['200','200','500','500']"
-                     data-whitespace="nowrap"
-                     data-visibility="['on','on','on','on']"
-                     data-fontsize="['48','48','28','28']"
-                     data-start="500"
-                     data-responsive_offset="on"
-                     data-basealign="slide"
-                     data-startslide="0"
-                     data-endslide="5"
-                     style="z-index: 5;">
-                    <h1><span class="t_white">Better Fundraising</span></h1>
-                </div>
-                <div class="tp-caption tp-static-layer"
-                     id="slide-37-layer-2"
-                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
-                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['150','150','380','380']"
-                     data-whitespace="nowrap"
-                     data-visibility="['on','on','off','off']"
-                     data-start="500"
-                     data-basealign="slide"
-                     data-startslide="0"
-                     data-endslide="5"
-                     style="z-index: 5;">
-                    <p class="t_white">
-                        No hidden exorbitant cuts from the funds you raise.
-                        <br>Keep more of what you raise to help achieve your goal.
-                    </p>
-                </div>
-                <div class="tp-caption tp-static-layer"
-                     id="slide-37-layer-3"
-                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
-                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['150','150','380','380']"
-                     data-width="['800','800','600','400']"
-                     data-whitespace="['normal','normal','nowrap','nowrap']"
-                     data-visibility="['off','off','on','on']"
-                     data-start="500"
-                     data-basealign="slide"
-                     data-startslide="0"
-                     data-endslide="5"
-                     style="z-index: 5;">
-                    <h3 class="t_white">
-                        Low Fees. Instant Payments.
-                    </h3>
-                </div>
-                <div class="tp-caption tp-static-layer"
-                     id="slide-37-layer-4"
-                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
-                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['50','50','150','150']"
-                     data-whitespace="nowrap"
-                     data-visibility="['on','on','on','on']"
-                     data-start="500"
-                     data-basealign="slide"
-                     data-startslide="0"
-                     data-endslide="5"
-                     style="z-index: 5;"><a href="listing1.html" class="btn-white border_radius uppercase">Discover
-                        Raise Better</a>
-                </div>
-                <div class="tp-caption tp-static-layer"
-                     id="slide-37-layer-5"
-                     data-x="['left','left','left','left']" data-hoffset="['50','50','50','50']"
-                     data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','40','40','40']"
-                     data-whitespace="nowrap"
-                     data-visibility="['off','off','on','on']"
-                     data-start="500"
-                     data-basealign="slide"
-                     data-startslide="0"
-                     data-endslide="5"
-                     style="z-index: 5;"><a class="form_opener_2 btn-yellow border_radius uppercase">Start
-                        Fundraising</a>
-                </div>
 
-            </div>
-        </ul>
+
+<section>
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <img style="height: 650px; width:auto;" src="/images/home1-banner2.png" alt="" data-bgposition="center center" data-bgfit="cover">
+        </div>
+        <div class="col-md-4 col-sm-12">
+        </div>
     </div>
-</div>
-<!--Slider ends-->
+</section>
 
-<%- include partials/header.ejs %>
-
-<!--Signup Form-->
 <button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
 <div id="signupForm" class="tp_overlay">
     <form class="callus top10 clearfix centered" v-on:submit.prevent="onSubmit" novalidate>
@@ -206,6 +125,10 @@
         </div>
     </form>
 </div>
+
+<%- include partials/header.ejs %>
+
+<!--Signup Form-->
 <!--Signup Form ends-->
 
 <!--RB Calculator-->
