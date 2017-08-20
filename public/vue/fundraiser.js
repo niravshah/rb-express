@@ -1,5 +1,6 @@
+
 var vFundraiser = new Vue({
-    el: '#property',
+    el: '#funraiserController',
     mixins: [jwtMixin],
     data: {
         messages: []
@@ -34,3 +35,5 @@ var vFundraiser = new Vue({
         }
     }
 });
+
+
