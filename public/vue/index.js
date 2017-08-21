@@ -1,12 +1,12 @@
 var vSignupForm = new Vue({
     el: '#signupForm',
     data: {
-        amount: '500',
-        title: 'Test',
-        fname: 'Nirav',
-        lname: 'Shah',
-        email: 'n@n.co',
-        mobile: '07596162765'
+        amount: '',
+        title: '',
+        fname: '',
+        lname: '',
+        email: '',
+        mobile: ''
     },
     created: function () {
         $(".loader").fadeOut(400);
