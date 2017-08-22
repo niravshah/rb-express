@@ -21,7 +21,7 @@
                             <li v-if="loggedIn"><a href="#" v-on:click="logout">Logout</a></li>
                             <li v-if="!loggedIn"><a href="/login">Login</a></li>
                             <li v-if="!loggedIn"><a href="/sign-up">Sign Up</a></li>
-                            <li><a href="#" v-on:click="openContactModal">Contact Us</a></li>
+                            <li><a href="" v-on:click.stop.prevent="openContactModal">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
 <div id="contactModalContainer" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div class="modal-overlay closed" id="modal-overlay"></div>
 
-    <div class="modal closed" id="contact-modal">
+    <div class="modal2 closed" id="contact-modal">
         <button v-on:click="close()" class="close-button" id="close-button"><i class="fa fa-close"></i></button>
         <div class="modal-guts">
             <h2 class="uppercase">How can we help?</h2>
