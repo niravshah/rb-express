@@ -18,14 +18,14 @@ var vFirstLogin = new Vue({
         onSubmit: function () {
             if (!this.errors.any()) {
 
-                const url = '/api/auth/first-login';
-                const body = {username: this.username, password: this.password, mobileCode: this.code};
+                var url = '/api/auth/first-login';
+                var body = {username: this.username, password: this.password, mobileCode: this.code};
 
                 this.$http.post(url, body).then(function (res) {
                     // console.log(res);
-                    const token = res.body.token;
+                    var token = res.body.token;
                     if (token) {
-                        const email = res.body.email;
+                        var email = res.body.email;
                         localStorage.setItem('token', token);
                         localStorage.setItem('currentUser', JSON.stringify({
                             email: email,

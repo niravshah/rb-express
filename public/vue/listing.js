@@ -4,8 +4,8 @@ var vListing = new Vue({
         posts: []
     },
     created: function () {
-        const headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
-        const url = '/api/user/posts';
+        var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
+        var url = '/api/user/posts';
 
 
         this.$http.get(url, {headers: headers}).then(function (res) {
@@ -40,9 +40,9 @@ var vListing = new Vue({
 
 Vue.directive('timeleft', function (el, bindings) {
     el.style.backgroundColor = 'yellow';
-    const date1 = new Date().getTime();
-    const date2 = Date.parse(bindings.value.date);
-    const timeDiff = date1 - date2;
+    var date1 = new Date().getTime();
+    var date2 = Date.parse(bindings.value.date);
+    var timeDiff = date1 - date2;
     var daysLeft = Math.ceil(30 - timeDiff / (1000 * 3600 * 24));
     if (daysLeft < 0) {
         daysLeft = 0

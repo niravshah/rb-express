@@ -25,7 +25,7 @@ var vSignup = new Vue({
             if (!this.errors.any()) {
 
 
-                const url = '/api/posts';
+                var url = '/api/posts';
 
                 this.$http.post(url, this.$data).then(function (res) {
                     // console.log(res);

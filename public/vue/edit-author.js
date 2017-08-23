@@ -1,4 +1,4 @@
-var vInfo = new Vue({
+var editAuthorVue = new Vue({
     el: '#editAuthorVue',
     data: {
         messages: [],
@@ -27,7 +27,7 @@ var vInfo = new Vue({
         previewImage: function (event) {
             var _this = this;
             if (event.target.files && event.target.files[0]) {
-                const reader = new FileReader();
+                var reader = new FileReader();
                 reader.onload = function (event2) {
                     this.target = event2.target;
                     _this.url = this.target.result;

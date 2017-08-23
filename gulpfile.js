@@ -1,5 +1,27 @@
 var gulp = require('gulp');
 
-gulp.task('default', function() {
-  // place code for your default task here
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+
+gulp.task('default', ['scripts'], function () {
+    // place code for your default task here
+});
+
+// Concatenate & Minify JS
+gulp.task('scripts', function () {
+    return gulp.src('public/vue/*.js')
+        .pipe(concat('vue.js'))
+        .pipe(gulp.dest('dist'))
+        .pipe(rename('vue.min.js'))
+        .pipe(uglify())
+        .on('error', function (err) {
+            console.log('Error:', err)
+        })
+        .pipe(gulp.dest('dist/js'));
+});
+
+// Watch Files For Changes
+gulp.task('watch', function () {
+    gulp.watch('vue/**/*.js', ['scripts']);
 });

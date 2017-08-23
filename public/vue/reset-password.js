@@ -16,14 +16,14 @@ var vResetPassword = new Vue({
         onSubmit: function () {
             if (!this.errors.any()) {
 
-                const headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
-                const url = '/api/auth/reset-password';
+                var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
+                var url = '/api/auth/reset-password';
 
-                const body = {password: this.password, repeatPassword: this.repeatPassword};
+                var body = {password: this.password, repeatPassword: this.repeatPassword};
 
                 this.$http.post(url, body, {headers: headers}).then(function (res) {
                     console.log(res);
-                    const token = res.body.token;
+                    var token = res.body.token;
                     if (token) {
                         localStorage.setItem('token', token);
                         document.location.href = '/home'

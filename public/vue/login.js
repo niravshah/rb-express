@@ -16,14 +16,14 @@ var vLogin = new Vue({
         onSubmit: function () {
             if (!this.errors.any()) {
 
-                const url = '/api/auth/login';
-                const body = {username: this.username, password: this.password};
+                var url = '/api/auth/login';
+                var body = {username: this.username, password: this.password};
 
                 this.$http.post(url, body).then(function (res) {
                     // console.log(res);
-                    const token = res.body.token;
+                    var token = res.body.token;
                     if (token) {
-                        const email = res.email;
+                        var email = res.email;
                         localStorage.setItem('token', token);
                         localStorage.setItem('currentUser', JSON.stringify({
                             email: email,

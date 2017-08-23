@@ -9,8 +9,8 @@ var vHeader = new Vue({
     },
     methods: {
         openContactModal: function () {
-            const modal = document.querySelector('#contact-modal');
-            const modalOverlay = document.querySelector('#modal-overlay');
+            var modal = document.querySelector('#contact-modal');
+            var modalOverlay = document.querySelector('#modal-overlay');
             modal.classList.toggle('closed');
             modalOverlay.classList.toggle('closed');
         },
@@ -38,8 +38,8 @@ var vContactModal = new Vue({
     },
     methods: {
         close: function () {
-            const modal = document.querySelector('#contact-modal');
-            const modalOverlay = document.querySelector('#modal-overlay');
+            var modal = document.querySelector('#contact-modal');
+            var modalOverlay = document.querySelector('#modal-overlay');
             modal.classList.toggle('closed');
             modalOverlay.classList.toggle('closed');
         }
