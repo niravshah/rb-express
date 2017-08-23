@@ -10,7 +10,7 @@ gulp.task('default', ['scripts'], function () {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function () {
-    return gulp.src(['public/vue/libs/vue.js','public/vue/libs/vue-resource.js','public/vue/libs/vee-validate.js','public/vue/plugins/jwt-plugin.js','public/vue/*.js'])
+    return gulp.src(['public/vue/libs/vue.js','public/vue/libs/vue-resource.js','public/vue/libs/vee-validate.js','public/vue/plugins/jwt-plugin.js'])
         .pipe(concat('vue.js'))
         .pipe(gulp.dest('public/dist'))
         .pipe(rename('vue.min.js'))
