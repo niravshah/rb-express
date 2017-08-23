@@ -12,13 +12,13 @@ gulp.task('default', ['scripts'], function () {
 gulp.task('scripts', function () {
     return gulp.src(['public/vue/libs/vue.js','public/vue/libs/vue-resource.js','public/vue/libs/vee-validate.js','public/vue/plugins/jwt-plugin.js','public/vue/*.js'])
         .pipe(concat('vue.js'))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('public/dist'))
         .pipe(rename('vue.min.js'))
         .pipe(uglify())
         .on('error', function (err) {
             console.log('Error:', err)
         })
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('public/dist'));
 });
 
 // Watch Files For Changes
