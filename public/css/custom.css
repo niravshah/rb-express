@@ -205,6 +205,7 @@ button[disabled] {
     background-color: #cccccc;
     color: #666666;
 }
+
 button:disabled:hover,
 button[disabled]:hover {
     background-color: #cccccc;
@@ -240,8 +241,6 @@ button[disabled]:hover {
     }
 }
 
-
-
 #modal-guts-messageSection .messages {
     width: 400px;
     padding: 10px 0px;
@@ -250,7 +249,7 @@ button[disabled]:hover {
     background: rgba(255, 209, 25, 0.2);
 }
 
-.modal {
+.modal2 {
     /* This way it could be display flex or grid or whatever also. */
     display: block;
 
@@ -263,7 +262,7 @@ button[disabled]:hover {
 
     position: fixed;
 
-    z-index: 100;
+    z-index: 1050;
 
     left: 50%;
     top: 50%;
@@ -306,7 +305,7 @@ button[disabled]:hover {
     padding: 20px 20px 20px 20px;
 }
 
-.modal .close-button {
+.modal2 .close-button {
     position: absolute;
 
     /* don't need to go crazy with z-index here, just sits over .modal-guts */
@@ -324,12 +323,12 @@ button[disabled]:hover {
     font-size: 1.3rem;
 }
 
-.modal h4 {
+.modal2 h4 {
     color: black;
     font-size: 14px;
 }
 
-.modal h3 {
+.modal2 h3 {
     font-family: robotoregular;
     font-size: 22px;
     font-weight: bold;
@@ -338,7 +337,7 @@ button[disabled]:hover {
 
 }
 
-.modal textarea {
+.modal2 textarea {
     width: 100%;
     border: 1px solid #d5dadf;
     border-radius: 4px;
@@ -352,62 +351,83 @@ button[disabled]:hover {
     width: 50px;
     height: 40px;
     text-align: center;
-    font-size: 10px; }
+    font-size: 10px;
+}
+
 .sk-wave .sk-rect {
     background-color: #ffffff;
     height: 100%;
     width: 6px;
     display: inline-block;
     -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
-    animation: sk-waveStretchDelay 1.2s infinite ease-in-out; }
+    animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+}
+
 .sk-wave .sk-rect1 {
     -webkit-animation-delay: -1.2s;
-    animation-delay: -1.2s; }
+    animation-delay: -1.2s;
+}
+
 .sk-wave .sk-rect2 {
     -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s; }
+    animation-delay: -1.1s;
+}
+
 .sk-wave .sk-rect3 {
     -webkit-animation-delay: -1s;
-    animation-delay: -1s; }
+    animation-delay: -1s;
+}
+
 .sk-wave .sk-rect4 {
     -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s; }
+    animation-delay: -0.9s;
+}
+
 .sk-wave .sk-rect5 {
     -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s; }
+    animation-delay: -0.8s;
+}
+
 @-webkit-keyframes sk-waveStretchDelay {
     0%, 40%, 100% {
         -webkit-transform: scaleY(0.4);
-        transform: scaleY(0.4); }
+        transform: scaleY(0.4);
+    }
     20% {
         -webkit-transform: scaleY(1);
-        transform: scaleY(1); } }
+        transform: scaleY(1);
+    }
+}
+
 @keyframes sk-waveStretchDelay {
     0%, 40%, 100% {
         -webkit-transform: scaleY(0.4);
-        transform: scaleY(0.4); }
+        transform: scaleY(0.4);
+    }
     20% {
         -webkit-transform: scaleY(1);
-        transform: scaleY(1); } }
+        transform: scaleY(1);
+    }
+}
 
 /* END - Loader */
 
 /* START - Home Page */
 
-ul.time-left{
+ul.time-left {
     line-height: 44px;
 }
 
-ul.time-left li{
-    width:auto !important;
-    margin:0px 10px !important;
+ul.time-left li {
+    width: auto !important;
+    margin: 0px 10px !important;
 }
 
 /* END - Home Page */
 
-.property_item .price .tag.pull-left{
-    left:0;
-    right:auto;
+.property_item .price .tag.pull-left {
+    left: 0;
+    right: auto;
 }
 
 /* START - Fundraiser Page */
@@ -421,6 +441,7 @@ ul.time-left li{
     text-align: center;
     margin-top: 10px;
 }
+
 #loggedInMenu .btn {
     padding: 10px 10px;
     background-color: #3b5998;
@@ -430,7 +451,7 @@ ul.time-left li{
 }
 
 #loggedInMenu .btn:first-child {
-    width:180px;
+    width: 180px;
 }
 
 #loggedInMenu .btn-live {
@@ -458,12 +479,13 @@ ul.time-left li{
     color: white;
 }
 
-#not-live{
+#not-live {
     width: 100%;
     z-index: 999;
     padding: 10px 20px;
     background-color: #a94442;
-    box-shadow: 0px 4px 0px rgb(255, 209, 25);}
+    box-shadow: 0px 4px 0px rgb(255, 209, 25);
+}
 
 #not-live p {
     color: white;
@@ -473,8 +495,17 @@ ul.time-left li{
     margin: 5px 0px;
 }
 
-#not-live p span{
-    color:rgb(255, 209, 25);
+#not-live p span {
+    color: rgb(255, 209, 25);
 }
 
 /* END - Fundraiser Page */
+
+/* START - Edit Author Page */
+.editAuthorImage {
+    width: auto;
+    height: 220px;
+    display: block;
+}
+
+/* END - Edit Author Page */
