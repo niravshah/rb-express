@@ -37,6 +37,13 @@ var editAuthorVue = new Vue({
         },
         closeBtn: function (command) {
             console.log('Close Button Clicked!', command);
+        },
+        patchAuthorDetails: function (postId, post, jwt) {
+            const headers = new Headers();
+            headers.append('Authorization', 'JWT ' + jwt);
+            const patchUrl = '/api/posts/' + postId + '/author';
+
         }
+
     }
 });
