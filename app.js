@@ -27,7 +27,7 @@ var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views/dist'));
+app.set('views', path.join(__dirname, 'public/dist/views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
