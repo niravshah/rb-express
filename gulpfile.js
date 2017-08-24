@@ -13,7 +13,7 @@ gulp.task('default', ['minifyhtml', 'minifycss','minifyjs','watch'], function ()
 });
 
 gulp.task('minifyjs', function () {
-    return gulp.src('public/vue/**/*.js')
+    return gulp.src('vue/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('public/dist/js'))
 });
