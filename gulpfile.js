@@ -19,6 +19,7 @@ gulp.task('default', ['minifyhtml', 'minifycss', 'minifyjs', 'watch'], function 
 gulp.task('minifyjs', function () {
     return gulp.src('vue/**/*.js')
         .pipe(uglify())
+        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(gulp.dest('public/dist/js'))
 });
 

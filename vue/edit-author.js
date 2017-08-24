@@ -39,9 +39,9 @@ var editAuthorVue = new Vue({
             console.log('Close Button Clicked!', command);
         },
         patchAuthorDetails: function (postId, post, jwt) {
-            const headers = new Headers();
+            var headers = new Headers();
             headers.append('Authorization', 'JWT ' + jwt);
-            const patchUrl = '/api/posts/' + postId + '/author';
+            var patchUrl = '/api/posts/' + postId + '/author';
 
         }
 
