@@ -17,11 +17,13 @@
 <script type="text/javascript" src="/js/vue.min.js"></script>
 <script type="text/javascript" src="/js/vue-resource.min.js"></script>
 <script type="text/javascript" src="/js/vee-validate.min.js"></script>
-<script type="text/javascript" src="/dist/js/plugins/jwt-plugin.min.js"></script>
+<script type="text/javascript" src="/dist/js/plugins/jwt-plugin.js"></script>
+<script type="text/javascript" src="/dist/js/plugins/s3-plugin.js"></script>
 
 <script>
     Vue.use(VeeValidate);
     Vue.use(JwtPlugin);
+    Vue.use(S3Plugin);
 </script>
 
 <script src="/dist/js/header.js"></script>

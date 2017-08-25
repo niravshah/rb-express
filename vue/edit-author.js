@@ -38,10 +38,31 @@ var editAuthorVue = new Vue({
         closeBtn: function (command) {
             console.log('Close Button Clicked!', command);
         },
-        patchAuthorDetails: function (postId, post, jwt) {
-            var headers = new Headers();
-            headers.append('Authorization', 'JWT ' + jwt);
-            var patchUrl = '/api/posts/' + postId + '/author';
+        saveAuthorDetails: function () {
+            var files = $('#photoBrowse')[0].files;
+            if (files.length) {
+                var file = files[0];
+                var fileName = file.name;
+                Vue.uploadPhoto(file, fileName, function (err, data) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        this.author.avatar = data.Location;
+                        this.patchAuthorDetails();
+                    }
+                });
+            }
+            this.patchAuthorDetails();
+        },
+        patchAuthorDetails: function () {
+            var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
+            var patchUrl = '/api/posts/' + this.postSid + '/author';
+
+            this.$http.patch(patchUrl, this.author, {headers: headers}).then(function (res) {
+                console.log(res);
+            }, function (err) {
+                console.log('Error', err);
+            })
 
         }
 
