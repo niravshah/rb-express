@@ -32,7 +32,7 @@ var S3Plugin = {
 
         Vue.uploadPhoto = function (photoFile, photoFileName, callback) {
 
-            if (Vue.s3 == 'undefined') {
+            if (Vue.s3 == undefined) {
                 Vue.s3Init();
             }
 

@@ -10,15 +10,17 @@ var cleanCSS = require('gulp-clean-css');
 var critical = require('critical').stream;
 var gutil = require('gulp-util');
 
-
-
 gulp.task('default', ['minifyhtml', 'minifycss', 'minifyjs', 'watch'], function () {
+    // place code for your default task here
+});
+
+gulp.task('prod', ['minifyhtml', 'minifycss', 'minifyjs'], function () {
     // place code for your default task here
 });
 
 gulp.task('minifyjs', function () {
     return gulp.src('vue/**/*.js')
-        .pipe(uglify())
+        .pipe(gutil.env.type === 'prod' ? uglify() : gutil.noop())
         .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(gulp.dest('public/dist/js'))
 });

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "debug": "DEBUG=rb-express:server node --inspect app.js"
+    "debug": "DEBUG=rb-express:server node --inspect app.js",
+    "gd": "gulp --type=dev",
+    "gp": "gulp --type=prod"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
