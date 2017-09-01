@@ -50,14 +50,14 @@
                     <div class="row top15 post_meta">
                     <span><i class="icon-user"></i>
                         <%= titlecase(post.author.fname) %> <%= titlecase(post.author.lname) %></span>
-                        <span><i class=" icon-calendar"></i> <%= formatDate(post.created) %></span>
+                        <span style="padding-left: 20px;"><i class=" icon-calendar"></i> <%= formatDate(post.created) %></span>
                     </div>
-
                     <div class="row top30"><img style="max-width: 100%" src="<%= post.image %>"
                                                 alt="<%= post.title %>"/>
                     </div>
-                    <div class="row top30" innerHtml="<%= post.story %>"></div>
-
+                    <div class="row top30">
+                        <%= post.story %>
+                    </div>
                 </div>
                 <aside class="col-md-4 col-xs-12">
                     <div class="row" id="donateRow" style="background: white">
@@ -78,7 +78,7 @@
                             <% } %>
                         </div>
                     </div>
-                    <div class="row pt20 pb20 bb1p">
+                    <div class="row pt20 pb40 bb1p">
                         <div class="col-sm-4">
                             <div class="agent_wrap">
                                 <div class="image">
@@ -94,8 +94,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div v-if="isAuthorLogin()" id="loggedInMenu" class="bb1p row pb20">
                         <div class="col-md-12">
                             <div id="editBtn" class="row">
@@ -117,8 +115,8 @@
                                                ga-event-action="'post-edit-btn'"
                                                ga-event-label="userSid"
                                                class="dropdown-item"
-                                               href="edit-fundraise" v-on:click="scrollTop()">Edit
-                                                Fundraiser</a>
+                                               href="/fundraisers/<%=post.sid%>/edit">
+                                                Edit Fundraiser</a>
                                             <a ga-on="'click'" ga-event-category="post.sid"
                                                ga-event-action="'post-edit-author-btn'"
                                                ga-event-label="userSid"

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <%- include partials/meta.ejs %>
+    <title>Raise Better</title>
+    <base href="/fundraisers/<%= post.sid %>/edit-author">
+
+    <meta name="post-sid" content="<%= post.sid %>">
+    <meta name="author-sid" content="<%= post.author.sid %>">
+
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
+
+</head>
+<body>
+<%- include partials/header.ejs %>
+<%- include partials/loader.ejs %>
+
+<!-- Page Banner Start-->
+<section class="page-banner padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<div id="editVue">
+    <section id="property" class="bg_edit">
+        <div class="container property-details">
+            <div class="row pb20 pt20">
+                <h2 class="text-uppercase" style="display: inline;">Edit Fundraiser Details</h2>
+            </div>
+            <div class="row pb40">
+                <form novalidate>
+                    <div class="row pt20">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="title">Title :</label>
+                                        <input type="text" class="form-control" id="title" name="title"
+                                               v-model="post.title" v-validate="'required'">
+                                        <small class="error"
+                                               v-show="errors.has('post.title')">
+                                            Title is required.
+                                        </small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="story">Story :</label>
+                                        <textarea class="form-control" rows="10" id="story" name="story"
+                                                  v-model="post.story" v-validate="'required'"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="target">Target :</label>
+                                        <input type="text" class="form-control"
+                                               id="target" name="target"
+                                               v-model="post.target" v-validate="'required'">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="target">Currency :</label><br/>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   name="currency" id="currency" value="£"
+                                                   v-model="post.currency" v-validate="'required'">GBP</label>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   name="currency" id="currency" value="€"
+                                                   v-model="post.currency" v-validate="'required'">EUR</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="photoBrowse">Change Post Image: </label><br/>
+                                    <label class="btn btn-primary btn-file">
+                                        Browse <input id="photoBrowse" type="file" style="display: none;"
+                                                      accept="image/*"
+                                                      v-on:change="previewImage">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <div>
+                                        <label for="oldImage">Old Image:</label>
+                                        <img id="oldImage" class="editAuthorImage" v-bind:src="post.image">
+                                    </div>
+                                </div>
+                                <div clas="form-group col-md-12 col-sm-12">
+                                    <div v-if="url != ''">
+                                        <label for="newImage">New Image :</label>
+                                        <img id="newImage" class="editAuthorImage" v-bind:src="url">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row pt20">
+                        <div class="float-right">
+                            <button type="submit" v-on:click.stop.prevent="saveDetails()" class="btn btn-yellow">Save
+                                Changes
+                            </button>
+                            <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-white">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Changes will not be saved?</h4>
+            </div>
+            <div class="modal-body">
+                <p>You pressed the Close button. Changes will not be save.</p>
+                <p>Click Close to discard changes. Or Cancel to return to editing</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="closeBtn('close')" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-default" (click)="closeBtn('cancel')" data-dismiss="modal">Cancel
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
+
+<script src="/dist/js/edit-fundraiser.js"></script>
+
+</body>
+</html>
+

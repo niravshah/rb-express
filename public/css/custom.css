@@ -517,9 +517,9 @@ ul.time-left li {
 #not-live {
     width: 100%;
     z-index: 999;
-    padding: 10px 20px;
-    background-color: #a94442;
-    box-shadow: 0px 4px 0px rgb(255, 209, 25);
+    padding: 5px 20px;
+    background-color: rgba(31,63,129,.75);
+    box-shadow: 0 5px 0 #ce152c;
 }
 
 #not-live p {
