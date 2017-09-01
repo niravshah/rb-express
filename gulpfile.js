@@ -44,7 +44,7 @@ gulp.task('minifyhtml', function () {
 gulp.task('watch', function () {
     gulp.watch('views/**/*.ejs', ['minifyhtml']);
     gulp.watch('public/css/*.css', ['minifycss']);
-    gulp.watch('public/vue/**/*.js', ['minifyjs']);
+    gulp.watch('vue/**/*.js', ['minifyjs']);
 });
 
 gulp.task('critical', function () {

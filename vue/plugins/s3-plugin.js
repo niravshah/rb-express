@@ -1,9 +1,10 @@
 var S3Plugin = {
     install: function (Vue, options) {
 
-        Vue.s3init = function (callback) {
+        Vue.s3Init = function (callback) {
 
             var albumBucketName = 'raisebetter';
+
             var bucketRegion = 'eu-west-2';
             var IdentityPoolId = 'eu-west-2:07e95cee-5f85-4371-bdeb-d15b1090b4e0';
 

@@ -39,6 +39,7 @@ var editAuthorVue = new Vue({
             console.log('Close Button Clicked!', command);
         },
         saveAuthorDetails: function () {
+            var _this = this;
             var files = $('#photoBrowse')[0].files;
             if (files.length) {
                 var file = files[0];
@@ -47,19 +48,23 @@ var editAuthorVue = new Vue({
                     if (err) {
                         console.log(err);
                     } else {
-                        this.author.avatar = data.Location;
-                        this.patchAuthorDetails();
+                        _this.author.avatar = data.Location;
+                        _this.patchAuthorDetails();
                     }
                 });
+            } else {
+                this.patchAuthorDetails();
             }
-            this.patchAuthorDetails();
+
         },
         patchAuthorDetails: function () {
+            var _this = this;
             var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
             var patchUrl = '/api/posts/' + this.postSid + '/author';
 
             this.$http.patch(patchUrl, this.author, {headers: headers}).then(function (res) {
                 console.log(res);
+                document.location.href = '/fundraisers/' + _this.postSid;
             }, function (err) {
                 console.log('Error', err);
             })
