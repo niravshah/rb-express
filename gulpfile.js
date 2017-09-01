@@ -11,7 +11,7 @@ var critical = require('critical').stream;
 var gutil = require('gulp-util');
 
 gulp.task('default', ['minifyhtml', 'minifycss', 'minifyjs', 'watch'], function () {
-    // place code for your default task here
+    console.log('Completed execution of Gulp Default');
 });
 
 gulp.task('prod', ['minifyhtml', 'minifycss', 'minifyjs'], function () {
