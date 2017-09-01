@@ -15,13 +15,15 @@ gulp.task('default', ['minifyhtml', 'minifycss', 'minifyjs', 'watch'], function 
 });
 
 gulp.task('prod', ['minifyhtml', 'minifycss', 'minifyjs'], function () {
-    // place code for your default task here
+    console.log('Completed execution of Gulp Prod');
 });
 
 gulp.task('minifyjs', function () {
     return gulp.src('vue/**/*.js')
         .pipe(gutil.env.type === 'prod' ? uglify() : gutil.noop())
-        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+        .on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
         .pipe(gulp.dest('public/dist/js'))
 });
 
@@ -45,7 +47,9 @@ gulp.task('watch', function () {
 
 gulp.task('critical', function () {
     return gulp.src('public/dist/views/critical.html')
-        .pipe(critical({base: 'public/', inline: true,css: ['public/css/bootstrap.min.css']}))
-        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(critical({base: 'public/', inline: true, css: ['public/css/bootstrap.min.css']}))
+        .on('error', function (err) {
+            gutil.log(gutil.colors.red(err.message));
+        })
         .pipe(gulp.dest('public/dist/views/critical-inline.html'));
 });
