@@ -1,8 +1,1 @@
-var vInfo = new Vue({
-    el: '#info',
-    data: {
-        messages: []
-    },
-    computed: {},
-    methods: {}
-});
+var vInfo=new Vue({el:"#info",data:{messages:[]},computed:{},methods:{}});
