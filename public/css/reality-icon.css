@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'reality-icons';
-    src:    url('../fonts/icomoon.eot?sace39');
-    src:    url('../fonts/icomoon.eot?sace39#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?sace39') format('truetype'),
-        url('../fonts/icomoon.woff?sace39') format('woff'),
-        url('../fonts/icomoon.svg?sace39#icomoon') format('svg');
+    src:    url('/fonts/icomoon.eot?sace39');
+    src:    url('/fonts/icomoon.eot?sace39#iefix') format('embedded-opentype'),
+        url('/fonts/icomoon.ttf?sace39') format('truetype'),
+        url('/fonts/icomoon.woff?sace39') format('woff'),
+        url('/fonts/icomoon.svg?sace39#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }

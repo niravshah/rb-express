@@ -28,9 +28,11 @@ gulp.task('minifyjs', function () {
 });
 
 gulp.task('minifycss', function () {
-    return gulp.src('public/css/custom.css')
+    return gulp.src(['public/css/bootstrap.min.css','public/css/font-awesome.min.css','public/css/reality-icon.css','public/css/search.min.css'
+        ,'public/css/style.min.css','public/css/circle.css','public/css/custom.css'])
+        .pipe(concat('all.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('public/dist/css'));
+        .pipe(gulp.dest('public/dist/css/'));
 });
 
 gulp.task('minifyhtml', function () {
