@@ -434,6 +434,37 @@ ul.time-left li {
     right: auto;
 }
 
+/* START - Index Page*/
+
+#homeSection div[class^='col-'] {
+    height: 100%;
+}
+
+#homeSection img {
+    height: 100%;
+    width: 100%;
+}
+
+#signupForm {
+    background: rgba(31, 63, 129, 1)
+}
+
+#signupForm form {
+    padding: 40px 20px;
+}
+
+#signupForm input[type="text"], #signupForm input[type="email"] {
+    border: 1px solid #d5dadf;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #000;
+}
+
+/* END - Index Page*/
+
 /* START - Fundraiser Page */
 #donateBtn {
     width: 100%;

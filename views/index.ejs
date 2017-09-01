@@ -13,121 +13,117 @@
 <body>
 <%- include partials/loader.ejs %>
 
-
-<section>
-    <div class="row">
-        <div class="col-md-8 col-sm-12">
-            <img style="height: 650px; width:auto;" src="/images/home1-banner2.png" alt="" data-bgposition="center center" data-bgfit="cover">
+<section id="homeSection">
+    <div class="row" style="height: 670px;">
+        <div id="homeImage" class="col-md-8 col-sm-12 hidden-sm hidden-xs" style="padding: 0px;">
+            <img src="/images/home1-banner3.png" alt="Raise Better">
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div id="signupForm" class="col-md-4 col-sm-12">
+            <form v-on:submit.prevent="onSubmit" novalidate>
+                <h2 class="text-uppercase t_white bottom40 text-center">Low Fees. Instant Payments.</h2>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12 t_white bottom15">
+                        <h4>I want to raise:</h4>
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <div class="single-query bottom15">
+                            <div class="input-group">
+                                <input type="text" class="keyword-input t_yellow"
+                                       style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"
+                                       value="5000"
+                                       name="amount" v-model="amount" v-validate="'required'">
+                                <span class="input-group-addon"
+                                      style="font-family: 'roboto_condensedbold';font-size: 20px;">GBP</span>
+                            </div>
+                            <small class="error" v-show="errors.has('amount')">
+                                {{ errors.first('amount')}}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="t_white col-md-12 bottom15">
+                        <h4>to help with:</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="single-query bottom15">
+                            <input type="text" class="keyword-input lowercase" placeholder="Title of your Fundraiser"
+                                   name="title" v-model="title" v-validate="'required'">
+                            <small class="error" v-show="errors.has('title')">
+                                {{ errors.first('title') }}
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="t_white col-md-12 bottom15">
+                        <h4>your full name:</h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="bottom15" style="width: 100%">
+                            <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%"
+                                   name="fname" v-model="fname" v-validate="'required'">
+                            <small class="error" v-show="errors.has('fname')">
+                                {{ errors.first('fname') }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="bottom15" style="width: 100%">
+                            <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%"
+                                   name="lname" v-model="lname" v-validate="'required'">
+                            <small class="error" v-show="errors.has('lname')">
+                                {{ errors.first('lname') }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="t_white col-md-12 bottom15">
+                        <h4>your email address:</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="bottom15" style="width: 100%">
+                            <input type="email" class="keyword-input" placeholder="Email" style="width: 100%"
+                                   name="email" v-model="email" v-validate="'required|email'">
+                            <small class="error" v-show="errors.has('email')">
+                                {{ errors.first('email') }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="t_white col-md-12 bottom15">
+                        <h4>your mobile phone number:</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="bottom15" style="width: 100%">
+                            <input type="text" class="keyword-input" style="width: 100%"
+                                   name="mobile" v-model="mobile"
+                                   v-validate="{'required':true,'regex':/^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/}">
+                            <small class="error" v-show="errors.has('mobile')">
+                                Phone number is not valid (Ex. 07222555555)
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-right form-group top30">
+                        <button v-bind:disabled="!isValid" type="submit"
+                                class="border_radius btn-yellow text-uppercase">Start
+                            Fundraising Now
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>
 
-<button type="button" class="form_opener"><i class="fa fa-bars"></i></button>
-<div id="signupForm" class="tp_overlay">
-    <form class="callus top10 clearfix centered" v-on:submit.prevent="onSubmit" novalidate>
-        <h2 class="text-uppercase t_white bottom40 text-center">Low Fees. Instant Payments.</h2>
-
-        <div class="row">
-            <div class="col-md-4 col-sm-12 col-xs-12 t_white bottom15">
-                <h4>I want to raise:</h4>
-            </div>
-            <div class="col-md-8 col-sm-12 col-xs-12">
-                <div class="single-query bottom15">
-                    <div class="input-group">
-                        <input type="text" class="keyword-input t_yellow"
-                               style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"
-                               value="5000"
-                               name="amount" v-model="amount" v-validate="'required'">
-                        <span class="input-group-addon"
-                              style="font-family: 'roboto_condensedbold';font-size: 20px;">GBP</span>
-                    </div>
-                    <small class="error" v-show="errors.has('amount')">
-                        {{ errors.first('amount')}}
-                    </small>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="t_white col-md-12 bottom15">
-                <h4>to help with:</h4>
-            </div>
-            <div class="col-md-12">
-                <div class="single-query bottom15">
-                    <input type="text" class="keyword-input lowercase" placeholder="Title of your Fundraiser"
-                           name="title" v-model="title" v-validate="'required'">
-                    <small class="error" v-show="errors.has('title')">
-                        {{ errors.first('title') }}
-                    </small>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="t_white col-md-12 bottom15">
-                <h4>your full name:</h4>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input" placeholder="First Name" style="width: 100%"
-                           name="fname" v-model="fname" v-validate="'required'">
-                    <small class="error" v-show="errors.has('fname')">
-                        {{ errors.first('fname') }}
-                    </small>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input" placeholder="Last Name" style="width: 100%"
-                           name="lname" v-model="lname" v-validate="'required'">
-                    <small class="error" v-show="errors.has('lname')">
-                        {{ errors.first('lname') }}
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="t_white col-md-12 bottom15">
-                <h4>your email address:</h4>
-            </div>
-            <div class="col-md-12">
-                <div class="bottom15" style="width: 100%">
-                    <input type="email" class="keyword-input" placeholder="Email" style="width: 100%"
-                           name="email" v-model="email" v-validate="'required|email'">
-                    <small class="error" v-show="errors.has('email')">
-                        {{ errors.first('email') }}
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="t_white col-md-12 bottom15">
-                <h4>your mobile phone number:</h4>
-            </div>
-            <div class="col-md-12">
-                <div class="bottom15" style="width: 100%">
-                    <input type="text" class="keyword-input" style="width: 100%"
-                           name="mobile" v-model="mobile"
-                           v-validate="{'required':true,'regex':/^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/}">
-                    <small class="error" v-show="errors.has('mobile')">
-                        Phone number is not valid (Ex. 07222555555)
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 text-right form-group top30">
-                <button v-bind:disabled="!isValid" type="submit" class="border_radius btn-yellow text-uppercase">Start
-                    Fundraising Now
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<%- include partials/header.ejs %>
+<%- include partials/header.ejs%>
 
 <!--Signup Form-->
 <!--Signup Form ends-->
@@ -261,7 +257,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 bottom30">
-                <!--h2 class="uppercase">How is <strong>Raise Better</strong> different?</h2-->
                 <h2 class="uppercase">How is <span class="rb_logo"></span> different ? </h2>
             </div>
             <div class="col-sm-8 col-md-10">
