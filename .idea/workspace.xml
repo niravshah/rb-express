@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dd8b138e-0314-40e9-9914-4f7e249dda15" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.min.css" afterPath="$PROJECT_DIR$/public/css/style.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/styles.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/styles.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/styles.ejs" afterPath="$PROJECT_DIR$/views/partials/styles.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,11 +23,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="styles.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="styles.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/styles.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="942" column="12" lean-forward="false" selection-start-line="942" selection-start-column="12" selection-end-line="942" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.min.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/style.min.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="0" column="762" lean-forward="false" selection-start-line="0" selection-start-column="762" selection-end-line="0" selection-end-column="762" />
               <folding />
             </state>
           </provider>
@@ -42,19 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compute</find>
-      <find>computed</find>
-      <find>(click</find>
-      <find>modal</find>
-      <find>computed:</find>
-      <find>b</find>
-      <find>bo</find>
-      <find>boo</find>
-      <find>boots</find>
-      <find>bootsna</find>
-      <find>bootsnav.js</find>
-      <find>bootsnav.j</find>
-      <find>bootsnav.</find>
       <find>bootsnav.min.</find>
       <find>const</find>
       <find>font</find>
@@ -72,6 +81,19 @@
       <find>i</find>
       <find>ico</find>
       <find>icomoon</find>
+      <find>r</find>
+      <find>robot</find>
+      <find>roboto</find>
+      <find>/roboto</find>
+      <find>/foroboto</find>
+      <find>/fonroboto</find>
+      <find>/fontroboto</find>
+      <find>/font/roboto</find>
+      <find>'/font/roboto</find>
+      <find>robotocondensed-bold-webfont.woff</find>
+      <find>robotocondensed-bold-webfont.woff</find>
+      <find>robotocondensed-bold-webfont.woff§</find>
+      <find>../fonts/</find>
     </findStrings>
     <replaceStrings>
       <replace>/stylesheets/</replace>
@@ -81,6 +103,7 @@
       <replace>&lt;%=</replace>
       <replace>var</replace>
       <replace>/fonts</replace>
+      <replace>/fonts/</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/public/bower_components</dir>
@@ -92,7 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/partials/edit-fundraiser.ejs" />
         <option value="$PROJECT_DIR$/views/partials/edit-author.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/public/vue/mixins/jwt-plugin.js" />
@@ -143,6 +165,7 @@
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/css/reality-icon.css" />
         <option value="$PROJECT_DIR$/views/partials/styles.ejs" />
+        <option value="$PROJECT_DIR$/public/css/style.min.css" />
       </list>
     </option>
   </component>
@@ -261,6 +284,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rb-express" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rb-express" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="style.css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rb-express" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rb-express" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,12 +451,12 @@
       <updated>1502493443714</updated>
       <workItem from="1502493444856" duration="101497000" />
       <workItem from="1504163328470" duration="3871000" />
-      <workItem from="1504250076989" duration="5939000" />
+      <workItem from="1504250076989" duration="6140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111307000" />
+    <option name="totallyTimeSpent" value="111508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
@@ -438,13 +501,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/jquery-2.1.4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/jquery.sticky.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -649,14 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14130">
-          <caret line="942" column="12" lean-forward="false" selection-start-line="942" selection-start-column="12" selection-end-line="942" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -755,8 +803,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/styles.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="942" column="12" lean-forward="false" selection-start-line="942" selection-start-column="12" selection-end-line="942" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="0" column="762" lean-forward="false" selection-start-line="0" selection-start-column="762" selection-end-line="0" selection-end-column="762" />
           <folding />
         </state>
       </provider>
