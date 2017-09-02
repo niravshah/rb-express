@@ -1,7 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var utils = require('./api/utils');
+var Post = require('../models/post');
 
-const Post = require('../models/post');
+var router = express.Router();
 
 router.get('/', function (req, res, next) {
 
@@ -96,31 +97,12 @@ router.get('/fundraisers/:id/edit', function (req, res) {
 });
 
 router.get('/fundraisers/:id/go-live', function (req, res) {
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+
+    utils.getStripeOauthLink(req.params.id, function (err, post, link) {
         if (err) {
             res.render('error', {message: err.message});
         } else {
-
-            var post = posts[0];
-
-            var oauthLink = 'https://connect.stripe.com/oauth/authorize'
-                + '?client_id=' + process.env.STRIPE_CA
-                + '&scope=read_write'
-                + '&response_type=code'
-                + '&state=' + post.sid
-                + '&stripe_user[first_name]=' + post.author.fname
-                + '&stripe_user[last_name]=' + post.author.lname
-                + '&stripe_user[product_description]=' + post.title
-                + '&stripe_user[business_type]=sole_prop'
-                + '&stripe_user[url]=' + 'https://raisebetter.uk/fundraisers/' + post.sid
-                + '&stripe_user[business_name]=' + post.title
-                + '&stripe_user[phone_number]=' + post.author.mobile
-                + '&stripe_user[email]=' + post.author.email;
-
-
-            res.render('stripe-setup', {post: posts[0], stripeLink: oauthLink});
+            res.render('stripe-setup', {post: post, stripeLink: link});
         }
     });
 });
@@ -130,20 +112,22 @@ router.get('/stripe-connect', function (req, res) {
         res.render('error', {message: req.query.error_description});
     } else {
         if (req.query.state) {
+            if (req.query.code) {
+                utils.getStripeAuthCode(req.query.state, req.query.code, function (err, post) {
 
-            Post.find({
-                sid: req.query.state
-            }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
-                if (err) {
-                    res.render('error', {message: err.message});
-                } else {
-                    res.render('stripe-redirect', {post: posts[0]});
-                }
-            });
+                    if (err) {
+                        res.render('error', {message: err.message});
+                    } else {
+                        res.render('stripe-redirect', {post: post});
+                    }
+                });
+
+            } else {
+                res.render('error', {message: "No Grant Code received from Stripe"});
+            }
         } else {
             res.render('error', {message: "No Fundraiser specified"});
         }
-
     }
 
 });

@@ -5,6 +5,7 @@ const Customer = require('../../models/customer');
 const Charge = require('../../models/charge');
 const Activity = require('../../models/activity');
 const Query = require('../../models/query');
+const unirest = require('unirest');
 
 const PhoneVerification = require('../../models/phone-verification');
 
@@ -144,6 +145,89 @@ module.exports = {
         newQuery.existingUser = existingUser;
         newQuery.save(function (err, query) {
             callback(err, query)
+        });
+    },
+    getStripeAuthCode: function (post_sid, grant_code, cb) {
+
+        Post.find({
+            sid: post_sid
+        }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+
+            if (err) {
+                cb(err, null);
+            } else {
+                if (posts.length > 0) {
+                    unirest.post('https://connect.stripe.com/oauth/token')
+                        .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
+                        .send({
+                            client_secret: process.env.STRIPE_KEY,
+                            grant_type: 'authorization_code',
+                            code: grant_code
+                        })
+                        .end(function (response) {
+                            if (response.ok) {
+                                // console.log(response.body);
+
+                                var body = response.body;
+                                var access_token = body.access_token;
+                                var refresh_token = body.refresh_token;
+                                var stripe_user_id = body.stripe_user_id;
+                                var scope = body.scope;
+                                var livemode = body.livemode;
+
+                                utils.createAccount(access_token, refresh_token, stripe_user_id, livemode, scope, function (err, account) {
+                                    if (err) {
+                                        cb(err, null);
+                                    } else {
+                                        utils.updatePostWithAccount(post_sid, account, function (err, post) {
+                                            if (err) {
+                                                cb(err, null);
+                                            } else {
+                                                cb(null, post);
+                                            }
+                                        });
+                                    }
+                                });
+
+                            } else {
+                                cb({code: response.code, message: response.body.error_description}, null);
+                            }
+                        });
+                } else {
+                    cb({message: 'Post with the id ' + post_sid + 'not found'}, null, null)
+                }
+            }
+        });
+    },
+    getStripeOauthLink: function (post_sid, cb) {
+        Post.find({
+            sid: post_sid
+        }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+            if (err) {
+                cb(err, null, null);
+            } else {
+
+                if (posts.length > 0) {
+                    var post = post[0];
+                    var oauthLink = 'https://connect.stripe.com/oauth/authorize'
+                        + '?client_id=' + process.env.STRIPE_CA
+                        + '&scope=read_write'
+                        + '&response_type=code'
+                        + '&state=' + post.sid
+                        + '&stripe_user[first_name]=' + post.author.fname
+                        + '&stripe_user[last_name]=' + post.author.lname
+                        + '&stripe_user[product_description]=' + post.title
+                        + '&stripe_user[business_type]=sole_prop'
+                        + '&stripe_user[url]=' + 'https://raisebetter.uk/fundraisers/' + post.sid
+                        + '&stripe_user[business_name]=' + post.title
+                        + '&stripe_user[phone_number]=' + post.author.mobile
+                        + '&stripe_user[email]=' + post.author.email;
+                    cb(null, post, oauthLink);
+
+                } else {
+                    cb({message: 'Post with the id ' + post_sid + 'not found'}, null, null)
+                }
+            }
         });
     }
 };
