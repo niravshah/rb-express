@@ -1,11 +1,10 @@
-
 var vFundraiser = new Vue({
     el: '#funraiserController',
     data: {
         messages: []
     },
     created: function () {
-        $(".loader").fadeOut(400);
+        $(".loader").fadeOut(200);
     },
     computed: {},
     methods: {

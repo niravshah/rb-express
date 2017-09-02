@@ -98,13 +98,32 @@ router.get('/fundraisers/:id/edit', function (req, res) {
 router.get('/fundraisers/:id/go-live', function (req, res) {
     Post.find({
         sid: req.params.id
-    }).exec(function (err, posts) {
+    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
         if (err) {
             res.render('error', {message: err.message});
         } else {
-            res.render('go-live', {post: posts[0]});
+
+            var post = posts[0];
+
+            var oauthLink = 'https://connect.stripe.com/oauth/authorize'
+                + '?client_id=' + process.env.STRIPE_CA
+                + '&scope=read_write'
+                + '&response_type=code'
+                + '&state=' + post.sid
+                + '&stripe_user[first_name]=' + post.author.fname
+                + '&stripe_user[last_name]=' + post.author.lname
+                + '&stripe_user[product_description]=' + post.title
+                + '&stripe_user[business_type]=sole_prop'
+                + '&stripe_user[url]=' + 'https://raisebetter.uk/fundraisers/' + post.sid
+                + '&stripe_user[business_name]=' + post.title
+                + '&stripe_user[phone_number]=' + post.author.mobile
+                + '&stripe_user[email]=' + post.author.email;
+
+
+            res.render('go-live', {post: posts[0], stripeLink: oauthLink});
         }
-    });});
+    });
+});
 
 
 module.exports = router;
