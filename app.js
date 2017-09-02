@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -25,6 +24,7 @@ initPassport(passport);
 var index = require('./routes/index');
 var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);
+var stripe = require('./routes/api/stripe')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'public/dist/views'));
@@ -41,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(index);
 app.use(login);
 app.use(posts);
+app.use(stripe);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

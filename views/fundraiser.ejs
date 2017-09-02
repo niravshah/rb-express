@@ -7,6 +7,7 @@
 
     <meta name="post-sid" content="<%= post.sid %>">
     <meta name="author-sid" content="<%= post.author.sid %>">
+    <meta name="account-sid" content="<%= post.account.sid %>">
 
     <%- include partials/ga.ejs %>
     <%- include partials/styles.ejs %>
@@ -111,16 +112,16 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu p10">
-                                            <a ga-on="'click'" ga-event-category="<%=post.sid%>"
+                                            <a ga-on="'click'" ga-event-category="<%= post.sid %>"
                                                ga-event-action="'post-edit-btn'"
                                                ga-event-label="userSid"
                                                class="dropdown-item"
-                                               href="/fundraisers/<%=post.sid%>/edit">
+                                               href="/fundraisers/<%= post.sid %>/edit">
                                                 Edit Fundraiser</a>
                                             <a ga-on="'click'" ga-event-category="post.sid"
                                                ga-event-action="'post-edit-author-btn'"
                                                ga-event-label="userSid"
-                                               href="/fundraisers/<%=post.sid%>/edit-author"
+                                               href="/fundraisers/<%= post.sid %>/edit-author"
                                                class="dropdown-item" v-on:click="scrollTop()">Edit
                                                 Author</a>
                                         </div>
@@ -133,7 +134,7 @@
                                     <a ga-on="'click'" ga-event-category=post.sid
                                        ga-event-action="'post-go-live-btn'"
                                        ga-event-label="userSid"
-                                       href="/fundraisers/<%=post.sid%>/go-live"
+                                       href="/fundraisers/<%= post.sid %>/go-live"
                                        v-on:click="scrollTop()" type="button" class="btn btn-live">
                                         <span class="fa fa-bolt"></span>
                                         Go Live!
@@ -153,9 +154,43 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="row pt10">
+                            <div id="stripeIntegration" class="row pt10">
                                 <div class="col-md-12 col-sm-12">
-                                    <app-stripe-connect-status></app-stripe-connect-status>
+                                    <table class="table table-striped table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center uppercase" colspan="2">Stripe Integration Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><b>Connected</b></td>
+                                            <td class="text-right">
+                                                <span v-if="!connected" class="red"><i class="fa fa-times-circle"></i></span>
+                                                <span v-if="connected" class="green"><i class="fa fa-check-circle"></i></span>
+                                            </td>
+                                        </tr>
+
+                                        <tr v-if="connected">
+                                            <td><b>Enabled</b></td>
+                                            <td class="text-right">
+                                                <span class="green" v-if="chargesEnabled"><i
+                                                            class="fa fa-check-circle"></i></span>
+                                                <span class="red" v-if="!chargesEnabled"><i
+                                                            class="fa fa-times-circle"></i></span>
+                                            </td>
+                                        </tr>
+                                        <tr v-if="connected">
+                                            <td><b>Verified</b></td>
+                                            <td class="text-right">
+                                                <span class="green" v-if="detailsSubmitted"><i
+                                                            class="fa fa-check-circle"></i></span>
+                                                <span class="red" v-if="!detailsSubmitted"><i
+                                                            class="fa fa-times-circle"></i></span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <% } %>

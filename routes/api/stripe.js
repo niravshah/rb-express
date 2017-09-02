@@ -1,57 +1,13 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
+var stripe = require('stripe')(process.env.STRIPE_KEY);
+var unirest = require('unirest');
+var utils = require('./utils');
 
-const stripe = require('routes/api/stripe')(process.env.STRIPE_KEY);
-
-const unirest = require('unirest');
-const utils = require('./utils');
-
-const Post = require('../../models/post');
-const Account = require('../../models/account');
+var Post = require('../../models/post');
+var Account = require('../../models/account');
 
 module.exports = function (passport) {
-
-    router.post('/api/stripe/auth-code', passport.authenticate('jwt', {
-        failWithError: true
-    }), function (req, res, next) {
-        // console.log('Request Body: ', req.body);
-        unirest.post('https://connect.stripe.com/oauth/token')
-            .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
-            .send({client_secret: config.STRIPE_KEY, grant_type: 'authorization_code', code: req.body.code})
-            .end(function (response) {
-                if (response.ok) {
-                    // console.log(response.body);
-
-                    var body = response.body;
-                    var access_token = body.access_token;
-                    var refresh_token = body.refresh_token;
-                    var stripe_user_id = body.stripe_user_id;
-                    var scope = body.scope;
-                    var livemode = body.livemode;
-
-                    utils.createAccount(access_token, refresh_token, stripe_user_id, livemode, scope, function (err, account) {
-                        if (err) {
-                            return res.status(500).json(err);
-                        } else {
-                            utils.updatePostWithAccount(req.body.post, account, function (err, post) {
-                                if (err) {
-
-                                } else {
-                                    res.json({message: 'Successfully added the account to the Post'});
-                                }
-                            });
-                        }
-                    });
-
-                } else {
-                    //  console.log(response.body, response.status, response.statusType);
-                    return res.status(response.code).json(response.body);
-                }
-            });
-
-    }, function (error, req, res, next) {
-        return res.status(500).json({message: error.message});
-    });
 
 
     router.post('/api/stripe/charge', passport.authenticate('jwt', {
@@ -138,7 +94,7 @@ module.exports = function (passport) {
             failWithError: true
         }), function (req, res, next) {
 
-            Account.findOne({_id: req.params.id}).exec(function (err, account) {
+            Account.findOne({sid: req.params.id}).exec(function (err, account) {
                 if (err) {
                     res.status(500).json({message: err.message});
                 } else {

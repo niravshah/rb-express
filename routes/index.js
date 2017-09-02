@@ -62,14 +62,16 @@ router.get('/fundraisers/new', function (req, res) {
 router.get('/fundraisers/:id', function (req, res) {
     Post.find({
         sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
-        if (err) {
-            res.render('error', {message: err.message});
+    }).populate('author', 'sid fname lname email avatar mobile bio')
+        .populate('account', 'sid')
+        .exec(function (err, posts) {
+            if (err) {
+                res.render('error', {message: err.message});
 
-        } else {
-            res.render('fundraiser', {post: posts[0]});
-        }
-    });
+            } else {
+                res.render('fundraiser', {post: posts[0]});
+            }
+        });
 });
 
 router.get('/fundraisers/:id/edit-author', function (req, res) {

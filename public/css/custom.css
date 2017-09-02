@@ -534,6 +534,14 @@ ul.time-left li {
     color: rgb(255, 209, 25);
 }
 
+#stripeIntegration span.red{
+    color:red;
+}
+
+#stripeIntegration span.green{
+    color:#4db53c;
+}
+
 /* END - Fundraiser Page */
 
 /* START - Edit Author Page */
