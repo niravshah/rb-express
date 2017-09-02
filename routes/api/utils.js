@@ -90,6 +90,12 @@ module.exports = {
             callback(err, post);
         })
     },
+    updatePostStatus: function (sid, status, callback) {
+
+        Post.findOneAndUpdate({sid: sid}, {status: status}, {new: true}, function (err, post) {
+            callback(err, post);
+        })
+    },
     mobileSendVerificationCode: function (mobile, message, callback) {
 
         // callback(null, {message: "success"});
@@ -149,6 +155,8 @@ module.exports = {
     },
     getStripeAuthCode: function (post_sid, grant_code, cb) {
 
+        var _this = this;
+
         Post.find({
             sid: post_sid
         }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
@@ -175,11 +183,11 @@ module.exports = {
                                 var scope = body.scope;
                                 var livemode = body.livemode;
 
-                                utils.createAccount(access_token, refresh_token, stripe_user_id, livemode, scope, function (err, account) {
+                                _this.createAccount(access_token, refresh_token, stripe_user_id, livemode, scope, function (err, account) {
                                     if (err) {
                                         cb(err, null);
                                     } else {
-                                        utils.updatePostWithAccount(post_sid, account, function (err, post) {
+                                        _this.updatePostWithAccount(post_sid, account, function (err, post) {
                                             if (err) {
                                                 cb(err, null);
                                             } else {

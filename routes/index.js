@@ -119,11 +119,16 @@ router.get('/stripe-connect', function (req, res) {
         if (req.query.state) {
             if (req.query.code) {
                 utils.getStripeAuthCode(req.query.state, req.query.code, function (err, post) {
-
                     if (err) {
                         res.render('error', {message: err.message});
                     } else {
-                        res.render('stripe-redirect', {post: post});
+                        utils.updatePostStatus(post.sid, 'live', function (err, post) {
+                            if (err) {
+                                res.render('error', {message: err.message});
+                            } else {
+                                res.render('stripe-redirect', {post: post});
+                            }
+                        });
                     }
                 });
 

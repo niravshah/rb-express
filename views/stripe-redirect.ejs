@@ -42,15 +42,12 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h2 class="uppercase">Welcome Back from Stripe!</h2>
-                    <p class="heading_space">We will not try to connect your Stripe Account to your Fundraiser</p>
+                    <p class="heading_space">Your stripe account has been connected to your Fundraiser!</p>
+                    <p class="heading_space">We have also set your fundraiser to Live</p>
                 </div>
             </div>
-            <div class="row text-center">
-                <div id="stripeProcessingUpdates">
-                 <!--   <div *ngFor="let m of messages">
-                        <p class="{{m.type}}">{{m.text}}</p>
-                    </div>-->
-                </div>
+            <div class="row pt40 text-center">
+                <a href="/fundraisers/<%=post.sid%>" class="btn-yellow border_radius uppercase margin20">Go to Your Fundraiser</a>
             </div>
             <div class="row pt40 text-center">
                 <a target="_blank" href="https://stripe.com"><img src="/images/powered_by_stripe.png"
