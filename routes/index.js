@@ -120,9 +120,32 @@ router.get('/fundraisers/:id/go-live', function (req, res) {
                 + '&stripe_user[email]=' + post.author.email;
 
 
-            res.render('go-live', {post: posts[0], stripeLink: oauthLink});
+            res.render('stripe-setup', {post: posts[0], stripeLink: oauthLink});
         }
     });
+});
+
+router.get('/stripe-connect', function (req, res) {
+    if (req.query.error) {
+        res.render('error', {message: req.query.error_description});
+    } else {
+        if (req.query.state) {
+
+            Post.find({
+                sid: req.query.state
+            }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+                if (err) {
+                    res.render('error', {message: err.message});
+                } else {
+                    res.render('stripe-redirect', {post: posts[0]});
+                }
+            });
+        } else {
+            res.render('error', {message: "No Fundraiser specified"});
+        }
+
+    }
+
 });
 
 

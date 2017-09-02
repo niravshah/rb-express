@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <%- include partials/meta.ejs %>
+    <title>Raise Better</title>
+    <base href="/fundraisers/<%= post.sid %>/edit-author">
+
+    <meta name="post-sid" content="<%= post.sid %>">
+    <meta name="author-sid" content="<%= post.author.sid %>">
+
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
+
+</head>
+<body>
+<%- include partials/header.ejs %>
+<%- include partials/loader.ejs %>
+
+<!-- Page Banner Start-->
+<section class="page-banner padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<div id="stripeRedirectVue">
+    <!-- Page Banner Start-->
+    <section class="page-banner padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Banner End -->
+    <section id="property" class="pt20 pb20">
+        <div class="container bg_white padding">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="uppercase">Welcome Back from Stripe!</h2>
+                    <p class="heading_space">We will not try to connect your Stripe Account to your Fundraiser</p>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div id="stripeProcessingUpdates">
+                 <!--   <div *ngFor="let m of messages">
+                        <p class="{{m.type}}">{{m.text}}</p>
+                    </div>-->
+                </div>
+            </div>
+            <div class="row pt40 text-center">
+                <a target="_blank" href="https://stripe.com"><img src="/images/powered_by_stripe.png"
+                                                                  alt="powered by stripe"></a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
+
+<script src="/dist/js/stripe-redirect.js"></script>
+
+</body>
+</html>
+
