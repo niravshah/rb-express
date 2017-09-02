@@ -13,7 +13,7 @@ var editAuthorVue = new Vue({
         url: ''
     },
     created: function () {
-        $(".loader").fadeOut(400);
+        $(".loader").fadeOut(200);
         console.log(this.postSid, this.authorSid);
         this.$http.get('/api/posts/' + this.postSid).then(function (res) {
             console.log('Post', res.body);
@@ -37,6 +37,9 @@ var editAuthorVue = new Vue({
         },
         closeBtn: function (command) {
             console.log('Close Button Clicked!', command);
+            if (command == 'close') {
+                document.location.href = '/fundraisers/' + this.postSid;
+            }
         },
         saveAuthorDetails: function () {
             var _this = this;

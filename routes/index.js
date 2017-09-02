@@ -82,7 +82,6 @@ router.get('/fundraisers/:id/edit-author', function (req, res) {
 });
 
 router.get('/fundraisers/:id/edit', function (req, res) {
-
     Post.find({
         sid: req.params.id
     }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
@@ -95,6 +94,17 @@ router.get('/fundraisers/:id/edit', function (req, res) {
     });
 
 });
+
+router.get('/fundraisers/:id/go-live', function (req, res) {
+    Post.find({
+        sid: req.params.id
+    }).exec(function (err, posts) {
+        if (err) {
+            res.render('error', {message: err.message});
+        } else {
+            res.render('go-live', {post: posts[0]});
+        }
+    });});
 
 
 module.exports = router;

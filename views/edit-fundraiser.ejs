@@ -121,30 +121,30 @@
             </div>
         </div>
     </section>
-</div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Changes will not be saved?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>You pressed the Close button. Changes will not be save.</p>
+                    <p>Click Close to discard changes. Or Cancel to return to editing</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" v-on:click="closeBtn('close')" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-default" v-on:click="closeBtn('cancel')" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Changes will not be saved?</h4>
-            </div>
-            <div class="modal-body">
-                <p>You pressed the Close button. Changes will not be save.</p>
-                <p>Click Close to discard changes. Or Cancel to return to editing</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" (click)="closeBtn('close')" data-dismiss="modal">Close
-                </button>
-                <button type="button" class="btn btn-default" (click)="closeBtn('cancel')" data-dismiss="modal">Cancel
-                </button>
-            </div>
         </div>
-
     </div>
 </div>
 
