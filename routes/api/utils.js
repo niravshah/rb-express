@@ -208,7 +208,7 @@ module.exports = {
             } else {
 
                 if (posts.length > 0) {
-                    var post = post[0];
+                    var post = posts[0];
                     var oauthLink = 'https://connect.stripe.com/oauth/authorize'
                         + '?client_id=' + process.env.STRIPE_CA
                         + '&scope=read_write'
