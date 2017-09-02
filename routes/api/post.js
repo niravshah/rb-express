@@ -141,6 +141,18 @@ module.exports = function (passport) {
         res.status(403).json({'message': err, 'status': err.status});
     });
 
+    router.post('/api/posts/new', passport.authenticate('jwt', {
+        failWithError: true
+    }),function (req, res) {
+        utils.createPost(req.user, req.body.title, req.body.amount, req.body.currency, function (err, post) {
+            if (err) {
+                res.status(500).json({'message': err})
+            } else {
+                res.status(200).json({'message': 'Post Created', 'id': post.id})
+            }
+        });
+
+    });
 
     router.post('/api/posts', function (req, res) {
         console.log('POST /posts', req.body);

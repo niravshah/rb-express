@@ -54,6 +54,11 @@ router.get('/reset-password', function (req, res) {
     res.render('reset-password');
 });
 
+router.get('/fundraisers/new', function (req, res) {
+    res.render('fundraiser-new');
+});
+
+
 router.get('/fundraisers/:id', function (req, res) {
     Post.find({
         sid: req.params.id
@@ -90,7 +95,7 @@ router.get('/fundraisers/:id/edit', function (req, res) {
             res.render('error', {message: err.message});
 
         } else {
-            res.render('edit-fundraiser', {post: posts[0]});
+            res.render('fundraiser-edit', {post: posts[0]});
         }
     });
 
