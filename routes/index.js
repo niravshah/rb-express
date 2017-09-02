@@ -69,7 +69,19 @@ router.get('/fundraisers/:id', function (req, res) {
                 res.render('error', {message: err.message});
 
             } else {
-                res.render('fundraiser', {post: posts[0]});
+                if (posts.length > 0) {
+
+                    var post = posts[0];
+                    var percent = 0;
+
+                    if (post.target !== 0 && post.collected !== 0) {
+                        percent = Math.round((post.collected / post.target) * 100);
+                    }
+
+                    res.render('fundraiser', {post: post, percent: percent});
+                } else {
+                    res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
+                }
             }
         });
 });

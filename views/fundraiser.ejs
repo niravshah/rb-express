@@ -79,6 +79,28 @@
                             <% } %>
                         </div>
                     </div>
+
+                    <% if(post.status == 'live'){ %>
+                    <div class="text-center row top30 bb1p">
+                        <div class="col-sm-12 bottom15">
+                            <div class="c100 p<%=percent%> green" style="margin: 0 auto">
+                                <span><%=percent%>%</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row text-center">
+                                <h3 class="pb10">Collected <%= post.currency %><%= post.collected %></h3>
+                                <p>Target <%= post.currency %><%= post.target %></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
                     <div class="row pt20 pb40 bb1p">
                         <div class="col-sm-4">
                             <div class="agent_wrap">
@@ -95,6 +117,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div v-if="isAuthorLogin()" id="loggedInMenu" class="bb1p row pb20">
                         <div class="col-md-12">
                             <div id="editBtn" class="row">
@@ -143,6 +166,7 @@
                             </div>
                             <% } %>
                             <% if(post.status == 'live'){ %>
+
                             <div id="personalInviteBtn" class="row">
                                 <div class="col-md-12 col-sm-12 pb10 text-center">
                                     <a ga-on="'click'" ga-event-category="post.sid"
@@ -166,7 +190,8 @@
                                         <tr>
                                             <td><b>Connected</b></td>
                                             <td class="text-right">
-                                                <span v-if="!connected" class="red"><i class="fa fa-times-circle"></i></span>
+                                                <span v-if="!connected" class="red"><i
+                                                            class="fa fa-times-circle"></i></span>
                                                 <span v-if="connected" class="green"><i class="fa fa-check-circle"></i></span>
                                             </td>
                                         </tr>
