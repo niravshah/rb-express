@@ -64,10 +64,11 @@
                     <div class="row" id="donateRow" style="background: white">
                         <div class="col-md-12">
                             <% if(post.status == 'live'){ %>
-                            <a id="donateBtn" v-on:click="scrollTop()"
+                            <a id="donateBtn"
+                               href="/fundraisers/<%=post.sid%>/donate"
                                class="border_radius btn-yellow text-uppercase"
                                ga-on="'click'" ga-event-category="<%= post.sid %>"
-                               ga-event-action="'post-donate-btn'" attr.ga-event-label="userSid">
+                               ga-event-action="'post-donate-btn'" ga-event-label="userSid">
                                 Donate Now
                             </a>
                             <a id="donateBtn2" v-on:click="scrollTop()"

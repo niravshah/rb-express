@@ -12,7 +12,7 @@ var vFundraiser = new Vue({
     },
     created: function () {
         $(".loader").fadeOut(200);
-        console.log(this.postSid, this.authorSid, this.accountSid);
+        //console.log(this.postSid, this.authorSid, this.accountSid);
 
         if (this.accountSid != "none") {
             this.connected = true;
@@ -37,15 +37,17 @@ var vFundraiser = new Vue({
             }
         },
         getAccountStatus: function (sid) {
-            var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
-            var url = '/api/stripe/account/' + sid + '/status';
-            this.$http.get(url, {headers: headers}).then(function (res) {
-                if (res.ok) {
-                    this.chargesEnabled = res.body.charges_enabled;
-                    this.detailsSubmitted = res.body.details_submitted;
-                }
+            if (this.isAuthorLogin()) {
+                var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
+                var url = '/api/stripe/account/' + sid + '/status';
+                this.$http.get(url, {headers: headers}).then(function (res) {
+                    if (res.ok) {
+                        this.chargesEnabled = res.body.charges_enabled;
+                        this.detailsSubmitted = res.body.details_submitted;
+                    }
 
-            })
+                })
+            }
 
         },
         getPostActivity: function (sid) {
@@ -53,7 +55,7 @@ var vFundraiser = new Vue({
             var url = '/api/posts/' + sid + '/activities';
             this.$http.get(url, {headers: headers}).then(function (res) {
                 if (res.ok) {
-                    console.log(res);
+                    //console.log(res);
                     this.activities = res.body.activities;
                 }
             })
