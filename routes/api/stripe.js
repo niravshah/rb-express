@@ -98,19 +98,26 @@ module.exports = function (passport) {
                 if (err) {
                     res.status(500).json({message: err.message});
                 } else {
-                    stripe.accounts.retrieve(
-                        account.stripe_account_id,
-                        function (err, account) {
-                            if (err) {
-                                res.status(500).json({message: err.message});
-                            } else {
-                                res.json({
-                                    charges_enabled: account.charges_enabled,
-                                    details_submitted: account.details_submitted
-                                })
+                    if (account) {
+                        stripe.accounts.retrieve(
+                            account.stripe_account_id,
+                            function (err, account) {
+                                if (err) {
+                                    res.status(500).json({message: err.message});
+                                } else {
+                                    res.json({
+                                        charges_enabled: account.charges_enabled,
+                                        details_submitted: account.details_submitted
+                                    })
+                                }
                             }
-                        }
-                    );
+                        );
+                    } else {
+                        res.json({
+                            charges_enabled: false,
+                            details_submitted: false
+                        })
+                    }
                 }
             })
         },

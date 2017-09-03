@@ -78,7 +78,9 @@ router.get('/fundraisers/:id', function (req, res) {
                         percent = Math.round((post.collected / post.target) * 100);
                     }
 
-                    res.render('fundraiser', {post: post, percent: percent});
+                    var asid = "none";
+                    if (post.account) asid = post.account.sid;
+                    res.render('fundraiser', {post: post, percent: percent, asid: asid});
                 } else {
                     res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
                 }

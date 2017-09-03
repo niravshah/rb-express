@@ -14,7 +14,7 @@ var vFundraiser = new Vue({
         $(".loader").fadeOut(200);
         console.log(this.postSid, this.authorSid, this.accountSid);
 
-        if (this.accountSid != undefined) {
+        if (this.accountSid != "none") {
             this.connected = true;
             this.getAccountStatus(this.accountSid);
             this.getPostActivity(this.postSid);
