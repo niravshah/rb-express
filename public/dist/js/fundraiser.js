@@ -2,6 +2,7 @@ var vFundraiser = new Vue({
     el: '#funraiserController',
     data: {
         messages: [],
+        activities: [],
         connected: false,
         chargesEnabled: false,
         detailsSubmitted: false,
@@ -16,6 +17,7 @@ var vFundraiser = new Vue({
         if (this.accountSid != undefined) {
             this.connected = true;
             this.getAccountStatus(this.accountSid);
+            this.getPostActivity(this.postSid);
         }
     },
     computed: {},
@@ -45,15 +47,16 @@ var vFundraiser = new Vue({
 
             })
 
-        }
-    },
-    filters: {
-        percentcalc: function (value, total) {
-            if (value !== 0 && total !== 0) {
-                return Math.round((value / total) * 100);
-            } else {
-                return 0;
-            }
+        },
+        getPostActivity: function (sid) {
+            var headers = {'Authorization': 'JWT ' + localStorage.getItem('token')};
+            var url = '/api/posts/' + sid + '/activities';
+            this.$http.get(url, {headers: headers}).then(function (res) {
+                if (res.ok) {
+                    console.log(res);
+                    this.activities = res.body.activities;
+                }
+            })
         }
     }
 });
