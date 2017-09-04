@@ -28,8 +28,8 @@ gulp.task('minifyjs', function () {
 });
 
 gulp.task('minifycss', function () {
-    return gulp.src(['public/css/bootstrap.min.css','public/css/font-awesome.min.css','public/css/reality-icon.css','public/css/search.min.css'
-        ,'public/css/style.min.css','public/css/circle.css','public/css/custom.css'])
+    return gulp.src(['public/css/bootstrap.min.css', 'public/css/font-awesome.min.css', 'public/css/reality-icon.css', 'public/css/search.min.css'
+        , 'public/css/style.min.css', 'public/css/circle.css', 'public/css/custom.css'])
         .pipe(concat('all.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('public/dist/css/'));
@@ -37,7 +37,7 @@ gulp.task('minifycss', function () {
 
 gulp.task('minifyhtml', function () {
     return gulp.src('views/**/*.ejs')
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gutil.env.type === 'prod' ? htmlmin({collapseWhitespace: true}) : gutil.noop())
         .pipe(gulp.dest('public/dist/views'));
 });
 

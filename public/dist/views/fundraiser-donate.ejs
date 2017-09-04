@@ -1,6 +1,59 @@
-<!DOCTYPE html><html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"><head> <%- include partials/meta.ejs %> <title>Raise Better</title><base href="/fundraisers/<%= post.sid %>/edit-author"><meta name="author-sid" content="<%= post.author.sid %>"><meta name="post-sid" content="<%= post.sid %>"><meta name="account-sid" content="<%= asid %>"> <%- include partials/ga.ejs %> <%- include partials/styles.ejs %> </head><body> <%- include partials/header.ejs %> <%- include partials/loader.ejs %> <!-- Page Banner Start--><section class="page-banner padding"><div class="container"><div class="row"><div class="col-md-12 text-center"></div></div></div></section><div id="fundraiserDonateVue"><section id="stripe_donate" class="bg_edit"><div class="container bg_dblue padding"><div class="row pb40"><div class="col-xs-12 text-center"><h2 class="uppercase">Make a Donation</h2></div></div><div class="row"><div class="col-md-12"><div class="row text-center"><div class="text-center" style="width:600px;margin:auto"><form><div class="row"><div class="col-md-7"><div class="single-query bottom15"><div class="input-group"><span class="input-group-addon" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <%- include partials/meta.ejs %>
+    <title>Raise Better</title>
+    <base href="/fundraisers/<%= post.sid %>/edit-author">
+
+    <meta name="author-sid" content="<%= post.author.sid %>">
+    <meta name="post-sid" content="<%= post.sid %>">
+    <meta name="account-sid" content="<%= asid %>">
+
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
+
+</head>
+<body>
+<%- include partials/header.ejs %>
+<%- include partials/loader.ejs %>
+
+<!-- Page Banner Start-->
+<section class="page-banner padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<div id="fundraiserDonateVue">
+
+    <section id="stripe_donate" class="bg_edit">
+        <div class="container bg_dblue padding">
+            <div class="row pb40">
+                <div class="col-xs-12 text-center">
+                    <h2 class="uppercase">Make a Donation</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row text-center">
+                        <div class="text-center" style="width:600px;margin:auto;">
+
+                            <form id="donateForm">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="single-query bottom15">
+                                            <div class="input-group">
+            <span class="input-group-addon"
+                  style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                   border: 1px solid transparent;
-                  font-size: 16px"><i class="fa fa-user"></i></span> <input type="text" class="keyword-input t_yellow" placeholder="Name" style="color:black !important;
+                  font-size: 16px;"><i
+                        class="fa fa-user"></i></span>
+                                                <input type="text" class="keyword-input t_yellow"
+                                                       placeholder="Name"
+                                                       style="color:black !important;
                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                    font-size: 16px;
                    -webkit-font-smoothing: antialiased;
@@ -8,7 +61,24 @@
                    border: 1px solid transparent;
                    border-radius: 0px 4px 4px 0px;
                    padding-left: 10px;
-                   line-height: 2em" name="name" v-model="paymentForm.name" v-validate="'required'"></div><div class="pt10"><small class="error" v-show="errors.has('paymentForm.name')">Name is required.</small></div></div></div><div class="col-md-5"><div class="single-query bottom15"><div class="input-group"><input type="text" class="keyword-input t_yellow" placeholder="50" style="color:black !important;
+                   line-height: 2em;"
+                                                       name="name" v-model="paymentForm.name" v-validate="'required'">
+
+                                            </div>
+                                            <div class="pt10">
+                                                <small class="error"
+                                                       v-show="errors.has('paymentForm.name')">
+                                                    Name is required.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="single-query bottom15">
+                                            <div class="input-group">
+                                                <input type="text" class="keyword-input t_yellow"
+                                                       placeholder="50"
+                                                       style="color:black !important;
                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                    font-size: 16px;
                    -webkit-font-smoothing: antialiased;
@@ -16,11 +86,35 @@
                    padding-left: 10px;
                    border: 1px solid transparent;
                    border-radius: 4px 0px 0px 4px;
-                   line-height: 2em" name="amount" v-model="paymentForm.amount" v-validate="'required'"> <span class="input-group-addon" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                   line-height: 2em;"
+                                                       name="amount" v-model="paymentForm.amount"
+                                                       v-validate="'required'">
+                                                <span class="input-group-addon"
+                                                      style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                   border: 1px solid transparent;
-                  font-size: 16px">GBP</span></div><div class="pt10"><small class="error pt10" v-show="errors.has('paymentForm.amount')">Amount is required.</small></div></div></div></div><div class="row"><div class="col-md-12"><div class="single-query bottom15"><div class="input-group no-tt"><span class="input-group-addon" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                  font-size: 16px;">GBP</span>
+                                            </div>
+                                            <div class="pt10">
+                                                <small class="error pt10"
+                                                       v-show="errors.has('paymentForm.amount')">
+                                                    Amount is required.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="single-query bottom15">
+                                            <div class="input-group no-tt">
+            <span class="input-group-addon"
+                  style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                   border: 1px solid transparent;
-                  font-size: 16px"><i class="fa fa-envelope"></i></span> <input type="text" class="keyword-input t_yellow" placeholder="Email" style="color:black !important;
+                  font-size: 16px;"><i
+                        class="fa fa-envelope"></i></span>
+                                                <input type="text" class="keyword-input t_yellow"
+                                                       placeholder="Email"
+                                                       style="color:black !important;
                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                    font-size: 16px;
                    -webkit-font-smoothing: antialiased;
@@ -28,9 +122,31 @@
                    border: 1px solid transparent;
                    border-radius: 0px 4px 4px 0px;
                    padding-left: 10px;
-                   line-height: 2em" name="email" v-model="paymentForm.email" v-validate="'required'"></div><div class="pt10"><small class="error pt10" v-show="errors.has('paymentForm.email')">Email is required.</small></div></div></div></div><div class="row"><div class="col-md-12"><div class="single-query bottom15"><div class="input-group no-tt"><span class="input-group-addon" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                   line-height: 2em;"
+                                                       name="email" v-model="paymentForm.email" v-validate="'required'">
+                                            </div>
+                                            <div class="pt10">
+                                                <small class="error pt10"
+                                                       v-show="errors.has('paymentForm.email')">
+                                                    Email is required.
+                                                </small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="single-query bottom15">
+                                            <div class="input-group no-tt">
+            <span class="input-group-addon"
+                  style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                   border: 1px solid transparent;
-                  font-size: 16px"><i class="fa fa-thumbs-up"></i></span> <input type="text" class="keyword-input t_yellow" placeholder="Your Message" style="color:black !important;
+                  font-size: 16px;"><i
+                        class="fa fa-thumbs-up"></i></span>
+                                                <input type="text" class="keyword-input t_yellow"
+                                                       placeholder="Your Message"
+                                                       style="color:black !important;
                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                    font-size: 16px;
                    -webkit-font-smoothing: antialiased;
@@ -38,4 +154,68 @@
                    border: 1px solid transparent;
                    border-radius: 0px 4px 4px 0px;
                    padding-left: 10px;
-                   line-height: 2em" name="message" v-model="paymentForm.message"></div></div></div></div><div class="row"><div class="col-md-12"><label for="card-element" class="pb10">Credit or Debit Card Details</label><div id="card-element"><!-- a Stripe Element will be inserted here. --></div><!-- Used to display form errors --><div id="card-errors" class="pt10" role="alert"></div></div></div><div class="row pt20 pb20"><button ga-on="'click'" ga-event-category="<%= post.sid %>" ga-event-action="'stripe-donate-btn'" id="donateWithStripeBtn" type="submit" class="stripe-connect" v-on:click.prevent.stop="createToken()"><span>Donate with Stripe</span></button></div></form></div></div><div class="row text-center"><span><i class="icons-md fa fa-lock"></i></span><p>We dont store any card details on our servers.<br>We let the security experts, Stripe do it.</p></div><div class="row pt20 text-center"><a target="_blank" href="https://stripe.com"><img src="/images/powered_by_stripe.png" alt="powered by stripe"></a></div></div></div></div></section><div id="overlay" class="text-center"><div><img src="/images/money-spinner.svg"><p>Please Wait. We're processing your request</p></div></div></div> <%- include partials/footer.ejs %> <%- include partials/scripts.ejs %> <script src="/dist/js/fundraiser-donate.js"></script></body></html>
+                   line-height: 2em;"
+                                                       name="message" v-model="paymentForm.message">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="card-element" class="pb10">
+                                            Credit or Debit Card Details
+                                        </label>
+                                        <div id="card-element">
+                                            <!-- a Stripe Element will be inserted here. -->
+                                        </div>
+                                        <!-- Used to display form errors -->
+                                        <div id="card-errors" class="pt10" role="alert"></div>
+                                    </div>
+                                </div>
+                                <div class="row pt20 pb20">
+                                    <button ga-on="'click'" ga-event-category="<%= post.sid %>"
+                                            ga-event-action="'stripe-donate-btn'"
+                                            id="donateWithStripeBtn" type="submit"
+                                            class="stripe-connect"><span>Donate with Stripe</span>
+                                    </button>
+                                    <div class="outcome">
+                                        <div class="error" role="alert"></div>
+                                        <div class="success">
+                                            Success! Your Stripe token is <span class="token"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="row text-center">
+                        <span><i class="icons-md fa fa-lock"></i></span>
+                        <p>We dont store any card details on our servers.
+                            <br/>We let the security experts, Stripe do it.</p>
+                    </div>
+                    <div class="row pt20 text-center">
+                        <a target="_blank" href="https://stripe.com"><img src="/images/powered_by_stripe.png"
+                                                                          alt="powered by stripe"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div id="overlay" class="text-center">
+        <div>
+            <img src="/images/money-spinner.svg">
+            <p>Please Wait. We're processing your request</p>
+        </div>
+    </div>
+
+</div>
+
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
+
+<script src="/dist/js/fundraiser-donate.js"></script>
+</body>
+</html>
+

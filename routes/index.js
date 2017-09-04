@@ -152,6 +152,30 @@ router.get('/fundraisers/:id/donate', function (req, res) {
         });
 });
 
+router.get('/fundraisers/:id/share', function (req, res) {
+
+    Post.find({
+        sid: req.params.id
+    }).populate('author', 'sid fname lname email avatar mobile bio')
+        .populate('account', 'sid')
+        .exec(function (err, posts) {
+            if (err) {
+                res.render('error', {message: err.message});
+
+            } else {
+                if (posts.length > 0) {
+
+                    var post = posts[0];
+                    var asid = "none";
+                    if (post.account) asid = post.account.sid;
+                    res.render('fundraiser-share', {post: post, asid: asid, authorName: post.author.fname});
+                } else {
+                    res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
+                }
+            }
+        });
+});
+
 
 router.get('/stripe-connect', function (req, res) {
     if (req.query.error) {

@@ -1,1 +1,84 @@
-<!DOCTYPE html><html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"><head> <%- include partials/meta.ejs %> <title>Raise Better</title><base href="/login"> <%- include partials/ga.ejs %> <%- include partials/styles.ejs %> </head><body> <%- include partials/header.ejs %> <!-- New Form --><div id="newFundraiserVue"><section id="login" class="padding"><div class="container"><div class="row"><div class="col-xs-12 text-center"><h2 class="uppercase heading_space">New Fundraiser</h2></div></div> <%- include partials/messages.ejs %> <div class="row"><div class="col-md-12"><div class="profile-login" style="padding:20px;width:500px"><form class="callus clearfix" v-on:submit.prevent="onSubmit" novalidate><div class="row"><div class="col-md-12 col-sm-12 col-xs-12 t_white bottom15"><h4>I want to raise:</h4></div><div class="col-md-12 bottom15"><div class="single-query"><div class="input-group"><input type="text" class="keyword-input t_yellow" style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important" value="5000" name="amount" v-model="amount" v-validate="'required'"> <span class="input-group-addon" style="font-family: 'roboto_condensedbold';font-size: 20px">GBP</span></div><small class="error" v-show="errors.has('amount')">{{ errors.first('amount')}}</small></div></div></div><div class="row"><div class="t_white col-md-12 bottom15"><h4>to help with:</h4></div><div class="col-md-12"><div class="single-query bottom15"><input type="text" class="keyword-input lowercase" placeholder="Title of your Fundraiser" name="title" v-model="title" v-validate="'required'"> <small class="error" v-show="errors.has('title')">{{ errors.first('title')}}</small></div></div></div><div class="col-sm-12"><input type="submit" value="create" class="btn-slide border_radius"></div></form></div></div></div></div></section></div><!-- Login end --> <%- include partials/footer.ejs %> <%- include partials/scripts.ejs %> <script src="/dist/js/fundraiser-new.js"></script></body></html>
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <%- include partials/meta.ejs %>
+    <title>Raise Better</title>
+    <base href="/login">
+
+    <%- include partials/ga.ejs %>
+    <%- include partials/styles.ejs %>
+
+</head>
+<body>
+<%- include partials/header.ejs %>
+
+<!-- New Form -->
+<div id="newFundraiserVue">
+    <section id="login" class="padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="uppercase heading_space">New Fundraiser</h2>
+                </div>
+            </div>
+            <%- include partials/messages.ejs %>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-login" style="padding:20px;width:500px;">
+                        <form class="callus clearfix" v-on:submit.prevent="onSubmit" novalidate>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 t_white bottom15">
+                                    <h4>I want to raise:</h4>
+                                </div>
+                                <div class="col-md-12 bottom15">
+                                    <div class="single-query">
+                                        <div class="input-group">
+                                            <input type="text" class="keyword-input t_yellow"
+                                                   style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"
+                                                   value="5000"
+                                                   name="amount" v-model="amount" v-validate="'required'">
+                                            <span class="input-group-addon"
+                                                  style="font-family: 'roboto_condensedbold';font-size: 20px;">GBP</span>
+                                        </div>
+                                        <small class="error" v-show="errors.has('amount')">
+                                            {{ errors.first('amount')}}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="t_white col-md-12 bottom15">
+                                    <h4>to help with:</h4>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="single-query bottom15">
+                                        <input type="text" class="keyword-input lowercase"
+                                               placeholder="Title of your Fundraiser"
+                                               name="title" v-model="title" v-validate="'required'">
+                                        <small class="error" v-show="errors.has('title')">
+                                            {{ errors.first('title')}}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-sm-12">
+                                <input type="submit" value="create" class="btn-slide border_radius">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Login end -->
+
+<%- include partials/footer.ejs %>
+<%- include partials/scripts.ejs %>
+
+<script src="/dist/js/fundraiser-new.js"></script>
+
+</body>
+</html>

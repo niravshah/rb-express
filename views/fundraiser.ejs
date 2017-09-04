@@ -71,7 +71,8 @@
                                ga-event-action="'post-donate-btn'" ga-event-label="userSid">
                                 Donate Now
                             </a>
-                            <a id="donateBtn2" v-on:click="scrollTop()"
+                            <a id="donateBtn2"
+                               href="/fundraisers/<%=post.sid%>/share"
                                class="border_radius btn-yellow btn-fb-blue text-uppercase"
                                ga-on="'click'" ga-event-category="<%= post.sid %>"
                                ga-event-action="'post-share-btn'" ga-event-label="userSid">

@@ -7,42 +7,55 @@ var fundraiserDonateVue = new Vue({
         accountSid: $("meta[name='account-sid']").attr("content"),
         paymentForm: {amount: '50', name: 'Nirav Shah', email: 'nshah@email.com', message: 'Good Luck!'}
     },
+    mounted: function () {
+
+        try {
+
+            var _this = this;
+            var stripe = Stripe('pk_test_rsKIu2V1fmgDKrpy2yirvZxQ');
+            var elements = stripe.elements();
+
+            var style = {
+                base: {
+                    color: '#32325d',
+                    lineHeight: '24px',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
+
+            var card = elements.create('card', {style: style});
+            card.mount('#card-element');
+            card.addEventListener('change', function (event) {
+                if (event.error) {
+                    _this.addCardError(event.error.message);
+                } else {
+                    _this.addCardError('');
+                }
+            });
+
+            document.querySelector('#donateForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                stripe.createToken(card, _this.paymentForm).then(_this.setOutcome);
+            });
+
+        } catch (ex) {
+            if (ex instanceof ReferenceError) {
+                this.addCardError("We are currently unable to process your donation as we could not load Stripe");
+            }
+        }
+
+    },
     created: function () {
         $(".loader").fadeOut(200);
-
-        this.stripe = Stripe('pk_test_rsKIu2V1fmgDKrpy2yirvZxQ');
-
-        const elements = this.stripe.elements();
-
-        const style = {
-            base: {
-                color: '#32325d',
-                lineHeight: '24px',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-            }
-        };
-
-        Vue.card = elements.create('card', {style: style});
-        Vue.card.mount('#card-element');
-        const _this = this;
-        Vue.card.addEventListener('change', function (event) {
-            if (event.error) {
-                _this.addCardError(event.error.message);
-            } else {
-                _this.addCardError('');
-            }
-        });
-
-
     },
     computed: {},
     methods: {
@@ -59,11 +72,19 @@ var fundraiserDonateVue = new Vue({
         toggleOverlay: function () {
             $('#overlay').toggle();
         },
-        createToken:function(){
-            this.toggleOverlay();
-            this.stripe.createToken(Vue.card).then(function(result){
-                console.log(result);
-            })
+        setOutcome: function (result) {
+            var successElement = document.querySelector('.success');
+            var errorElement = document.querySelector('.error');
+            successElement.classList.remove('visible');
+            errorElement.classList.remove('visible');
+
+            if (result.token) {
+                successElement.querySelector('.token').textContent = result.token.id;
+                successElement.classList.add('visible');
+            } else if (result.error) {
+                errorElement.textContent = result.error.message;
+                errorElement.classList.add('visible');
+            }
         }
     }
 });
