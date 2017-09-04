@@ -2,40 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd8b138e-0314-40e9-9914-4f7e249dda15" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/fundraiser-share.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vue/fundraiser-share.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/js/fundraiser-donate.js" afterPath="$PROJECT_DIR$/public/dist/js/fundraiser-donate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/edit-author.ejs" afterPath="$PROJECT_DIR$/public/dist/views/edit-author.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/error.ejs" afterPath="$PROJECT_DIR$/public/dist/views/error.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/first-login.ejs" afterPath="$PROJECT_DIR$/public/dist/views/first-login.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/fundraiser-donate.ejs" afterPath="$PROJECT_DIR$/public/dist/views/fundraiser-donate.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/fundraiser-edit.ejs" afterPath="$PROJECT_DIR$/public/dist/views/fundraiser-edit.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/fundraiser-new.ejs" afterPath="$PROJECT_DIR$/public/dist/views/fundraiser-new.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/fundraiser.ejs" afterPath="$PROJECT_DIR$/public/dist/views/fundraiser.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/home.ejs" afterPath="$PROJECT_DIR$/public/dist/views/home.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/index.ejs" afterPath="$PROJECT_DIR$/public/dist/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/info.ejs" afterPath="$PROJECT_DIR$/public/dist/views/info.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/login.ejs" afterPath="$PROJECT_DIR$/public/dist/views/login.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/cookie-ribbon.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/cookie-ribbon.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/footer.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/footer.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/ga.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/ga.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/header.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/header.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/listing.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/listing.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/loader.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/loader.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/messages.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/messages.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/meta.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/meta.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/js/fundraiser-share.js" afterPath="$PROJECT_DIR$/public/dist/js/fundraiser-share.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/fundraiser-share.ejs" afterPath="$PROJECT_DIR$/public/dist/views/fundraiser-share.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/scripts.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/scripts.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/partials/styles.ejs" afterPath="$PROJECT_DIR$/public/dist/views/partials/styles.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/reset-password.ejs" afterPath="$PROJECT_DIR$/public/dist/views/reset-password.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/signup.ejs" afterPath="$PROJECT_DIR$/public/dist/views/signup.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/stripe-redirect.ejs" afterPath="$PROJECT_DIR$/public/dist/views/stripe-redirect.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/views/stripe-setup.ejs" afterPath="$PROJECT_DIR$/public/dist/views/stripe-setup.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/fundraiser-donate.ejs" afterPath="$PROJECT_DIR$/views/fundraiser-donate.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/fundraiser.ejs" afterPath="$PROJECT_DIR$/views/fundraiser.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vue/fundraiser-donate.js" afterPath="$PROJECT_DIR$/vue/fundraiser-donate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/fundraiser-share.ejs" afterPath="$PROJECT_DIR$/views/fundraiser-share.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/scripts.ejs" afterPath="$PROJECT_DIR$/views/partials/scripts.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,36 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fundraiser-donate.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/fundraiser-donate.ejs">
+      <file leaf-file-name="scripts.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/scripts.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
-              <folding>
-                <element signature="n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="39" column="91" lean-forward="false" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundraiser-donate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue/fundraiser-donate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="23" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -91,70 +38,18 @@
       <file leaf-file-name="fundraiser-share.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/fundraiser-share.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            <state relative-caret-position="179">
+              <caret line="61" column="37" lean-forward="false" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="fundraiser-share.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vue/fundraiser-share.js">
+        <entry file="file://$PROJECT_DIR$/public/dist/js/fundraiser-share.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="73" lean-forward="false" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="167" column="40" lean-forward="false" selection-start-line="167" selection-start-column="40" selection-end-line="167" selection-end-column="40" />
-              <folding>
-                <element signature="e#3740#4475#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundraiser.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue/fundraiser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundraiser.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/fundraiser.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="67" column="71" lean-forward="false" selection-start-line="67" selection-start-column="71" selection-end-line="67" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fundraiser-edit.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/fundraiser-edit.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-497">
-              <caret line="52" column="66" lean-forward="false" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="770" column="0" lean-forward="false" selection-start-line="770" selection-start-column="0" selection-end-line="770" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -223,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/first-login.ejs" />
         <option value="$PROJECT_DIR$/views/home.ejs" />
         <option value="$PROJECT_DIR$/views/login.ejs" />
         <option value="$PROJECT_DIR$/views/reset-password.ejs" />
@@ -244,7 +138,6 @@
         <option value="$PROJECT_DIR$/public/css/style.min.css" />
         <option value="$PROJECT_DIR$/public/css/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/vue/plugins/s3-plugin.js" />
-        <option value="$PROJECT_DIR$/views/partials/scripts.ejs" />
         <option value="$PROJECT_DIR$/views/edit-author.ejs" />
         <option value="$PROJECT_DIR$/vue/go-live.js" />
         <option value="$PROJECT_DIR$/views/edit-fundraiser.ejs" />
@@ -271,9 +164,11 @@
         <option value="$PROJECT_DIR$/views/fundraiser-donate.ejs" />
         <option value="$PROJECT_DIR$/vue/fundraiser-donate.js" />
         <option value="$PROJECT_DIR$/views/fundraiser.ejs" />
-        <option value="$PROJECT_DIR$/views/fundraiser-share.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/vue/fundraiser-share.js" />
+        <option value="$PROJECT_DIR$/views/partials/scripts.ejs" />
+        <option value="$PROJECT_DIR$/views/fundraiser-share.ejs" />
+        <option value="$PROJECT_DIR$/public/dist/js/fundraiser-share.js" />
       </list>
     </option>
   </component>
@@ -341,25 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,6 +251,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,87 +282,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue-resource.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rb-express" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -517,7 +318,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -645,15 +450,16 @@
       <updated>1502493443714</updated>
       <workItem from="1502493444856" duration="101497000" />
       <workItem from="1504163328470" duration="3871000" />
-      <workItem from="1504250076989" duration="38702000" />
+      <workItem from="1504250076989" duration="39410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144070000" />
+    <option name="totallyTimeSpent" value="144778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.482684" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -664,7 +470,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49612403" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51963747" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46582985" sideWeight="0.4947146" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46582985" sideWeight="0.4947146" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.51731604" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -694,14 +500,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/dist/js/cookie-ribbon.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -802,14 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
           <caret line="7" column="211" lean-forward="false" selection-start-line="7" selection-start-column="186" selection-end-line="7" selection-end-column="211" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/scripts.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="74" lean-forward="false" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
           <folding />
         </state>
       </provider>
@@ -1095,18 +885,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/fundraiser-share.ejs">
+    <entry file="file://$PROJECT_DIR$/vue/fundraiser-share.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="true" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue/fundraiser-share.js">
+    <entry file="file://$PROJECT_DIR$/views/partials/scripts.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="73" lean-forward="false" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+        <state relative-caret-position="120">
+          <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/fundraiser-share.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="61" column="37" lean-forward="false" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/dist/js/fundraiser-share.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding />
         </state>
       </provider>

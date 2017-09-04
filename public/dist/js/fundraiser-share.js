@@ -21,6 +21,14 @@ var fundraiserShareVue = new Vue({
             if (command == 'close') {
                 document.location.href = '/fundraisers/' + this.postSid;
             }
+        },
+        share: function () {
+            FB.ui({
+                method: 'share',
+                href: 'https://raisebetter.uk/fundraisers/' + this.postSid
+            }, function (response) {
+                console.log('FB Share dialog response: ', response);
+            });
         }
     }
 });
