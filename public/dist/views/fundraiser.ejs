@@ -65,14 +65,14 @@
                         <div class="col-md-12">
                             <% if(post.status == 'live'){ %>
                             <a id="donateBtn"
-                               href="/fundraisers/<%=post.sid%>/donate"
+                               href="/fundraisers/<%=post.slug%>/donate"
                                class="border_radius btn-yellow text-uppercase"
                                ga-on="'click'" ga-event-category="<%= post.sid %>"
                                ga-event-action="'post-donate-btn'" ga-event-label="userSid">
                                 Donate Now
                             </a>
                             <a id="donateBtn2"
-                               href="/fundraisers/<%=post.sid%>/share"
+                               href="/fundraisers/<%=post.slug%>/share"
                                class="border_radius btn-yellow btn-fb-blue text-uppercase"
                                ga-on="'click'" ga-event-category="<%= post.sid %>"
                                ga-event-action="'post-share-btn'" ga-event-label="userSid">
@@ -141,12 +141,12 @@
                                                ga-event-action="'post-edit-btn'"
                                                ga-event-label="userSid"
                                                class="dropdown-item"
-                                               href="/fundraisers/<%= post.sid %>/edit">
+                                               href="/fundraisers/<%= post.slug %>/edit">
                                                 Edit Fundraiser</a>
                                             <a ga-on="'click'" ga-event-category="post.sid"
                                                ga-event-action="'post-edit-author-btn'"
                                                ga-event-label="userSid"
-                                               href="/fundraisers/<%= post.sid %>/edit-author"
+                                               href="/fundraisers/<%= post.slug %>/edit-author"
                                                class="dropdown-item" v-on:click="scrollTop()">Edit
                                                 Author</a>
                                         </div>
@@ -159,7 +159,7 @@
                                     <a ga-on="'click'" ga-event-category=post.sid
                                        ga-event-action="'post-go-live-btn'"
                                        ga-event-label="userSid"
-                                       href="/fundraisers/<%= post.sid %>/go-live"
+                                       href="/fundraisers/<%= post.slug %>/go-live"
                                        v-on:click="scrollTop()" type="button" class="btn btn-live">
                                         <span class="fa fa-bolt"></span>
                                         Go Live!

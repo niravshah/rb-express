@@ -10,7 +10,7 @@
             <div class="col-md-4 cbp-item" :class="post.type" v-for="post in posts">
                 <div class="property_item">
                     <div class="image">
-                        <a :href="'/fundraisers/'+ post.sid"><img :src="post.image" alt="latest property"
+                        <a :href="'/fundraisers/'+ post.slug"><img :src="post.image" alt="latest property"
                                                                   class="img-responsive"></a>
                         <div class="price clearfix">
                             <span class="tag pull-right">Collected: {{post.collected | currency(post.currency)}}</span>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="proerty_content">
                         <div class="proerty_text">
-                            <h3 class="captlize"><a :href="'/fundraisers/' + post.sid">{{post.title}}</a></h3>
+                            <h3 class="captlize"><a :href="'/fundraisers/' + post.slug">{{post.title}}</a></h3>
                             <p>{{post.subTitle}}</p>
                         </div>
                         <div class="favroute clearfix post-bb">

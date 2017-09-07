@@ -63,6 +63,9 @@ module.exports = function (passport) {
     });
 
     router.patch('/api/posts/:id', function (req, res) {
+        if (req.body.title) {
+            req.body.slug = utils.slugify(req.body.title);
+        }
         Post.findOneAndUpdate({sid: req.params.id}, req.body, {new: true}, function (err, post) {
             if (err) {
                 res.status(500).json({message: "Error saving post", error: err})
@@ -143,7 +146,7 @@ module.exports = function (passport) {
 
     router.post('/api/posts/new', passport.authenticate('jwt', {
         failWithError: true
-    }),function (req, res) {
+    }), function (req, res) {
         utils.createPost(req.user, req.body.title, req.body.amount, req.body.currency, function (err, post) {
             if (err) {
                 res.status(500).json({'message': err})

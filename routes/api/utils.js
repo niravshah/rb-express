@@ -38,6 +38,7 @@ module.exports = {
     createPost: function (user, title, amount, currency, callback) {
         const newPost = new Post();
         newPost.title = title;
+        newPost.slug = this.slugify(title);
         newPost.author = user;
         newPost.sid = shortid.generate();
         newPost.target = amount;
@@ -207,35 +208,55 @@ module.exports = {
             }
         });
     },
-    getStripeOauthLink: function (post_sid, cb) {
+    getStripeOauthLink: function (post, cb) {
+
+        var oauthLink = 'https://connect.stripe.com/oauth/authorize'
+            + '?client_id=' + process.env.STRIPE_CA
+            + '&scope=read_write'
+            + '&response_type=code'
+            + '&state=' + post.sid
+            + '&stripe_user[first_name]=' + post.author.fname
+            + '&stripe_user[last_name]=' + post.author.lname
+            + '&stripe_user[product_description]=' + post.title
+            + '&stripe_user[business_type]=sole_prop'
+            + '&stripe_user[url]=' + 'https://raisebetter.uk/fundraisers/' + post.sid
+            + '&stripe_user[business_name]=' + post.title
+            + '&stripe_user[phone_number]=' + post.author.mobile
+            + '&stripe_user[email]=' + post.author.email;
+        cb (post, oauthLink);
+    },
+    slugify: function (text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    }
+    ,
+    findPostBySlugOrId: function (id, cb) {
         Post.find({
-            sid: post_sid
+            sid: id
         }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
             if (err) {
-                cb(err, null, null);
+                cb(err, null)
             } else {
-
                 if (posts.length > 0) {
-                    var post = posts[0];
-                    var oauthLink = 'https://connect.stripe.com/oauth/authorize'
-                        + '?client_id=' + process.env.STRIPE_CA
-                        + '&scope=read_write'
-                        + '&response_type=code'
-                        + '&state=' + post.sid
-                        + '&stripe_user[first_name]=' + post.author.fname
-                        + '&stripe_user[last_name]=' + post.author.lname
-                        + '&stripe_user[product_description]=' + post.title
-                        + '&stripe_user[business_type]=sole_prop'
-                        + '&stripe_user[url]=' + 'https://raisebetter.uk/fundraisers/' + post.sid
-                        + '&stripe_user[business_name]=' + post.title
-                        + '&stripe_user[phone_number]=' + post.author.mobile
-                        + '&stripe_user[email]=' + post.author.email;
-                    cb(null, post, oauthLink);
-
+                    cb(null, posts[0])
                 } else {
-                    cb({message: 'Post with the id ' + post_sid + 'not found'}, null, null)
+                    Post.find({slug: id}).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+                        if (err) {
+                            cb(err, null)
+                        } else {
+                            if (posts.length > 0) {
+                                cb(null, posts[0])
+                            } else {
+                                cb(new Error('No Post with this Id found'), null)
+                            }
+                        }
+                    });
                 }
             }
-        });
+        })
     }
 };

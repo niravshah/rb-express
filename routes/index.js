@@ -60,120 +60,91 @@ router.get('/fundraisers/new', function (req, res) {
 
 
 router.get('/fundraisers/:id', function (req, res) {
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio')
-        .populate('account', 'sid')
-        .exec(function (err, posts) {
-            if (err) {
-                res.render('error', {message: err.message});
 
-            } else {
-                if (posts.length > 0) {
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
+        if (err) {
+            res.render('error', {message: err.message});
+        } else {
 
-                    var post = posts[0];
-                    var percent = 0;
-
-                    if (post.target !== 0 && post.collected !== 0) {
-                        percent = Math.round((post.collected / post.target) * 100);
-                    }
-
-                    var asid = "none";
-                    if (post.account) asid = post.account.sid;
-                    res.render('fundraiser', {post: post, percent: percent, asid: asid});
-                } else {
-                    res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
-                }
+            var percent = 0;
+            if (post.target !== 0 && post.collected !== 0) {
+                percent = Math.round((post.collected / post.target) * 100);
             }
-        });
+
+            var asid = "none";
+            if (post.account) asid = post.account.sid;
+            res.render('fundraiser', {post: post, percent: percent, asid: asid});
+
+        }
+    });
+
 });
 
 router.get('/fundraisers/:id/edit-author', function (req, res) {
 
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
         if (err) {
             res.render('error', {message: err.message});
-
         } else {
-            res.render('edit-author', {post: posts[0]});
+            res.render('edit-author', {post: post});
         }
+
     });
 
 });
 
 router.get('/fundraisers/:id/edit', function (req, res) {
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
+
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
         if (err) {
             res.render('error', {message: err.message});
 
         } else {
-            res.render('fundraiser-edit', {post: posts[0]});
+            res.render('fundraiser-edit', {post: post});
         }
     });
-
 });
 
 router.get('/fundraisers/:id/go-live', function (req, res) {
 
-    utils.getStripeOauthLink(req.params.id, function (err, post, link) {
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
         if (err) {
             res.render('error', {message: err.message});
         } else {
-            res.render('stripe-setup', {post: post, stripeLink: link});
+            utils.getStripeOauthLink(post, function (post, link) {
+                res.render('stripe-setup', {post: post, stripeLink: link});
+            });
         }
     });
+
 });
 
 router.get('/fundraisers/:id/donate', function (req, res) {
 
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio')
-        .populate('account', 'sid')
-        .exec(function (err, posts) {
-            if (err) {
-                res.render('error', {message: err.message});
-
-            } else {
-                if (posts.length > 0) {
-
-                    var post = posts[0];
-                    var asid = "none";
-                    if (post.account) asid = post.account.sid;
-                    res.render('fundraiser-donate', {post: post, asid: asid});
-                } else {
-                    res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
-                }
-            }
-        });
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
+        if (err) {
+            res.render('error', {message: err.message});
+        } else {
+            var asid = "none";
+            if (post.account) asid = post.account.sid;
+            res.render('fundraiser-donate', {post: post, asid: asid});
+        }
+    });
 });
 
 router.get('/fundraisers/:id/share', function (req, res) {
 
-    Post.find({
-        sid: req.params.id
-    }).populate('author', 'sid fname lname email avatar mobile bio')
-        .populate('account', 'sid')
-        .exec(function (err, posts) {
-            if (err) {
-                res.render('error', {message: err.message});
+    utils.findPostBySlugOrId(req.params.id, function (err, post) {
+        if (err) {
+            res.render('error', {message: err.message});
 
-            } else {
-                if (posts.length > 0) {
+        } else {
+            var asid = "none";
+            if (post.account) asid = post.account.sid;
+            res.render('fundraiser-share', {post: post, asid: asid, authorName: post.author.fname});
+        }
 
-                    var post = posts[0];
-                    var asid = "none";
-                    if (post.account) asid = post.account.sid;
-                    res.render('fundraiser-share', {post: post, asid: asid, authorName: post.author.fname});
-                } else {
-                    res.render('error', {message: "Fundraiser with id " + req.params.id + " not found."});
-                }
-            }
-        });
+    });
 });
 
 
