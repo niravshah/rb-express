@@ -458,6 +458,16 @@ ul.time-left li {
     padding: 40px;
 }
 
+.rb_logo{
+    background: url('/images/logo-yellow.png') no-repeat;
+    display: inline-block;
+    height: 63px;
+    width: 283px;
+    background-size: 100%;
+    vertical-align: middle;
+}
+
+
 /* END - Index Page*/
 
 /* START - Fundraiser Page */
