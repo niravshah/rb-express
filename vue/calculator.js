@@ -2,7 +2,7 @@ var vCalculator =
     new Vue({
         el: '#calculator',
         data: {
-            amountRaised: 1500,
+            amountRaised: 2000,
             pf: {
                 rb: 3,
                 jg: 5,
