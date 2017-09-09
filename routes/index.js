@@ -22,11 +22,7 @@ router.get('/', function (req, res, next) {
 
 
     res.render('index', {
-        title: 'Better Fundraising for Individuals',
-        amount_raised: amount_raised, amount_saved: amount_saved,
-        rb_pf: rb_pf, rb_cpf: rb_cpf, rb_total: rb_total,
-        jg_pf: jg_pf, jg_cpf: jg_cpf, jg_total: jg_total,
-        gfm_pf: gfm_pf, gfm_cpf: gfm_cpf, gfm_total: gfm_total
+        title: 'Better Fundraising for Individuals'
     });
 });
 

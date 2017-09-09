@@ -16,6 +16,16 @@
 <section id="homeSection">
     <div class="row" style="height: 670px;">
         <div id="homeImage" class="col-md-8 col-sm-12 hidden-sm hidden-xs" style="padding: 0px;">
+
+            <div class="textOverlay">
+                <h2>Better Fundraising for Individuals</h2>
+                <ul class="pt10">
+                    <li>Mobile Friendly</li>
+                    <li>Secure</li>
+                    <li>Social</li>
+                    <li>No Goal Limitation</li>
+                </ul>
+            </div>
             <img src="/images/home1-banner3.png" alt="Raise Better">
         </div>
         <div id="signupForm" class="col-md-4 col-sm-12">
@@ -123,19 +133,37 @@
     </div>
 </section>
 
-<%- include partials/header.ejs%>
+<%- include partials/header.ejs %>
 
 <!--Signup Form-->
 <!--Signup Form ends-->
 
 <!--RB Calculator-->
-<section id="testinomialBg" class="bg_light pt40 pb20">
+<section id="calculator" class="bg_light pt40 pb20">
     <div id="agent-2">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <h2 class="uppercase">Keep more of what you raise</h2>
-                    <p class="pt20">For every £<%= amount_raised %> you raise you can get up to £<%= amount_saved %>
+                    <p class="pt5">Use our calculator to see how much more you can save with Raise Better</p>
+                </div>
+            </div>
+            <div class="row pt20 text-center">
+                <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="single-query bottom15">
+                        <div class="input-group">
+                            <input type="text" class="keyword-input t_yellow"
+                                   style="color:black !important; font-size: 24px; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important;"
+                                   id="amountRaised" name="amountRaised" v-model="amountRaised">
+                            <span class="input-group-addon"
+                                  style="font-family: 'roboto_condensedbold';font-size: 20px;">GBP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>For every £{{ amountRaised }} you raise you can get up to £{{ amountSaved }}
                         more with Raise Better.</p>
                 </div>
             </div>
@@ -144,9 +172,9 @@
                     <div class="agent_wrap">
                         <div class="image text-center">
                             <p class="pt10">Money Raised</p>
-                            <h3>£500</h3>
+                            <h3>£{{amountRaised}}</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£<%= rb_total %></h2>
+                            <h2>£{{ rb_total }}</h2>
                             <img class="pt20" style="width: auto;" src="/images/logo.png">
                             <div class="img-info">
                                 <h3 class="pb5">Raise Better</h3>
@@ -163,9 +191,9 @@
                     <div class="agent_wrap">
                         <div class="image text-center">
                             <p class="pt10">Money Raised</p>
-                            <h3>£500</h3>
+                            <h3>£{{amountRaised}}</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£<%= jg_total %></h2>
+                            <h2>£{{ jg_total }}</h2>
                             <img class="pt20" style="width: auto;" src="/images/justgiving-logo.jpg">
                             <div class="img-info">
                                 <h3 class="pb5">Just Giving</h3>
@@ -182,9 +210,9 @@
                     <div class="agent_wrap">
                         <div class="image text-center">
                             <p class="pt10">Money Raised</p>
-                            <h3>£500</h3>
+                            <h3>£{{amountRaised}}</h3>
                             <p class="pt10">You Get</p>
-                            <h2>£<%= gfm_total %></h2>
+                            <h2>£{{ gfm_total }}</h2>
                             <img class="pt10" style="width: auto;" src="/images/gfm-logo.png">
                             <div class="img-info">
                                 <h3 class="pb10">Go Fund Me</h3>
@@ -212,33 +240,33 @@
                         <tbody>
                         <tr class="text-center">
                             <td class="text-left" colspan="2">Money Raised</td>
-                            <td class="br" colspan="2">£500</td>
-                            <td class="br" colspan="2">£500</td>
-                            <td colspan="2">£500</td>
+                            <td class="br" colspan="2">£{{amountRaised}}</td>
+                            <td class="br" colspan="2">£{{amountRaised}}</td>
+                            <td colspan="2">£{{amountRaised}}</td>
                         </tr>
                         <tr class="text-center">
                             <td class="text-left" colspan="2">Platform Fees</td>
                             <td>2%</td>
-                            <td class="br">£<%= rb_pf %></td>
+                            <td class="br">£{{rb_pf}}</td>
                             <td>5%</td>
-                            <td class="br">£<%= jg_pf %></td>
+                            <td class="br">£{{ jg_pf }}</td>
                             <td>5%</td>
-                            <td>£<%= gfm_pf %></td>
+                            <td>£{{ gfm_pf }}</td>
                         </tr>
                         <tr class="text-center">
                             <td class="text-left" colspan="2">Payment Processor Fees</td>
                             <td>1.4% + 20p</td>
-                            <td class="br">£<%= rb_cpf %></td>
+                            <td class="br">£{{rb_cpf}}</td>
                             <td>1.25%</td>
-                            <td class="br">£<%= jg_cpf %></td>
+                            <td class="br">£{{ jg_cpf }}</td>
                             <td>3.5% + 20p</td>
-                            <td>£<%= gfm_cpf %></td>
+                            <td>£{{ gfm_cpf }}</td>
                         </tr>
                         <tr style="font-size:14px;" class="text-center">
                             <td class="text-left" colspan="2">What You Keep</td>
-                            <td class="br" colspan="2">£<%= rb_total %></td>
-                            <td class="br" colspan="2">£<%= jg_total %></td>
-                            <td colspan="2">£<%= gfm_total %></td>
+                            <td class="br" colspan="2">£{{rb_total}}</td>
+                            <td class="br" colspan="2">£{{ jg_total }}</td>
+                            <td colspan="2">£{{ gfm_total }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -298,7 +326,9 @@
 <%- include partials/scripts.ejs %>
 
 <script src="/dist/js/index.js"></script>
+<script src="/dist/js/calculator.js"></script>
 <script src="/dist/js/cookie-ribbon.js"></script>
+
 
 </body>
 </html>

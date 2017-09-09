@@ -441,7 +441,7 @@ ul.time-left li {
     padding: 40px 20px;
 }
 
-#signupForm input[type="text"], #signupForm input[type="email"] {
+#signupForm input[type="text"], #signupForm input[type="email"], #amountRaised {
     border: 1px solid #d5dadf;
     height: 44px;
     border-radius: 4px;
@@ -449,6 +449,13 @@ ul.time-left li {
     padding: 6px 12px;
     font-size: 14px;
     color: #000;
+}
+
+.textOverlay{
+    position: absolute;
+    bottom: 120px;
+    color: white;
+    padding: 40px;
 }
 
 /* END - Index Page*/
