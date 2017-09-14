@@ -5,25 +5,13 @@ var Post = require('../models/post');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-
-    var amount_raised = 500;
-    var amount_saved = 25;
-    var rb_pf = amount_raised * 0.02;
-    var rb_cpf = amount_raised * 0.014 + 0.20;
-    var rb_total = amount_raised - (rb_pf + rb_cpf);
-
-    var jg_pf = amount_raised * 0.05;
-    var jg_cpf = amount_raised * 0.0125;
-    var jg_total = amount_raised - (jg_pf + jg_cpf);
-
-    var gfm_pf = amount_raised * 0.05;
-    var gfm_cpf = amount_raised * 0.035 + 0.20;
-    var gfm_total = amount_raised - (gfm_pf + gfm_cpf);
-
-
     res.render('index', {
         title: 'Better Fundraising for Individuals'
     });
+});
+
+router.get('/faq', function (req, res) {
+    res.render('faq')
 });
 
 router.get('/login', function (req, res) {
