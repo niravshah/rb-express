@@ -242,6 +242,7 @@ module.exports = {
                 cb(err, null)
             } else {
                 if (posts.length > 0) {
+                    console.log('Posts!', posts);
                     cb(null, posts[0])
                 } else {
                     Post.find({slug: id}).populate('author', 'sid fname lname email avatar mobile bio').exec(function (err, posts) {
@@ -249,6 +250,7 @@ module.exports = {
                             cb(err, null)
                         } else {
                             if (posts.length > 0) {
+                                console.log('Posts!', posts);
                                 cb(null, posts[0])
                             } else {
                                 cb(new Error('No Post with this Id found'), null)
