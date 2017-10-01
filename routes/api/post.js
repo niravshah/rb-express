@@ -196,12 +196,21 @@ module.exports = function (passport) {
                                     error: err
                                 })
                             } else {
-                                postmark.sendEmail(req.body.email, password, req.body.fname, "/first-login");
-                                utils.createPost(user, req.body.title, req.body.amount, req.body.currency, function (err, post) {
+                                postmark.sendEmail(req.body.email, password, req.body.fname, "/first-login", function (err, result) {
                                     if (err) {
-                                        res.status(500).json({'message': err})
+                                        res.status(500).json({
+                                            message: 'Error while sending email verification code through postmark',
+                                            error: err.message
+                                        })
                                     } else {
-                                        res.status(200).json({'message': 'Post Created', 'id': post.id})
+                                        utils.createPost(user, req.body.title, req.body.amount, req.body.currency, function (err, post) {
+                                            if (err) {
+                                                res.status(500).json({'message': err})
+                                            } else {
+                                                res.status(200).json({'message': 'Post Created', 'id': post.id})
+                                            }
+                                        });
+
                                     }
                                 });
                             }

@@ -4,7 +4,7 @@ var client = new postmark.Client(process.env.POSTMARK_KEY);
 
 module.exports = {
 
-  sendEmail: function (user, password,name, actionUrl) {
+  sendEmail: function (user, password,name, actionUrl,cb) {
 
     client.sendEmailWithTemplate({
       "From": "hello@raisebetter.uk",
@@ -22,7 +22,7 @@ module.exports = {
         "live_chat_url": "live_chat_url_Value",
         "help_url": "help_url_Value"
       }
-    });
+    },cb);
 
   }
 };
