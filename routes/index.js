@@ -47,6 +47,7 @@ router.get('/fundraisers/:id', function (req, res) {
 
     utils.findPostBySlugOrId(req.params.id, function (err, post) {
         if (err) {
+            console.log('Error getting Post !!', err);
             res.render('error', {message: err.message});
         } else {
 
