@@ -51,6 +51,7 @@ router.get('/fundraisers/:id', function (req, res) {
             res.render('error', {message: err.message});
         } else {
 
+            console.log("Get Post !!", post);
             var percent = 0;
             if (post.target !== 0 && post.collected !== 0) {
                 percent = Math.round((post.collected / post.target) * 100);
