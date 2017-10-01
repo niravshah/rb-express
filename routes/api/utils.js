@@ -238,7 +238,8 @@ module.exports = {
                 return slug;
             } else {
                 if (posts.length > 0) {
-                    return slug + '-' + posts.length + 1
+                    var num = posts.length + 1;
+                    return slug + '-' + num;
                 } else {
                     return slug;
                 }
