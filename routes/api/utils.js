@@ -233,7 +233,7 @@ module.exports = {
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
 
-        Post.find({slug: id}).exec(function (err, posts) {
+        Post.find({slug: slug}).exec(function (err, posts) {
             if (err) {
                 return slug;
             } else {
