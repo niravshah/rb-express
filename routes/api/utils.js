@@ -223,15 +223,27 @@ module.exports = {
             + '&stripe_user[business_name]=' + post.title
             + '&stripe_user[phone_number]=' + post.author.mobile
             + '&stripe_user[email]=' + post.author.email;
-        cb (post, oauthLink);
+        cb(post, oauthLink);
     },
     slugify: function (text) {
-        return text.toString().toLowerCase()
+        var slug = text.toString().toLowerCase()
             .replace(/\s+/g, '-')           // Replace spaces with -
             .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
             .replace(/\-\-+/g, '-')         // Replace multiple - with single -
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
+
+        Post.find({slug: id}).exec(function (err, posts) {
+            if (err) {
+                return slug;
+            } else {
+                if (posts.length > 0) {
+                    return slug + '-' + posts.length + 1
+                } else {
+                    return slug;
+                }
+            }
+        });
     }
     ,
     findPostBySlugOrId: function (id, cb) {
