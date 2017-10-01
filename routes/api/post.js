@@ -198,6 +198,7 @@ module.exports = function (passport) {
                             } else {
                                 postmark.sendEmail(req.body.email, password, req.body.fname, "/first-login", function (err, result) {
                                     if (err) {
+                                        console.log('Postmark Error!!', err);
                                         res.status(500).json({
                                             message: 'Error while sending email verification code through postmark',
                                             error: err.message
