@@ -30,6 +30,8 @@ module.exports = {
         newUser.mobile = mobile;
         newUser.mobileCode = mobileCode;
         newUser.password = bcrypt.hashSync(password, saltRounds);
+
+
         newUser.save(function (err, user) {
             callback(err, user)
         });
@@ -38,14 +40,29 @@ module.exports = {
     createPost: function (user, title, amount, currency, callback) {
         const newPost = new Post();
         newPost.title = title;
-        newPost.slug = this.slugify(title);
+        var slug = this.slugify(title);
+        newPost.slug = slug;
         newPost.author = user;
         newPost.sid = shortid.generate();
         newPost.target = amount;
         newPost.currency = currency;
-        newPost.save(function (err, post) {
-            callback(err, post)
+
+        Post.find({slug: slug}).exec(function (err, posts) {
+            if (err) {
+                callback(err, posts)
+            } else {
+                if (posts.length > 0) {
+                    var num = posts.length + 1;
+                    newPost.slug = slug + '-' + num;
+                }
+
+                newPost.save(function (err, post) {
+                    callback(err, post)
+                });
+
+            }
         });
+
     },
 
     createPhoneVerification: function (number, callback) {
@@ -226,27 +243,13 @@ module.exports = {
         cb(post, oauthLink);
     },
     slugify: function (text) {
-        var slug = text.toString().toLowerCase()
+        return text.toString().toLowerCase()
             .replace(/\s+/g, '-')           // Replace spaces with -
             .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
             .replace(/\-\-+/g, '-')         // Replace multiple - with single -
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
-
-        Post.find({slug: slug}).exec(function (err, posts) {
-            if (err) {
-                return slug;
-            } else {
-                if (posts.length > 0) {
-                    var num = posts.length + 1;
-                    return slug + '-' + num;
-                } else {
-                    return slug;
-                }
-            }
-        });
-    }
-    ,
+    },
     findPostBySlugOrId: function (id, cb) {
         Post.find({
             sid: id
