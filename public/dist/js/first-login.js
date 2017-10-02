@@ -14,12 +14,12 @@ var vFirstLogin = new Vue({
                 && this.code != '';
         }
     },
-    created: function(){
-        if(this.$route.query.username){
-            this.username = this.$route.query.username
+    created: function () {
+        if (url('?username')) {
+            this.username = url('?username')
         }
-        if(this.$route.query.code){
-            this.password = this.$route.query.code
+        if (url('?code')) {
+            this.password = url('?code')
         }
     },
     methods: {
@@ -44,14 +44,14 @@ var vFirstLogin = new Vue({
                         document.location.href = '/reset-password'
                         // this.router.navigate(['reset-password']);
                     } else {
-                        this.messages.push({type:'error',message:'Username, password or code incorrect'});
+                        this.messages.push({type: 'error', message: 'Username, password or code incorrect'});
                     }
                 }, function (err) {
                     // console.log('Error', err);
-                    if(err.status == 404){
-                        this.messages.push({type:'error',message:'Page Not Found: ' + err.url});
-                    }else{
-                        this.messages.push({type:'error',message:err.message});
+                    if (err.status == 404) {
+                        this.messages.push({type: 'error', message: 'Page Not Found: ' + err.url});
+                    } else {
+                        this.messages.push({type: 'error', message: err.message});
                     }
 
                 })
