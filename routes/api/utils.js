@@ -30,8 +30,6 @@ module.exports = {
         newUser.mobile = mobile;
         newUser.mobileCode = mobileCode;
         newUser.password = bcrypt.hashSync(password, saltRounds);
-
-
         newUser.save(function (err, user) {
             callback(err, user)
         });

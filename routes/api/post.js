@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-var generatePassword = require('password-generator');
+var Chance = require('chance');
+var chance = new Chance();
 
 const post1 = require('../../data/post1');
 const post2 = require('../../data/post2');
@@ -177,8 +178,8 @@ module.exports = function (passport) {
             } else {
                 //console.log('Creating New User',req.params);
 
-                const password = generatePassword();
-                const mobileCode = generatePassword();
+                const password = chance.string({length: 5});
+                const mobileCode = chance.natural({min: 11450, max: 99999});
 
                 utils.mobileSendVerificationCode(req.body.mobile, 'Your Raise Better Verification Code: ' + mobileCode, function (err, message) {
 
