@@ -14,6 +14,14 @@ var vFirstLogin = new Vue({
                 && this.code != '';
         }
     },
+    created: function(){
+        if(this.$route.query.username){
+            this.username = this.$route.query.username
+        }
+        if(this.$route.query.code){
+            this.password = this.$route.query.code
+        }
+    },
     methods: {
         onSubmit: function () {
             if (!this.errors.any()) {
