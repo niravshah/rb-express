@@ -18,6 +18,11 @@ router.get('/login', function (req, res) {
     res.render('login')
 });
 
+router.get('/new-login-codes', function (req, res) {
+    res.render('login-new-codes')
+});
+
+
 router.get('/first-login', function (req, res) {
     res.render('first-login');
 });

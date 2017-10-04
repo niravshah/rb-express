@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-var Chance = require('chance');
-var chance = new Chance();
-
 const post1 = require('../../data/post1');
 const post2 = require('../../data/post2');
 
@@ -13,7 +10,7 @@ const Account = require('../../models/account');
 const Activities = require('../../models/activity');
 
 const utils = require('./utils');
-const postmark = require('./postmark');
+
 
 module.exports = function (passport) {
 
@@ -178,8 +175,8 @@ module.exports = function (passport) {
             } else {
                 //console.log('Creating New User',req.params);
 
-                const password = chance.string({length: 5});
-                const mobileCode = chance.natural({min: 11450, max: 99999});
+                const password = utils.chancePass();
+                const mobileCode = utils.chanceCode();
 
                 utils.mobileSendVerificationCode(req.body.mobile, 'Your Raise Better Verification Code: ' + mobileCode, function (err, message) {
 
@@ -198,7 +195,8 @@ module.exports = function (passport) {
                                 })
                             } else {
                                 var actionUrl = "https://raisebetter.uk/first-login?username=" + req.body.email + "&code=" + password;
-                                postmark.sendEmail(req.body.email, password, req.body.fname, actionUrl, function (err, result) {
+
+                                utils.sendFirstLoginEmail(req.body.email, password, req.body.fname, actionUrl, function (err, result) {
                                     if (err) {
                                         console.log('Postmark Error!!', err);
                                         res.status(500).json({

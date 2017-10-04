@@ -17,5 +17,24 @@ module.exports = {
                 "help_url": "https://raisebetter.uk/faq"
             }
         }, cb);
+    },
+
+    sendFirstLoginEmail: function (email, emailCode, name, cb) {
+        var actionUrl = "https://raisebetter.uk/first-login?username=" + email + "&code=" + emailCode;
+
+        client.sendEmailWithTemplate({
+            "From": "support@raisebetter.uk",
+            "To": email,
+            "TemplateId": 2682581,
+            "TemplateModel": {
+                "name": name,
+                "action_url": actionUrl,
+                "login_code": emailCode,
+                "username": email,
+                "support_email": "support@raisebetter.uk",
+                "help_url": "https://raisebetter.uk/faq"
+            }
+        }, cb);
+
     }
 };

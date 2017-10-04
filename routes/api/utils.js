@@ -1,23 +1,24 @@
+const unirest = require('unirest');
+const bcrypt = require('bcrypt');
+const shortid = require('shortid');
+const Chance = require('chance');
+
 const Post = require('../../models/post');
 const User = require('../../models/user');
 const Account = require('../../models/account');
-const Customer = require('../../models/customer');
 const Charge = require('../../models/charge');
 const Activity = require('../../models/activity');
 const Query = require('../../models/query');
-const unirest = require('unirest');
-
+const postmark = require('./postmark');
 const PhoneVerification = require('../../models/phone-verification');
 
-var bcrypt = require('bcrypt');
+const chance = new Chance();
 const saltRounds = 10;
-var shortid = require('shortid');
 
 const twilio = require('twilio')(
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN
 );
-
 
 module.exports = {
 
@@ -34,7 +35,9 @@ module.exports = {
             callback(err, user)
         });
     },
-
+    bryptPass: function (password) {
+        bcrypt.hashSync(password, saltRounds);
+    },
     createPost: function (user, title, amount, currency, callback) {
         const newPost = new Post();
         newPost.title = title;
@@ -87,19 +90,9 @@ module.exports = {
             callback(err, account);
         })
     },
-
-    createCustomer: function (email, stripe_customer_id, callback) {
-
-        const newCustomer = new Customer();
-        newCustomer.sid = shortid.generate();
-        newCustomer.stripe_customer_id = stripe_customer_id;
-        newCustomer.email = email;
-        newCustomer.save(function (err, cust) {
-            callback(err, cust);
-        })
-
+    sendFirstLoginEmail: function (email, code, name, cb) {
+        postmark.sendFirstLoginEmail(email, code, name, cb);
     },
-
     updatePostWithAccount: function (sid, account, callback) {
 
         Post.findOneAndUpdate({sid: sid}, {account: account}, {new: true}, function (err, post) {
@@ -131,6 +124,12 @@ module.exports = {
     },
     shortid: function () {
         return shortid.generate();
+    },
+    chancePass: function () {
+        return chance.string({length: 5});
+    },
+    chanceCode: function () {
+        return chance.natural({min: 11450, max: 99999});
     },
     createCharge: function (rb_uid, post, stripe_charge_id, cust_name, cust_email, amount, callback) {
         const newCharge = new Charge();
