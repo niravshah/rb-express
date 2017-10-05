@@ -194,9 +194,7 @@ module.exports = function (passport) {
                                     error: err
                                 })
                             } else {
-                                var actionUrl = "https://raisebetter.uk/first-login?username=" + req.body.email + "&code=" + password;
-
-                                utils.sendFirstLoginEmail(req.body.email, password, req.body.fname, actionUrl, function (err, result) {
+                                utils.sendFirstLoginEmail(req.body.email, password, req.body.fname, function (err, result) {
                                     if (err) {
                                         console.log('Postmark Error!!', err);
                                         res.status(500).json({
