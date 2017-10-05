@@ -136,28 +136,30 @@ module.exports = function (passport) {
                     const pass = util.chancePass();
                     const code = util.chanceCode();
 
-                    util.mobileSendVerificationCode(user.mobile, 'Your Raise Better Verification Code: ' + code, function (err, pass) {
-                        if (err) {
-                            res.status(500).json({message: "Error sending mobile verification code", error: err})
-                        } else {
+                    util.mobileSendVerificationCode(user.mobile, 'Your Raise Better Verification Code: ' + code, function (err, success) {
+                        /*
+                         if (err) {
+                         res.status(500).json({message: "Error sending mobile verification code", error: err})
+                         } else {
+                         */
 
-                            user.password = util.bryptPass(pass);
-                            user.mobileCode = code;
-                            user.firstLogin = true;
-                            user.save(function (err, user) {
-                                if (err) {
-                                    res.status(500).json({message: "Error updating user", error: err})
-                                } else {
-                                    util.sendFirstLoginEmail(req.body.email, pass, user.fname, function (err, result) {
-                                        if (err) {
-                                            res.status(500).json({message: "Error sending update email", error: err})
-                                        } else {
-                                            res.json({message: "ok"})
-                                        }
-                                    })
-                                }
-                            })
-                        }
+                        user.password = util.bcryptPass(pass);
+                        user.mobileCode = code;
+                        user.firstLogin = true;
+                        user.save(function (err, user) {
+                            if (err) {
+                                res.status(500).json({message: "Error updating user", error: err})
+                            } else {
+                                util.sendFirstLoginEmail(req.body.email, pass, user.fname, function (err, result) {
+                                    if (err) {
+                                        res.status(500).json({message: "Error sending update email", error: err})
+                                    } else {
+                                        res.json({message: "ok"})
+                                    }
+                                })
+                            }
+                        })
+                        //}
                     });
                 } else {
                     res.status(500).json({message: "No User Found", error: err})

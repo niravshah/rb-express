@@ -35,8 +35,8 @@ module.exports = {
             callback(err, user)
         });
     },
-    bryptPass: function (password) {
-        bcrypt.hashSync(password, saltRounds);
+    bcryptPass: function (password) {
+        return bcrypt.hashSync(password, saltRounds);
     },
     createPost: function (user, title, amount, currency, callback) {
         const newPost = new Post();
