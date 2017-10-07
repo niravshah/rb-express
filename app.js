@@ -27,7 +27,7 @@ require('winston-daily-rotate-file');
 
 
 var fileTransport = new (winston.transports.DailyRotateFile)({
-    filename: logDir + '/-raisebetter.log',
+    filename: logDir + '/raisebetter.log',
     datePattern: 'yyyy-MM-dd.',
     prepend: true,
     timestamp: true,
