@@ -18,7 +18,7 @@
                         <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
                             <li v-if="loggedIn"><a href="/home">Home</a></li>
                             <li><a href="/blog">Blog</a></li>
-                            <li v-if="loggedIn"><a href="#" v-on:c  lick="logout">Logout</a></li>
+                            <li v-if="loggedIn"><a href="#" v-on:click="logout">Logout</a></li>
                             <li v-if="!loggedIn"><a href="/login">Login</a></li>
                             <li v-if="!loggedIn"><a href="/sign-up">Sign Up</a></li>
                             <li><a href="" v-on:click.stop.prevent="openContactModal">Contact Us</a></li>
