@@ -106,8 +106,6 @@ module.exports = function (passport) {
 
             } else {
                 //console.log('Creating New User',req.params);
-
-
                 const password = generatePassword();
                 util.createUser(req.body.email, password, req.body.name, function (err, user) {
                     if (err) {
@@ -137,11 +135,9 @@ module.exports = function (passport) {
                     const code = util.chanceCode();
 
                     util.mobileSendVerificationCode(user.mobile, 'Your Raise Better Verification Code: ' + code, function (err, success) {
-                        /*
                          if (err) {
                          res.status(500).json({message: "Error sending mobile verification code", error: err})
                          } else {
-                         */
 
                         user.password = util.bcryptPass(pass);
                         user.mobileCode = code;
@@ -159,7 +155,7 @@ module.exports = function (passport) {
                                 })
                             }
                         })
-                        //}
+                         }
                     });
                 } else {
                     res.status(500).json({message: "No User Found", error: err})

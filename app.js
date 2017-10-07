@@ -20,6 +20,39 @@ app.use(passport.initialize());
 var initPassport = require('./passport/init');
 initPassport(passport);
 
+var logDir = process.env.LOG_DIR;
+var winston = require('winston');
+require('winston-mail');
+require('winston-daily-rotate-file');
+
+
+var fileTransport = new (winston.transports.DailyRotateFile)({
+    filename: logDir + '/-raisebetter.log',
+    datePattern: 'yyyy-MM-dd.',
+    prepend: true,
+    timestamp: true,
+    level: process.env.NODE_ENV === 'development' ? 'debug' : 'info'
+});
+
+var consoleTransport = new (winston.transports.Console)({
+    timestamp: true,
+    level: 'info'
+});
+
+var emailTransport = new (winston.transports.Mail)({
+    username: process.env.GMAIL_USERNAME,
+    password: process.env.GMAIL_PASSWORD,
+    host: 'smtp.gmail.com',
+    ssl: true,
+    port: 465,
+    level: 'error',
+    to: 'nirav.shah83@gmail.com'
+});
+
+var wLogger = new (winston.Logger)({
+    transports: [consoleTransport, fileTransport, emailTransport]
+});
+
 var index = require('./routes/index');
 var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);
@@ -53,6 +86,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
 
     console.log('Global Error Handler 1 !!', err);
+    wLogger.error('Global Error Handler', err);
 
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -60,7 +94,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render('error', {message: err.message});
 });
 
 
@@ -89,5 +123,5 @@ app.set('port', port);
 
 var server = http.createServer(app);
 server.listen(port, function () {
-    console.log('API running on localhost: ' + port)
+    wLogger.info('API running on localhost: ' + port)
 });
