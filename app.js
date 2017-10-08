@@ -86,7 +86,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
 
     console.log('Global Error Handler 1 !!', err);
-    wLogger.error(process.env.NODE_ENV + ' Global Error Handler', {
+    wLogger.error(process.env.NODE_ENV + ':' + err.message, {
         env: process.env.NODE_ENV,
         err: err,
         url: req.originalUrl,
