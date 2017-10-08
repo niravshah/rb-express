@@ -53,6 +53,11 @@ var wLogger = new (winston.Logger)({
     transports: [consoleTransport, fileTransport, emailTransport]
 });
 
+var mongo_express = require('mongo-express/lib/middleware');
+var me_config = require('./me_config');
+app.use('/mongo_express', mongo_express(me_config));
+
+
 var index = require('./routes/index');
 var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);

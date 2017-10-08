@@ -18,6 +18,7 @@
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "http": "0.0.0",
+    "mongo-express": "^0.42.3",
     "mongoose": "^4.11.6",
     "morgan": "~1.8.1",
     "passport": "^0.4.0",
