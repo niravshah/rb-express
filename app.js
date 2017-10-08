@@ -86,7 +86,12 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
 
     console.log('Global Error Handler 1 !!', err);
-    wLogger.error(process.env.NODE_ENV + ' Global Error Handler', {env: process.env.NODE_ENV, err: err, req: req});
+    wLogger.error(process.env.NODE_ENV + ' Global Error Handler', {
+        env: process.env.NODE_ENV,
+        err: err,
+        url: req.originalUrl,
+        headers: req.headers
+    });
 
     // set locals, only providing error in development
     res.locals.message = err.message;
