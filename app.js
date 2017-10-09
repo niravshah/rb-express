@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
@@ -24,7 +23,13 @@ var logDir = process.env.LOG_DIR;
 var winston = require('winston');
 require('winston-mail');
 require('winston-daily-rotate-file');
+require('winston-mongodb');
 
+
+/*var consoleTransport = new (winston.transports.Console)({
+ timestamp: true,
+ level: 'info'
+ });*/
 
 var fileTransport = new (winston.transports.DailyRotateFile)({
     filename: logDir + '/raisebetter.log',
@@ -34,11 +39,6 @@ var fileTransport = new (winston.transports.DailyRotateFile)({
     level: process.env.NODE_ENV === 'development' ? 'debug' : 'info'
 });
 
-var consoleTransport = new (winston.transports.Console)({
-    timestamp: true,
-    level: 'info'
-});
-
 var emailTransport = new (winston.transports.Mail)({
     username: process.env.GMAIL_USERNAME,
     password: process.env.GMAIL_PASSWORD,
@@ -46,39 +46,43 @@ var emailTransport = new (winston.transports.Mail)({
     ssl: true,
     port: 465,
     level: 'error',
-    to: 'nirav.shah83@gmail.com'
+    to: process.env.ERROR_REPORT_EMAIL
+});
+
+var mongodbTransport = new (winston.transports.MongoDB)({
+    level: 'warn',
+    db: process.env.MONGO_URL,
+    collection: 'error_logs'
 });
 
 var wLogger = new (winston.Logger)({
-    transports: [consoleTransport, fileTransport, emailTransport]
+    transports: [fileTransport, emailTransport, mongodbTransport],
+    exceptionHandlers: [emailTransport]
 });
-
-var mongo_express = require('mongo-express/lib/middleware');
-var me_config = require('./me_config');
-app.use('/mongo_express', mongo_express(me_config));
-
 
 var index = require('./routes/index');
 var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);
 var stripe = require('./routes/api/stripe')(passport);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'public/dist/views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(index);
 app.use(login);
 app.use(posts);
 app.use(stripe);
+
+var mongo_express = require('mongo-express/lib/middleware');
+var me_config = require('./me_config');
+app.use('/mongo_express', mongo_express(me_config));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -90,10 +94,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
 
-    console.log('Global Error Handler 1 !!', err);
-    wLogger.error(process.env.NODE_ENV + ':' + err.message, {
-        env: process.env.NODE_ENV,
-        err: err,
+    wLogger.error(process.env.NODE_ENV + ':' + err.message + ':' + req.originalUrl, {
         url: req.originalUrl,
         headers: req.headers
     });
