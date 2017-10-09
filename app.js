@@ -25,6 +25,13 @@ require('winston-mail');
 require('winston-daily-rotate-file');
 require('winston-mongodb');
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'public/dist/views'));
+app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
 
 /*var consoleTransport = new (winston.transports.Console)({
  timestamp: true,
@@ -65,16 +72,6 @@ var posts = require('./routes/api/post')(passport);
 var login = require('./routes/api/auth')(passport);
 var stripe = require('./routes/api/stripe')(passport);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-// view engine setup
-app.set('views', path.join(__dirname, 'public/dist/views'));
-app.set('view engine', 'ejs');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
-
 app.use(index);
 app.use(login);
 app.use(posts);
@@ -99,15 +96,12 @@ app.use(function (err, req, res, next) {
         headers: req.headers
     });
 
-    // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
     res.status(err.status || 500);
     res.render('error', {message: err.message});
 });
-
 
 app.locals.titlecase = function (str) {
     return str.replace(/\w\S*/g, function (txt) {
@@ -127,7 +121,6 @@ app.locals.formatDate = function (date) {
     var year = date.getFullYear();
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
 };
-
 
 var port = process.env.PORT || '8091';
 app.set('port', port);
